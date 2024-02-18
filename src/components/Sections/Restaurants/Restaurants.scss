@@ -1,0 +1,12 @@
+@import '../../../themes/mixins';
+
+.restaurant-header {
+  @include font-style;
+  @include titles_style;
+
+  @include desktop {
+    margin-top: 70px;
+    font-size: 28px;
+    margin-left: 460px;
+  }
+}

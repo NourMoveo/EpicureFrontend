@@ -1,0 +1,181 @@
+// Navbar.scss
+@import '../../../themes/mixins';
+@import '../../../themes/variables';
+
+.navbar-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 46px;
+
+  @include desktop {
+    height: 64px;
+    gap: 15.7px;
+    margin-bottom: 0px;
+    height: 46px;
+  }
+
+
+  .animated-search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    .search-icon {
+      width: 24px;
+      height: 24px;
+
+    }
+
+    .search-input {
+      @include font-style;
+      width: 0;
+      opacity: 0;
+      border: none;
+      background-color: transparent;
+      transition: width 0.3s, opacity 0.3s, transform 0.3s;
+      font-size: 16px;
+      color: #333;
+      outline: none;
+      transform-origin: right;
+      transform: translateX(-150%);
+    }
+
+    &:hover .search-input {
+      width: 160px;
+      opacity: 1;
+      transform: translateX(9);
+    }
+  }
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-hamburger-menu {
+  @include desktop {
+    display: none;
+  }
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+}
+
+.navbar-logo {
+  margin: 7px 0 7px 127px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  @include desktop {
+    position: static;
+    left: auto;
+    transform: none;
+    margin-left: 127px;
+  }
+}
+
+.navbar-links {
+  display: none;
+
+  @include desktop {
+    margin-right: 650px;
+    display: flex;
+    gap: 32px;
+
+    .big-link {
+      @include font-style;
+      font-size: 27px;
+      letter-spacing: 1.35px;
+      height: 33px;
+      text-decoration: none;
+    }
+
+    .small-link {
+      @include font-style;
+      font-size: 18px;
+      line-height: 30px;
+      letter-spacing: 1.92px;
+      height: 22px;
+      text-decoration: none;
+    }
+  }
+}
+
+.navbar-right {
+  display: flex;
+  gap: 20px;
+  margin-right: 20px;
+  margin-left: 52px;
+
+  @include desktop {
+    margin-right: 127px;
+  }
+}
+
+.navbar-icon {
+  @include mobile {
+    width: 20px;
+    height: 20px;
+  }
+
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  @include desktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.navbar-hamburger-menu {
+  @include desktop {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-icon,
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include desktop {
+    margin-right: 0px;
+  }
+}
+
+.search-popup-title {
+  @include font-style;
+  font-size: 18px;
+}
+
+.exit-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 113px;
+}
+
+.sub-navbar {
+  margin-left: 15px;
+}

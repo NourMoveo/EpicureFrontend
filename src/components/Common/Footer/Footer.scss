@@ -1,0 +1,42 @@
+// Footer.scss
+
+@import "../../../themes/mixins";
+
+.footer-container {
+  display: flex;
+  padding: 20px 232px 24px 19px;
+
+  @include desktop {
+    padding: 31px 0px 31px;
+  }
+
+  .footer-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .footer-item {
+      @include font-style;
+      text-decoration: none;
+      font-size: 18px;
+      letter-spacing: 1.92px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.under-footer {
+  display: none;
+
+  @include desktop {
+    display: flex;
+    height: 21px;
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../../../themes/mixins';
+@import '../../../../themes/variables';
+
+.search-popup {
+  @include popup-style;
+  padding: 37px 0px 0px 52px;
+  top: calc(100% + 0.5px);
+  height: 366px;
+}
+
+.search-popup.open {
+  @include desktop {
+    display: none;
+  }
+
+  opacity: 1;
+}
+
+.search-bar {
+  @include desktop {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+  width: 290px;
+  height: 30px;
+  border-radius: 4px;
+  border: 0.5px solid $primary-dark-color;
+  padding: 6px 12px;
+  gap: 8px;
+
+  .search-input {
+    @include font-style;
+    border: none;
+    background-color: transparent;
+    flex: 1;
+    font-size: 12px;
+    letter-spacing: 1.29px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .search-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,24 @@
+:root {
+    --dark-primaryColor:#000000;
+    --grey-primaryColor:#979797;
+    --offwhite-secondaryColor:#F9F4EA;
+    --yellow-secondaryColor:#F5BE00;
+    --white-secondaryColor:#FAFAFA;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: "Helvetica Neuea";
+}
+
+.wrapper{
+    max-width: 375px;
+    margin: 0 auto;
+    
+}

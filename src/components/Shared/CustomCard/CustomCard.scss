@@ -1,0 +1,282 @@
+@import '../../../themes/mixins';
+@import '../../../themes/variables';
+
+.card {
+
+  @include mobile {
+    margin-left: 20px;
+
+  }
+
+  width: 245px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: $secondary-offwhite-color;
+  cursor: pointer;
+
+  @include desktop {
+    margin-left: 24px;
+    width: 379px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-container {
+    @include desktop {
+      height: 306px;
+      width: 380px;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 152px;
+      object-fit: cover;
+
+      @include desktop {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .card-content {
+    @include font-style;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include mobile {
+      padding: 16px;
+      height: 200px;
+    }
+
+    @include desktop {
+      height: 315px;
+      align-items: center;
+      padding: 20px 0px 0px 0px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 2.67px;
+
+      @include desktop {
+        font-size: 40px;
+        margin-left: 90px;
+        margin-right: 90px;
+      }
+    }
+
+    .description-icon-price {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+
+      @include desktop {
+        gap: 18px;
+      }
+
+      .description-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @include desktop {
+          flex-direction: column-reverse;
+          align-items: center;
+        }
+
+        .card-description {
+          width: 209px;
+          margin: 0;
+          font-size: 16px;
+          line-height: 20px;
+          letter-spacing: 1.97px;
+
+          @include desktop {
+            width: 295px;
+            font-size: 24px;
+            line-height: 30px;
+            font-style: normal;
+          }
+        }
+
+        .food-icon {
+          @include mobile {
+            display: flex;
+            justify-items: flex-end;
+          }
+
+          width: 30px;
+          height: 24px;
+
+          @include desktop {
+            width: 39.757px;
+            height: 29.68px;
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+
+      .rating-image {
+        width: 216px;
+        height: 40px;
+        margin-left: 38px;
+        margin-bottom: 18px;
+
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .price {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    @include mobile {
+      justify-content: flex-start;
+      margin-left: 16px;
+
+    }
+
+    .card-price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: auto;
+      margin-bottom: 10px;
+    }
+
+    .card-price {
+      @include font-style;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 19px;
+      letter-spacing: 1.97px;
+      display: flex;
+      align-items: flex-end;
+      font-style: normal;
+
+      .value-logo-container {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        margin-bottom: 10px;
+      }
+
+      @include desktop {
+        justify-content: center;
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 200;
+        flex-direction: row;
+
+        .line {
+          width: 112px;
+          height: 0.5px;
+          background: $primary-grey-color;
+          align-self: center;
+        }
+
+        .value-logo-container {
+          display: flex;
+          flex-direction: row;
+
+          .ils-icon {
+            align-self: flex-end;
+            width: 14px;
+            height: 19px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.card.third-type {
+  cursor: auto;
+
+  @include mobile {
+    height: 235.7px;
+
+    .card-content {
+      gap: 0px;
+
+      .card-title {
+        height: 30px;
+      }
+    }
+  }
+
+  @include desktop {
+    width: 231px;
+    height: 357px;
+    display: flex;
+    justify-content: flex-start;
+
+    .image-container {
+      width: 231px;
+      height: 224px;
+      object-fit: cover;
+
+    }
+
+    .card-content {
+      padding: 20px 0px 0px 0px;
+      gap: 0px;
+      height: 133px;
+
+      .card-title {
+        font-size: 30px;
+        line-height: 47px;
+      }
+    }
+  }
+
+  @include mobile {
+    .image-container {
+      width: 245px;
+      height: 152.34px;
+
+      .card-image {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+}
+
+.card.first-type {
+  @include mobile {
+    height: 232.8px;
+  }
+
+  @include desktop {
+    cursor: auto;
+    height: 405px;
+
+    .image-container {
+      height: 236px;
+
+      .card-image {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .card-content {
+      padding: 24px 0px 0px 0px;
+
+      .description-icon-price {
+        gap: 8px;
+      }
+    }
+  }
+}

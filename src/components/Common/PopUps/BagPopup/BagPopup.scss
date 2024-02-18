@@ -1,0 +1,97 @@
+// BagPopup.scss
+
+@import '../../../../themes/mixins';
+@import '../../../../themes/variables';
+
+.bag-popup {
+  @include popup-style;
+
+  @include desktop {
+    width: 497px;
+    height: 540px;
+    left: 943px;
+  }
+
+  &.open {
+    display: block;
+  }
+
+  .bag-content {
+    padding: 50px 117.5px 39px 117.5px;
+
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 210px 117.5px 0px 117.5px;
+    }
+
+    .order-history-button {
+      @include mobile {
+        display: none;
+      }
+
+      padding: 10px 20px;
+      @include font-style;
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      background-color: $primary-white-color;
+      border: 2px solid $primary-dark-color;
+      color: $primary-dark-color;
+      cursor: pointer;
+      transition: background-color 0.3s ease,
+      color 0.3s ease;
+      margin-left: 40px;
+
+      &:hover {
+        background-color: $primary-dark-color;
+        color: $primary-white-color;
+      }
+    }
+
+    .txt {
+      @include font-style;
+      display: flex;
+      height: 100%;
+      font-size: 16px;
+      letter-spacing: 1.97px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-right: 31px;
+      margin-bottom: 140px;
+
+      @include desktop {
+        margin-left: 70px;
+        opacity: 0.3;
+      }
+    }
+
+    .BagIcon {
+      margin-left: 47px;
+      margin-bottom: 20px;
+      width: 49px;
+      height: 49px;
+      display: flex;
+      cursor: pointer;
+      opacity: 0.3;
+    }
+  }
+}
+
+.bag-popup.open {
+  opacity: 1;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

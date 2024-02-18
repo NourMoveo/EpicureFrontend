@@ -1,0 +1,77 @@
+@import "../../../themes/mixins";
+@import "../../../themes/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  margin-top: 46px;
+  align-items: center;
+  gap: 32px;
+  height: 560px;
+  background: $secondary-light-color;
+
+  @include desktop {
+    margin-top: 40px;
+    height: 265px;
+    padding-top: 39px;
+  }
+
+  .title {
+    @include font-style;
+    font-size: 18px;
+    line-height: 35px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+
+    @include desktop {
+      font-size: 30px;
+      letter-spacing: 2.14px;
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+
+      @include desktop {
+        width: 136px;
+        height: 127px;
+      }
+
+      .icon-img {
+        @include desktop {
+          width: 76.948px;
+          height: 57.445px;
+        }
+      }
+
+      .icon-label {
+        @include font-style;
+        height: 35px;
+        font-size: 18px;
+        line-height: 30px;
+        letter-spacing: 1.97px;
+
+        @include desktop {
+          padding: 0;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
