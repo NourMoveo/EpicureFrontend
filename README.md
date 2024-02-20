@@ -1,13 +1,60 @@
+# Epicure: Frontend Development 🍽️👩🏻‍🍳
 
-Task Description:
+Welcome to the frontend development phase of Epicure! This project is dedicated to crafting a sophisticated food ordering website that showcases Tel Aviv's most esteemed restaurants.
 
-Create a food ordering website focusing on showcasing Tel Aviv's most renowned restaurants. Users should be able to browse through these restaurants, view their menu, and select dishes for their orders.
+## 📌 Overview
 
-Key Features:
+Epicure is designed to offer users a refined dining experience, providing a seamless platform to explore Tel Aviv's culinary landscape. From browsing top restaurants to selecting dishes for orders, Epicure ensures a seamless journey for every user.
 
-Restaurant Display: The website should prominently feature Tel Aviv's top restaurants. Clicking on a restaurant should lead to a page displaying its dishes.
-Menu Display: Each restaurant's page should showcase its dishes. Users can click on a dish to view more details.
-Filtering Options: Users should be able to filter restaurants based on popularity level, opening date, and opening hours.
-Ordering Functionality: Users should be able to add dishes to their current order. Clicking on a dish should open a modal window for easy ordering.
-Search Functionality: A search field on the main page should enable users to search for restaurants, chefs, and dishes.
-Data Management: All site information (restaurants, dishes, chefs, order history) should be stored in static JSON files. Future iterations may involve extracting data from a local database once server-side functionality is implemented.
+## 📌 Key Features
+
+- **Homepage**
+- **Restaurant Page**
+- **Dish Page**
+- **Ordering Functionality**
+- **Search Functionality**
+- **Registration Page**
+- **Checkout Page**
+
+## 📌 Technologies Used
+
+- React
+- Vite
+- TypeScript
+- SCSS
+
+## 📌 How to Run the Project
+
+To run the Epicure frontend project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/epicure-frontend.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd epicure-frontend
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+This will start the development server and allow you to view your project in your web browser.
+
+## Bon appétit and happy browsing! 🍽️✨
