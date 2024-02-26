@@ -13,7 +13,7 @@ import AboutUs from "./Sections/AboutUs/AboutUs"
 // Shared Components
 import CustomCard from "./Shared/CustomCard/CustomCard";
 import CustomCardsSection from "./Shared/CustomCardsSection/CustomCardsSection";
-
+import RestaurantsHeader from './Shared/RestaurantsHeader/RestaurantsHeader';
 //Swiper
 import { SwiperConfig } from "./Shared/Swiper/Swiper";
 
@@ -26,5 +26,5 @@ export {
     SearchPopup,MenuPopup,BagPopup,
     Navbar,Footer,
     Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs, 
-    CustomCard, CustomCardsSection, SwiperConfig
+    CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig
 };

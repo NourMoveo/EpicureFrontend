@@ -2,180 +2,175 @@
 @import '../../../themes/mixins';
 @import '../../../themes/variables';
 
+
+// Mobile styles
 .navbar-container {
   position: relative;
   display: flex;
+  height: 10vw;
+  padding-left: 4.5vw;
   justify-content: space-between;
-  align-items: center;
-  height: 46px;
 
-  @include desktop {
-    height: 64px;
-    gap: 15.7px;
-    margin-bottom: 0px;
-    height: 46px;
-  }
-
-
-  .animated-search-bar {
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-
-    .search-icon {
-      width: 24px;
-      height: 24px;
-
-    }
-
-    .search-input {
-      @include font-style;
-      width: 0;
-      opacity: 0;
-      border: none;
-      background-color: transparent;
-      transition: width 0.3s, opacity 0.3s, transform 0.3s;
-      font-size: 16px;
-      color: #333;
-      outline: none;
-      transform-origin: right;
-      transform: translateX(-150%);
-    }
-
-    &:hover .search-input {
-      width: 160px;
-      opacity: 1;
-      transform: translateX(9);
-    }
-  }
 }
 
 .navbar-left {
+  width: 50%;
+  justify-content: space-between;
   display: flex;
   align-items: center;
 }
 
-.navbar-hamburger-menu {
-  @include desktop {
-    display: none;
-  }
-
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  margin-left: 20px;
-}
-
+.navbar-hamburger-menu,
 .navbar-logo {
-  margin: 7px 0 7px 127px;
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-
-  @include desktop {
-    position: static;
-    left: auto;
-    transform: none;
-    margin-left: 127px;
-  }
+  @include icon-style;
 }
 
+.navbar-icon-left-logo {
+  margin-bottom: 0.5vh;
+  margin-top: 1.5vw;
+  width: auto;
+  height: 8vw;
+}
+
+.navbar-icon-left-menu {
+  padding-top: 0.5vh;
+  height: 6.9vw;
+  width: auto;
+}
+
+.desktop-searchbar,
+.animated-search-bar,
 .navbar-links {
   display: none;
-
-  @include desktop {
-    margin-right: 650px;
-    display: flex;
-    gap: 32px;
-
-    .big-link {
-      @include font-style;
-      font-size: 27px;
-      letter-spacing: 1.35px;
-      height: 33px;
-      text-decoration: none;
-    }
-
-    .small-link {
-      @include font-style;
-      font-size: 18px;
-      line-height: 30px;
-      letter-spacing: 1.92px;
-      height: 22px;
-      text-decoration: none;
-    }
-  }
 }
 
 .navbar-right {
   display: flex;
-  gap: 20px;
-  margin-right: 20px;
-  margin-left: 52px;
-
-  @include desktop {
-    margin-right: 127px;
-  }
+  justify-content: flex-end;
+  margin-right: 1vw;
 }
+
+.right-icons {
+  display: flex;
+  align-items: center;
+
+}
+
 
 .navbar-icon {
-  @include mobile {
-    width: 20px;
-    height: 20px;
-  }
-
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-
-  @include desktop {
-    width: 24px;
-    height: 24px;
-  }
+  margin-right: 5vw;
+  height: 5vw;
 }
 
-.navbar-hamburger-menu {
-  @include desktop {
-    display: none;
-  }
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-icon,
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @include desktop {
-    margin-right: 0px;
-  }
-}
 
 .search-popup-title {
   @include font-style;
-  font-size: 18px;
+  font-size: 4.25vw;
+  margin-left: 30vw;
+  margin-top: 0.5vw;
 }
 
 .exit-icon {
-  width: 24px;
-  height: 24px;
+  height: auto;
+  width: 10vw;
   display: flex;
   background: none;
   border: none;
   cursor: pointer;
-  margin-right: 113px;
+  margin-top: 0.7vw;
 }
 
-.sub-navbar {
-  margin-left: 15px;
+
+// Desktop styles
+@include desktop {
+  .navbar-container {
+    height: 4.45vw;
+    margin-left: 2.7vw;
+    padding-bottom: 0.6vw;
+
+    .navbar-left {
+      width: 0;
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+
+      .navbar-icon-left-logo {
+        padding: 0.8vw 0vw 1.6vw 0vw;
+        width: auto;
+        height: 5vw;
+      }
+
+      .navbar-links {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5vw;
+
+        .big-link {
+          @include font-style;
+          font-size: 1.88vw;
+          letter-spacing: 0.15vw;
+          margin-right: 0.5vw;
+          margin-left: 0.2vw;
+        }
+
+        .small-link {
+          @include font-style;
+          font-size: 1.25vw;
+          letter-spacing: 0.15vw;
+          margin-left: 1.9vw;
+        }
+      }
+    }
+
+    .right-icons {
+      display: flex;
+      margin-right: 6.7vw;
+
+      .navbar-icon {
+        margin-right: 1.5vw;
+        height: 2vw;
+      }
+    }
+
+    .desktop-searchbar {
+      display: flex;
+
+      .animated-search-bar {
+        display: flex;
+        padding: 0.313vw 0vw 0.313vw 0.52vw;
+
+        &:hover {
+          display: flex;
+          border: 0.1vw solid black;
+          border-radius: 0.52vw;
+          transform: translate(-6%);
+
+        }
+
+        .search-input {
+          @include font-style;
+          font-size: 1vw;
+
+          &:focus {
+            outline: none;
+          }
+
+          opacity: 0;
+          border: none;
+          transition: width 0.3s,
+          opacity 0.3s,
+          transform 0.3s;
+          outline: none;
+          transform-origin: left;
+        }
+        &:hover .search-input {
+          width: 20vw; // Adjust as needed
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .navbar-hamburger-menu {
+    display: none;
+  }
 }

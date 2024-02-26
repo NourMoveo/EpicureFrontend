@@ -2,9 +2,8 @@
 @import "../../../../themes/variables";
 
 .menu-popup {
-  top: calc(100% + 0.5px);
   @include popup-style;
-  height: 366px;
+  height: 90vw;
 }
 
 .menu-popup.open {
@@ -24,23 +23,22 @@
 
 .popup-buttons {
   @include font-style;
-  font-size: 18px;
-  letter-spacing: 1.92px;
-
+  font-size: 4.8vw;
+  letter-spacing:0.5vw;
   .first-section {
-    padding: 20px 0px 30px 20px;
-    line-height: 40px;
+    padding: 6vw 0vw 5vw 6vw;
+    line-height: 11vw;
   }
 
   .line {
     width: 100%;
-    height: 0.5px;
+    height: 0.3vw;
     background: rgba($primary-grey-color, 0.1);
     align-self: center;
   }
 
   .second-section {
-    padding: 10px 0px 0px 20px;
-    line-height: 70px;
+    padding: 2vw 0px 0px 6vw;
+    line-height: 17.5vw;
   }
 }

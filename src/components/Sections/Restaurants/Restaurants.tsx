@@ -8,9 +8,10 @@ import "./Restaurants.scss";
 const Restaurants = () => {
   return (
     <div className="restaurants-container">
-      <h2 className="restaurant-header">Popular Restaurants in Epicure:</h2>
-      <CustomCardsSection cardsData={RestaurantsData} cardType={1} />
+      <div className="restaurant-header-txt">Popular Restaurants in Epicure:</div>
+      <CustomCardsSection cardsData={RestaurantsData} cardType={1} pageType={1} layoutDirection='horizontal'/>
     </div>
+    
   );
 }
 

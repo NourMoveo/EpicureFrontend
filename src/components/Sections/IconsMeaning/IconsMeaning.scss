@@ -4,70 +4,74 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding-top: 24px;
-  margin-top: 46px;
+  padding-top:6.3vw;
+  margin-top: 12.2vw;
   align-items: center;
-  gap: 32px;
-  height: 560px;
-  background: $secondary-light-color;
+  height: 177vw; /* Adjust height as needed */
 
-  @include desktop {
-    margin-top: 40px;
-    height: 265px;
-    padding-top: 39px;
-  }
+  /* Styles for mobile */
+  background: $secondary-light-color;
 
   .title {
     @include font-style;
-    font-size: 18px;
-    line-height: 35px;
-    letter-spacing: 1.25px;
+    font-size: 4.82vw;
+    letter-spacing: 0.32vw;
     text-transform: uppercase;
+    margin-bottom: 8.7vw;
 
-    @include desktop {
-      font-size: 30px;
-      letter-spacing: 2.14px;
-    }
   }
 
   .icon-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 56px;
-
-    @include desktop {
-      flex-direction: row;
-      justify-content: center;
-      gap: 40px;
-    }
+    gap: 15vw;
 
     .icon-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 32px;
-
-      @include desktop {
-        width: 136px;
-        height: 127px;
-      }
+      gap: 8.5vw;
 
       .icon-img {
-        @include desktop {
-          width: 76.948px;
-          height: 57.445px;
-        }
+        width: auto;
+        height: 12vw;
       }
 
       .icon-label {
         @include font-style;
-        height: 35px;
-        font-size: 18px;
-        line-height: 30px;
-        letter-spacing: 1.97px;
+        font-size:4.8vw;
+        letter-spacing: 0.5vw;
+      }
+    }
+  }
 
-        @include desktop {
+  /* Media query for desktop */
+  @include desktop {
+    margin-top: 40px;
+    height: 23vh;
+    padding-top: 39px;
+
+    .title {
+      font-size: 30px;
+      letter-spacing: 2.14px;
+    }
+
+    .icon-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 40px;
+
+      .icon-item {
+        width: 136px;
+        height: 127px;
+
+        .icon-img {
+          width: 76.948px;
+          height: 57.445px;
+        }
+
+        .icon-label {
           padding: 0;
           font-size: 24px;
         }

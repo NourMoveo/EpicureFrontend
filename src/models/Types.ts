@@ -1,3 +1,5 @@
+import{ ReactNode } from 'react';
+
 // Defines the structure of each individual card
 export type CardProps = {
   title: string;
@@ -9,6 +11,7 @@ export type CardProps = {
   customClass?: string;
 };
 
+
 // Represents a collection of cards
 export type Cards = {
   cards: CardProps[];
@@ -18,6 +21,7 @@ export type Cards = {
 export type CustomCardsSectionProps = {
   cardsData: Cards;
   cardType: number;
+  pageType:number;
 };
 
 // Enumerates different types of cards
@@ -26,7 +30,11 @@ export enum CardType {
   DishType = 2,
   ChefRestaurantType = 3,
 }
-
+export enum PagesType {
+  HomePage=1,
+  RestaurantsPage = 2,
+  OrdersPage = 3
+}
 // Specifies props for IconsMeaning component
 export type IconsMeaningProps = {
   icons: {

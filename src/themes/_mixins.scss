@@ -1,20 +1,30 @@
+@import './variables';
+
 @mixin font-style {
   font-family: "Helvetica Neue";
   color: black;
   line-height: normal;
   font-weight: 200;
   font-style: normal;
-  margin: 0px;
-  letter-spacing: 1.97px;
+  letter-spacing: 0.1vw;
 }
 
 @mixin titles_style {
   @include font-style;
-  padding: 48px 10px 0px 20px;
-  font-size: 16px;
+  font-size: 4.4vw;
   font-weight: 200;
   text-transform: uppercase;
   line-height: 24px;
+  margin-left: 6vw;
+  letter-spacing: 0.45vw;
+
+  @include desktop {
+      letter-spacing: 0.15vw;
+      margin-top: 5.6vw;
+      margin-left: 30vw;
+      font-size: 1.95vw;
+      margin-bottom: 2.9vw;
+    }
 }
 
 @mixin popup-style {
@@ -22,21 +32,27 @@
   top: calc(100% + 0px);
   left: 0;
   width: 100%;
-  height: 218px;
+  height: 40vh;
   background-color: $primary-white-color;
-  z-index: 100;
+  z-index: 10; // <10
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 @mixin desktop {
-  @media screen and (min-width: 901px) {
+  @media screen and (min-width: 769px) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 768px) {
     @content;
   }
+}
+
+@mixin icon-style {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

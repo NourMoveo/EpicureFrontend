@@ -2,31 +2,23 @@
 
 @import "../../../themes/mixins";
 
+/* Styles for mobile */
+
 .footer-container {
   display: flex;
-  padding: 20px 232px 24px 19px;
+  padding: 5vw 0px 6.2vw 5vw;
 
-  @include desktop {
-    padding: 31px 0px 31px;
-  }
-
-  .footer-items {
+  .footer-links {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 40px;
+    gap: 10.7vw;
 
-    @include desktop {
-      flex-direction: row;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .footer-item {
+    .footer-link {
       @include font-style;
       text-decoration: none;
-      font-size: 18px;
-      letter-spacing: 1.92px;
+      font-size: 4.8vw;
+      letter-spacing: 0.501vw;
       white-space: nowrap;
     }
   }
@@ -34,8 +26,22 @@
 
 .under-footer {
   display: none;
+}
 
-  @include desktop {
+/* Media query for desktop */
+
+@include desktop {
+  .footer-container {
+    padding: 31px 0px 31px;
+  }
+
+  .footer-links {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .under-footer {
     display: flex;
     height: 21px;
   }

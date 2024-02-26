@@ -1,97 +1,98 @@
-// BagPopup.scss
-
 @import '../../../../themes/mixins';
 @import '../../../../themes/variables';
 
+/* Styles for mobile */
+
 .bag-popup {
   @include popup-style;
-
-  @include desktop {
-    width: 497px;
-    height: 540px;
-    left: 943px;
-  }
-
+  height: 58vw;
   &.open {
     display: block;
+    opacity: 1; /* Ensure visibility when open */
   }
 
   .bag-content {
-    padding: 50px 117.5px 39px 117.5px;
-
-    @include desktop {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 210px 117.5px 0px 117.5px;
-    }
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16.2vw;
+    gap: 5.5vw;
     .order-history-button {
-      @include mobile {
-        display: none;
-      }
-
-      padding: 10px 20px;
-      @include font-style;
-      font-size: 18px;
-      font-weight: 400;
-      text-transform: uppercase;
-      text-align: center;
-      background-color: $primary-white-color;
-      border: 2px solid $primary-dark-color;
-      color: $primary-dark-color;
-      cursor: pointer;
-      transition: background-color 0.3s ease,
-      color 0.3s ease;
-      margin-left: 40px;
-
-      &:hover {
-        background-color: $primary-dark-color;
-        color: $primary-white-color;
-      }
+      display:none;
     }
 
     .txt {
       @include font-style;
       display: flex;
       height: 100%;
-      font-size: 16px;
-      letter-spacing: 1.97px;
+      font-size: 4.3vw;
+      letter-spacing: 0.5vw;
       text-transform: uppercase;
+      opacity: 0.6; /* Default opacity for mobile */
+      padding: 0vw 35vw 0vw 31vw;
       text-align: center;
-      margin-right: 31px;
-      margin-bottom: 140px;
-
-      @include desktop {
-        margin-left: 70px;
-        opacity: 0.3;
-      }
     }
 
     .BagIcon {
-      margin-left: 47px;
-      margin-bottom: 20px;
-      width: 49px;
-      height: 49px;
-      display: flex;
+      margin-right: 6vw;
+      width: 11vw;
+      height: auto;
       cursor: pointer;
-      opacity: 0.3;
+      opacity: 0.6; /* Default opacity for mobile */
     }
   }
 }
 
-.bag-popup.open {
-  opacity: 1;
+/* Media query for desktop */
+
+@include desktop {
+  .bag-popup {
+    width: 35vw;
+    height: 40.5vw;
+    left: 62.8vw;
+  .bag-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18vw;
+    gap: 2vw;
+
+    .order-history-button {
+      display: block; /* Ensure button is visible by default on mobile */
+      margin-top: 4vw;
+      padding: 1.2vw;
+      @include font-style;
+      font-size: 1.5vw;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      background-color: $primary-white-color;
+      border: 0.15vw solid $primary-dark-color;
+      color: $primary-dark-color;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+
+      &:hover {
+        background-color: $primary-dark-color;
+        color: $primary-white-color;
+      }
+    }
+    .txt {
+      padding: 0vw 9.5vw 0vw 9vw;
+      font-size: 1.55vw;
+      letter-spacing: 0.15vw;
+      opacity: 0.3; /* Default opacity for desktop */
+    }
+
+    .BagIcon {
+      width: 9vw;
+      padding: 0vw 0vw 0vw 5vw;
+      height: auto;
+      opacity: 0.3; /* Default opacity for desktop */
+    }
+  }
 }
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

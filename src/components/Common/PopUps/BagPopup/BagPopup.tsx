@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BagIcon } from '../../../../assets/homePageImg';
+import { BagIcon } from '../../../../assets/homePhotos';
 import './BagPopup.scss';
 
 /**

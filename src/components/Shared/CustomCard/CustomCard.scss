@@ -2,40 +2,19 @@
 @import '../../../themes/variables';
 
 .card {
-
-  @include mobile {
-    margin-left: 20px;
-
-  }
-
-  width: 245px;
+  margin-left: 5.9vw;
+  width: 65vw;
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
   background-color: $secondary-offwhite-color;
   cursor: pointer;
 
-  @include desktop {
-    margin-left: 24px;
-    width: 379px;
-    align-items: center;
-    text-align: center;
-  }
-
   .image-container {
-    @include desktop {
-      height: 306px;
-      width: 380px;
-    }
-
     .card-image {
       width: 100%;
-      height: 152px;
+      height: 45vw;
       object-fit: cover;
-
-      @include desktop {
-        height: 100%;
-        width: 100%;
-      }
     }
   }
 
@@ -43,207 +22,163 @@
     @include font-style;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    padding-left: 4.3vw;
 
-    @include mobile {
-      padding: 16px;
-      height: 200px;
-    }
-
-    @include desktop {
-      height: 315px;
-      align-items: center;
-      padding: 20px 0px 0px 0px;
-    }
 
     .card-title {
-      margin: 0;
-      font-size: 18px;
+      font-size: 4.97vw;
       font-weight: 400;
       letter-spacing: 2.67px;
-
-      @include desktop {
-        font-size: 40px;
-        margin-left: 90px;
-        margin-right: 90px;
-      }
     }
 
-    .description-icon-price {
+    .description-rating {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
 
-
-      @include desktop {
-        gap: 18px;
-      }
-
-      .description-icon {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        @include desktop {
-          flex-direction: column-reverse;
-          align-items: center;
-        }
+      .description {
+        margin-right: 8vw;
 
         .card-description {
-          width: 209px;
           margin: 0;
-          font-size: 16px;
-          line-height: 20px;
-          letter-spacing: 1.97px;
-
-          @include desktop {
-            width: 295px;
-            font-size: 24px;
-            line-height: 30px;
-            font-style: normal;
-          }
-        }
-
-        .food-icon {
-          @include mobile {
-            display: flex;
-            justify-items: flex-end;
-          }
-
-          width: 30px;
-          height: 24px;
-
-          @include desktop {
-            width: 39.757px;
-            height: 29.68px;
-            display: flex;
-            justify-content: center;
-          }
+          font-size: 4.27vw;
+          line-height: 5.4vw;
+          letter-spacing: 0.53vw;
+          overflow-y: scroll;
         }
       }
 
       .rating-image {
-        width: 216px;
-        height: 40px;
-        margin-left: 38px;
-        margin-bottom: 18px;
+        display: none;
+      }
+    }
 
-        @include mobile {
-          display: none;
+  }
+
+  &.restaurant-card {
+    height: 69vw;
+
+    .card-title {
+      margin: 0;
+    }
+
+    .card-content {
+      padding: 4.2vw;
+      gap: 2.2vw;
+    }
+
+
+    &.restaurant-page {
+      margin-left: 0;
+      width: 89vw;
+      height: 76.8vw;
+      margin-bottom: 6.75vw;
+
+      .image-container {
+        .card-image {
+          width: 100%;
+          height: 55.01vw;
+          object-fit: cover;
         }
+      }
+
+      .card-content {
+        @include font-style;
+        display: flex;
+        flex-direction: column;
+        padding-left: 4.3vw;
+
+
+        .card-title {
+          font-size: 4.97vw;
+          font-weight: 400;
+          letter-spacing: 2.67px;
+        }
+
+        .description-rating {
+          display: flex;
+
+          .description {
+            margin-right: 8vw;
+
+            .card-description {
+              margin: 0;
+              font-size: 4.27vw;
+              line-height: 5.4vw;
+              letter-spacing: 0.53vw;
+            }
+          }
+
+        }
+
       }
     }
   }
 
-  .price {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  &.dish-card {
+    cursor: auto;
 
-    @include mobile {
-      justify-content: flex-start;
-      margin-left: 16px;
-
+    .card-content {
+      height: 65.5vw;
     }
 
-    .card-price-container {
+    .price-foodIcon-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: auto;
-      margin-bottom: 10px;
-    }
-
-    .card-price {
-      @include font-style;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 19px;
-      letter-spacing: 1.97px;
-      display: flex;
+      flex-grow: 1;
       align-items: flex-end;
-      font-style: normal;
 
-      .value-logo-container {
+      .price-foodIcon {
         display: flex;
-        flex-direction: row;
-        gap: 4px;
-        margin-bottom: 10px;
-      }
+        flex-direction: column;
 
-      @include desktop {
-        justify-content: center;
-        font-size: 24px;
-        line-height: 30px;
-        font-weight: 200;
-        flex-direction: row;
-
-        .line {
-          width: 112px;
-          height: 0.5px;
-          background: $primary-grey-color;
-          align-self: center;
+        .food-icon {
+          width: auto;
+          height: 6.15vw;
         }
 
-        .value-logo-container {
-          display: flex;
-          flex-direction: row;
+        .card-price {
+          margin-top: 4vw;
+          margin-bottom: 4vw;
 
-          .ils-icon {
-            align-self: flex-end;
-            width: 14px;
-            height: 19px;
+          .value-logo-container {
+            display: flex;
+            align-items: flex-end;
+
+            .ils-icon {
+              margin-right: 0.7vw;
+            }
+
+            .price-value {
+              @include font-style;
+              font-size: 4.3vw;
+              font-weight: 400;
+              line-height: 19px;
+              letter-spacing: 1.97px;
+            }
           }
         }
       }
     }
   }
-}
 
-.card.third-type {
-  cursor: auto;
+  &.chef-restaurant-card {
+    cursor: auto;
 
-  @include mobile {
-    height: 235.7px;
-
-    .card-content {
-      gap: 0px;
-
-      .card-title {
-        height: 30px;
-      }
-    }
-  }
-
-  @include desktop {
-    width: 231px;
-    height: 357px;
+    height: 62.85vw;
     display: flex;
     justify-content: flex-start;
 
-    .image-container {
-      width: 231px;
-      height: 224px;
-      object-fit: cover;
-
+    .card-title {
+      margin: 0;
     }
+
 
     .card-content {
-      padding: 20px 0px 0px 0px;
-      gap: 0px;
-      height: 133px;
-
-      .card-title {
-        font-size: 30px;
-        line-height: 47px;
-      }
+      padding: 4.3vw;
+      gap: 2.15vw;
     }
-  }
 
-  @include mobile {
     .image-container {
-      width: 245px;
-      height: 152.34px;
+      width: 64.8vw;
+      height: 40.5vw;
 
       .card-image {
         max-width: 100%;
@@ -253,17 +188,17 @@
   }
 }
 
-.card.first-type {
-  @include mobile {
-    height: 232.8px;
-  }
-
-  @include desktop {
-    cursor: auto;
-    height: 405px;
+@include desktop {
+  .card {
+    gap: 0;
+    margin: 1.68vw;
+    width: 26.5vw;
+    align-items: center;
+    text-align: center;
 
     .image-container {
-      height: 236px;
+      height: 21.2vw;
+      width: 100%;
 
       .card-image {
         height: 100%;
@@ -272,11 +207,116 @@
     }
 
     .card-content {
-      padding: 24px 0px 0px 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include font-style;
+      margin: 0;
+      padding: 0;
 
-      .description-icon-price {
-        gap: 8px;
+      .card-title {
+        font-size: 2.77vw;
+        font-weight: 400;
+        letter-spacing: 0.18vw;
       }
+
+      .description-rating {
+        display: flex;
+
+        .description {
+          .card-description {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 2.5vw;
+            letter-spacing: 0.1vw;
+            overflow-y: scroll;
+          }
+        }
+      }
+    }
+
+    &.restaurant-card {
+      height: 405px;
+
+
+      .card-content {
+        .card-title {
+        }
+        padding: 0;
+      }
+    }
+
+    &.dish-card {
+      cursor: auto;
+
+      .card-content {
+        height: 65.5vw;
+      }
+
+      .price-foodIcon-container {
+        display: flex;
+        flex-grow: 1;
+        align-items: flex-end;
+
+        .price-foodIcon {
+          display: flex;
+          flex-direction: column;
+
+          .food-icon {
+            width: auto;
+            height: 6.15vw;
+          }
+
+          .card-price {
+            margin-top: 4vw;
+            margin-bottom: 4vw;
+
+            .value-logo-container {
+              display: flex;
+              align-items: flex-end;
+
+              .ils-icon {
+                margin-right: 0.7vw;
+              }
+
+              .price-value {
+                @include font-style;
+                font-size: 4.3vw;
+                font-weight: 400;
+                line-height: 19px;
+                letter-spacing: 1.97px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.chef-restaurant-card {
+      width: 231px;
+      height: 357px;
+      display: flex;
+      justify-content: flex-start;
+
+      .image-container {
+        width: 231px;
+        height: 224px;
+        object-fit: cover;
+
+      }
+
+      .card-content {
+        padding: 20px 0px 0px 0px;
+        gap: 0px;
+        height: 133px;
+
+        .card-title {
+          font-size: 30px;
+          line-height: 47px;
+        }
+      }
+
     }
   }
 }

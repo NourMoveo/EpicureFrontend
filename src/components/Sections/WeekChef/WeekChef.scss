@@ -1,119 +1,110 @@
 @import '../../../themes/mixins';
 @import '../../../themes/variables';
 
+/* Styles for mobile */
+
 .WeekChef-main-title {
-  @include font-style;
-  padding: 35px 10px 0px 0px;
-  font-size: 18px;
+
   @include titles_style;
-
-  @include desktop {
-    margin-top: 20px;
-    font-size: 28px;
-    margin-left: 545px;
-  }
-
+  margin-left: 0;
 }
 
 .WeekChef-text {
-
-  @include font-style;
-  font-size: 17px;
-  font-weight: 200;
+  @include titles_style;
+  margin-left: 0;
   line-height: 24px;
-  margin-top: 32px;
-  margin-left: 4px;
-
-  @include desktop {
-    margin-left: 127px;
-    font-size: 30px;
-  }
-
 }
 
 .chef-container {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 0 20px;
+  padding: 0 5.4vw;
   overflow-x: hidden;
+}
 
-  @include desktop {
+.image-container {
+  .chef-image-container {
+    margin-top: 4.3vw;
+    background-size: cover;
     display: flex;
-    flex-direction: column;
+    align-items: flex-end;
+    width: 89.5vw;
+    height: 69.7vw;
+    .chef-img-name {
+      background-color: rgba($secondary-white-color, 0.88);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 12.6vw;
 
-    padding: 0;
-    gap: 40px;
+      .chef-name {
+        @include font-style;
+        font-size: 4.8vw;
+        font-weight: 400;
+        letter-spacing: 0.7vw;
+      }
+    }
   }
 
-  .image-container {
-    @include desktop {
+  .chef-description {
+    @include font-style;
+    text-align: justify;
+    margin-top: 7vw;
+    line-height: 7.45vw;
+    font-size:  4.8vw;
+    letter-spacing:  0.33vw;
+    overflow-y: scroll;
+  }
+}
+
+/* Media query for desktop */
+@include desktop {
+  .WeekChef-main-title {
+    letter-spacing: 0.3vw;
+    margin-top: 6vh;
+    font-size: 2.5vw;
+    margin-left: 545px;
+  }
+
+  .WeekChef-text {
+    margin-left: 127px;
+    font-size: 30px;
+  }
+
+  .chef-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 40px;
+
+    .image-container {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
       gap: 63.5px;
       margin-left: 127.5px;
       margin-right: 129px;
-    }
 
-    .chef-image-container {
-
-      margin-top: 16px;
-      background-size: cover;
-      display: flex;
-      align-items: flex-end;
-      width: 335px;
-      height: 262px;
-
-      @include desktop {
+      .chef-image-container {
         min-width: 478px;
         min-height: 372px;
-      }
 
-      @include mobile {
-        width: 335px;
-        height: 262px;
-        width: 100%;
-
-        object-fit: cover;
-
-      }
-
-      .chef-name {
-
-        @include font-style;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 47px;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 47px;
-        letter-spacing: 2.67px;
-        background-color: rgba($secondary-white-color, 0.88);
-
-        @include desktop {
+        .chef-img-name {
           height: 78px;
-          font-size: 40px;
+
+          .chef-name {
+            font-size: 2.2vw;
+          }
         }
       }
-    }
 
-    .chef-description {
-      @include desktop {
+      .chef-description {
         font-size: 24px;
         line-height: 35px;
         margin-top: 61px;
       }
-
-      @include font-style;
-      text-align: justify;
-      margin-top: 26px;
-      line-height: 28px;
-      font-size: 18px;
-      letter-spacing: 1.25px;
     }
   }
 }

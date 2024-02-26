@@ -10,13 +10,12 @@ const Footer = () => {
   return (
     <>
       <footer className='footer-container'>
-        <div className='footer-items'>
-          <div className="footer-item"> Contact Us </div>
-          <div className="footer-item"> Term of Use </div>
-          <div className="footer-item"> Privacy Policy </div>
+        <div className='footer-links'>
+          <div className="footer-link"> Contact Us </div>
+          <div className="footer-link"> Term of Use </div>
+          <div className="footer-link"> Privacy Policy </div>
         </div>
       </footer>
-      <div className='under-footer'></div>
     </>
   );
 };

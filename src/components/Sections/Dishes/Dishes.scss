@@ -3,9 +3,4 @@
 .dishes-header {
   @include titles_style;
 
-  @include desktop {
-    margin-top: 20px;
-    font-size: 28px;
-    margin-left: 560px;
-  }
 }

@@ -1,5 +1,5 @@
 import { Cards } from "../models/Types";
-import { PadKiMao,GarbanzoFrito,SmokedPizza, SpicyFoodIcon,VeganIcon } from '../assets/homePageImg';
+import { PadKiMao,GarbanzoFrito,SmokedPizza, SpicyFoodIcon,VeganIcon } from '../assets/homePhotos';
 
 const DishesData: Cards = {
   cards: [
@@ -12,7 +12,7 @@ const DishesData: Cards = {
     }, {
       title: "Garbanzo Frito",
       image: GarbanzoFrito,
-      description: "Polenta fingers, veal cheek, magic chili cured lemon cream, yellow laksa",
+      description: "Polenta fingers, veal cheek, magic chili cured lemon cream, yellow laksa ",
       foodIcon: SpicyFoodIcon,
       price: 98,
     }, {

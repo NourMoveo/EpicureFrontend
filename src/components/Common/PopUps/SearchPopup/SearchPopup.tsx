@@ -6,7 +6,7 @@
 
 import React from 'react';
 import './SearchPopup.scss';
-import { SearchIcon } from '../../../../assets/homePageImg';
+import { SearchIcon } from '../../../../assets/homePhotos';
 
 interface SearchPopupProps {
   isOpen: boolean;
@@ -25,7 +25,7 @@ const SearchPopup: React.FC<SearchPopupProps> = ({ isOpen, togglePopup }) => {
       {isOpen && (
         <div className="search-bar">
           <button className="search-button" onClick={handleSearchButtonClick}>
-            <img src={SearchIcon} alt="Search Icon" />
+            <img src={SearchIcon} alt="Search Icon" className='navbar-icon' />
           </button>
           <input className="search-input" type="text" placeholder="Search for restaurant cuisine, chef" />
         </div>

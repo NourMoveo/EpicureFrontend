@@ -1,5 +1,5 @@
 import { Cards } from "../models/Types";
-import { claroRestau,FourStarsIcon,Lumina,TigerLilly ,ThreeStarsIcon } from "../assets/homePageImg";
+import { claroRestau,FourStarsIcon,Lumina,TigerLilly ,ThreeStarsIcon } from "../assets/homePhotos";
 const RestaurantsData: Cards = {
   cards: [
     {

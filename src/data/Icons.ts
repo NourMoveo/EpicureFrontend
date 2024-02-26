@@ -1,4 +1,4 @@
-import { VegitarianIcon, VeganIcon, SpicyFoodIcon } from '../assets/homePageImg'
+import { VegitarianIcon, VeganIcon, SpicyFoodIcon } from '../assets/homePhotos'
 const IconsData: { name: string; image: string }[] = [
   {
     name: "Spicy",

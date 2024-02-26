@@ -7,27 +7,51 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "./CustomCardsSection.scss";
 import { CustomCard, SwiperConfig } from "@/components";
-import { CustomCardsSectionProps, CardType, CardProps } from "@/models/Types";
-import { ARArrow } from "@/assets/homePageImg";
+import { CustomCardsSectionProps, CardType, CardProps, PagesType } from "@/models/Types";
+import { ARArrow } from "@/assets/homePhotos";
 
-/**
- * renders a section of custom cards, including a Swiper component for mobile devices and a desktop section for larger screens. 
- * It determines the card type and adjusts the styling accordingly.
- */
-const CustomCardsSection: React.FC<CustomCardsSectionProps> = ({ cardsData, cardType }) => {
-  const className =
-    cardType === CardType.ChefRestaurantType ? "third-type" : cardType === CardType.RestaurantType ? "first-type" : "";
+const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: string /*"row" | "column" */ }> = ({ cardsData, cardType, pageType, layoutDirection }) => {
+  let className = "";
 
-  // Calculate the maximum number of cards that can fit on the screen based on the card width and screen width
+  switch (cardType) {
+    case CardType.ChefRestaurantType:
+      className = "chef-restaurant-card";
+      break;
+    case CardType.RestaurantType:
+      className = "restaurant-card";
+      break;
+    case CardType.DishType:
+      className = "dish-card";
+      break;
+    default:
+      break;
+  }
+
+  // Append additional class based on pageType
+  switch (pageType) {
+    case PagesType.RestaurantsPage:
+      className += " restaurant-page";
+      break;
+    case PagesType.OrdersPage:
+      className += " order-page";
+      break;
+        case PagesType.HomePage:
+      className += " home-page";
+      break;
+    default:
+      break;
+  }
+
+  // Log the className to the console
+  console.log("Final className:", className);
+
   const maxCardsToShow = cardType === CardType.ChefRestaurantType ? Math.floor(1440 / 231) : Math.floor(1440 / 380);
 
   return (
     <>
       <Fade>
-        <div className={`cards-section${cardType === CardType.ChefRestaurantType ? "-three" : ""}`}>
-          <h3 className={`cards-section-title${cardType === CardType.ChefRestaurantType ? "-three" : ""}`}></h3>
-
-          <Swiper className='swiper' {...SwiperConfig()}>
+        <div className={`cards-section ${className}`}>
+          <Swiper className='swiper' {...SwiperConfig(layoutDirection)}>
             {cardsData.cards.map((card: CardProps) => (
               <SwiperSlide className='swiper-slide' key={card.title}>
                 <div onClick={() => cardType === CardType.DishType}>
