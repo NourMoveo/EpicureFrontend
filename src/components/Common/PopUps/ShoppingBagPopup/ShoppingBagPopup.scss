@@ -22,7 +22,7 @@
       display:none;
     }
 
-    .txt {
+    .content {
       @include font-style;
       display: flex;
       height: 100%;
@@ -80,7 +80,7 @@
         color: $primary-white-color;
       }
     }
-    .txt {
+    .content {
       padding: 0vw 9.5vw 0vw 9vw;
       font-size: 1.55vw;
       letter-spacing: 0.15vw;

@@ -1,5 +1,4 @@
-// RestaurantsHeader.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './RestaurantsHeader.scss';
 
 const RestaurantsHeader = () => {

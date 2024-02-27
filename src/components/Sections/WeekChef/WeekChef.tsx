@@ -4,7 +4,6 @@ import { CustomCardsSection } from "@/components";
 import { WeekChefRestauData } from "@/data";
 
 /**
-
  * This component renders the details of the Chef of the week along with their image and description,
  * followed by a section displaying the chef's restaurants.
  */

@@ -1,11 +1,3 @@
-/**
- * Navbar.tsx
- *
- * Represents the navigation bar at the top of a webpage.
- * Includes buttons for menu navigation, a logo, search functionality, user account, and shopping bag.
- * Handles responsive behavior for different screen sizes.
- */
-
 import React, { useState, useEffect } from "react";
 import {
   HamburMenu,
@@ -16,7 +8,7 @@ import {
   ExitIcon,
 } from "@/assets/homePhotos";
 import "./Navbar.scss";
-import { MenuPopup, SearchPopup, BagPopup } from "@/components";
+import { MenuPopup, SearchPopup, ShoppingBagPopup } from "@/components";
 
 const Navbar: React.FC = () => {
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
@@ -26,7 +18,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 1024); // Check if screen size is desktop
+      setIsDesktop(window.innerWidth > 1024);
     };
 
     window.addEventListener("resize", handleResize);
@@ -34,25 +26,14 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleMenuPopup = () => {
-    setIsMenuPopupOpen(!isMenuPopupOpen);
-    // Close other popups if open
-    if (isSearchPopupOpen) setIsSearchPopupOpen(false);
-    if (isBagPopupOpen) setIsBagPopupOpen(false);
+  const togglePopup = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+    setter(prevState => !prevState);
   };
 
-  const toggleSearchPopup = () => {
-    setIsSearchPopupOpen(!isSearchPopupOpen);
-    // Close other popups if open
-    if (isMenuPopupOpen) setIsMenuPopupOpen(false);
-    if (isBagPopupOpen) setIsBagPopupOpen(false);
-  };
-
-  const toggleBagPopup = () => {
-    setIsBagPopupOpen(!isBagPopupOpen);
-    // Close other popups if open
-    if (isMenuPopupOpen) setIsMenuPopupOpen(false);
-    if (isSearchPopupOpen) setIsSearchPopupOpen(false);
+  const closePopups = () => {
+    setIsMenuPopupOpen(false);
+    setIsSearchPopupOpen(false);
+    setIsBagPopupOpen(false);
   };
 
   const handleLogoClick = () => {
@@ -61,15 +42,11 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="navbar-container">
-      {(isMenuPopupOpen || isSearchPopupOpen) && !isDesktop ? (
-        // Render sub-navbar with exit button if menu or search popup is open and not on desktop
+      {(isMenuPopupOpen || isSearchPopupOpen) && !isDesktop && (
         <div className="sub-navbar">
           <button
             className="exit-icon"
-            onClick={() => {
-              if (isMenuPopupOpen) toggleMenuPopup();
-              if (isSearchPopupOpen) toggleSearchPopup();
-            }}
+            onClick={closePopups}
           >
             <img className="exit-icon" src={ExitIcon} alt="Exit" />
             <div className="search-popup-title">
@@ -77,72 +54,70 @@ const Navbar: React.FC = () => {
             </div>
           </button>
         </div>
-      ) : (
-        // Render navbar items
-        <>
-          <div className="navbar-left">
-            <button className="navbar-hamburger-menu" onClick={toggleMenuPopup}>
-              <img className="navbar-icon-left-menu" src={HamburMenu} alt="Menu" />
-            </button>
-            <button className="navbar-logo" onClick={handleLogoClick}>
-              <img
-                className="navbar-icon-left-logo"
-                src={LogoWithoutName}
-                alt="Epicure Logo"
-              />
-            </button>
-            <div className="navbar-links">
-              <div className="big-link">EPICURE</div>
-              <div className="small-link">Restaurants</div>
-              <div className="small-link">Chefs</div>
-            </div>
+      )}
+      <>
+        <div className="navbar-left">
+          <button className="navbar-hamburger-menu" onClick={() => togglePopup(setIsMenuPopupOpen)}>
+            <img className="navbar-icon-left-menu" src={HamburMenu} alt="Menu" />
+          </button>
+          <button className="navbar-logo" onClick={handleLogoClick}>
+            <img
+              className="navbar-icon-left-logo"
+              src={LogoWithoutName}
+              alt="Epicure Logo"
+            />
+          </button>
+          <div className="navbar-links">
+            <div className="big-link">EPICURE</div>
+            <div className="small-link">Restaurants</div>
+            <div className="small-link">Chefs</div>
           </div>
-          <div className="navbar-right">
-            <div className="right-icons">
-            <div className="desktop-searchbar">
-              {isDesktop && ( // Render animated search bar if desktop
-                <div
-                  className="animated-search-bar"
-                  onClick={toggleSearchPopup}
-                >
-                  <input
-                    className="search-input"
-                    type="text"
-                    placeholder="Search for restaurant cuisine, chef"
-                  />
-                  <img className="navbar-icon" src={SearchIcon} alt="Search" />
-                </div>
-              )}
-            </div>
-              {!isDesktop && (
-                <img
-                  className="navbar-icon"
-                  src={SearchIcon}
-                  alt="Search"
-                  onClick={toggleSearchPopup}
+        </div>
+        <div className="navbar-right">
+          <div className="right-icons">
+          <div className="desktop-searchbar">
+            {isDesktop && (
+              <div
+                className="animated-search-bar"
+                onClick={() => togglePopup(setIsSearchPopupOpen)}
+              >
+                <input
+                  className="search-input"
+                  type="text"
+                  placeholder="Search for restaurant cuisine, chef"
                 />
-              )}
-              <img className="navbar-icon" src={UserIcon} alt="User Account" />
+                <img className="navbar-icon" src={SearchIcon} alt="Search" />
+              </div>
+            )}
+          </div>
+            {!isDesktop && (
               <img
                 className="navbar-icon"
-                src={BagIcon}
-                alt="Shopping Bag"
-                onClick={toggleBagPopup}
+                src={SearchIcon}
+                alt="Search"
+                onClick={() => togglePopup(setIsSearchPopupOpen)}
               />
-            </div>
+            )}
+            <img className="navbar-icon" src={UserIcon} alt="User Account" />
+            <img
+              className="navbar-icon"
+              src={BagIcon}
+              alt="Shopping Bag"
+              onClick={() => togglePopup(setIsBagPopupOpen)}
+            />
           </div>
-        </>
-      )}
+        </div>
+      </>
       {isMenuPopupOpen && (
-        <MenuPopup isOpen={isMenuPopupOpen} togglePopup={toggleMenuPopup} />
+        <MenuPopup isOpen={isMenuPopupOpen} togglePopup={() => togglePopup(setIsMenuPopupOpen)} />
       )}
       {!isDesktop && isSearchPopupOpen && (
         <SearchPopup
           isOpen={isSearchPopupOpen}
-          togglePopup={toggleSearchPopup}
+          togglePopup={() => togglePopup(setIsSearchPopupOpen)}
         />
       )}
-      {isBagPopupOpen && <BagPopup isOpen={isBagPopupOpen} />}
+      {isBagPopupOpen && <ShoppingBagPopup isOpen={isBagPopupOpen} />}
     </header>
   );
 };

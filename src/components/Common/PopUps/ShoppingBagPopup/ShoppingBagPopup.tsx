@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BagIcon } from '../../../../assets/homePhotos';
-import './BagPopup.scss';
+import './ShoppingBagPopup.scss';
 
 /**
  * BagPopup component displays a popup for the user's bag.
@@ -13,16 +13,11 @@ interface BagPopupProps {
 const BagPopup: React.FC<BagPopupProps> = ({ isOpen }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(isOpen);
 
-    // Function to toggle the popup open or closed
-    const togglePopup = () => {
-        setIsPopupOpen(!isPopupOpen);
-    };
-
     return (
         <div className={isPopupOpen ? 'bag-popup open' : 'bag-popup'}>
             <div className="bag-content">
                 <img className='BagIcon' src={BagIcon} alt='Bag' />
-                <div className='txt'>Your bag is empty</div>
+                <div className='content'>Your bag is empty</div>
                 <button className="order-history-button">Order History</button>
             </div>
         </div>

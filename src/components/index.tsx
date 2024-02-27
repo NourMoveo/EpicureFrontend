@@ -20,10 +20,10 @@ import { SwiperConfig } from "./Shared/Swiper/Swiper";
 //Popups 
 import MenuPopup from './Common/PopUps/MenuPopup/MenuPopup';
 import SearchPopup from './Common/PopUps/SearchPopup/SearchPopup';
-import BagPopup from './Common/PopUps/BagPopup/BagPopup';
+import ShoppingBagPopup from './Common/PopUps/ShoppingBagPopup/ShoppingBagPopup';
 
 export {
-    SearchPopup,MenuPopup,BagPopup,
+    SearchPopup,MenuPopup,ShoppingBagPopup,
     Navbar,Footer,
     Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs, 
     CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig

@@ -1,5 +1,3 @@
-// Footer.tsx
-
 import "./Footer.scss";
 
 /**
