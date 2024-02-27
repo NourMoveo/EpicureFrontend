@@ -32,17 +32,21 @@
 
 @include desktop {
   .footer-container {
-    padding: 31px 0px 31px;
-  }
+    padding: 3.7vw 0vw 3.7vw;
+     
+    .footer-links {
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      gap: 4.8vw;
+      .footer-link {
+        @include font-style;
+        text-decoration: none;
+        font-size: 2.15vw;
+        letter-spacing: 0.25vw;
+        white-space: nowrap;
 
-  .footer-links {
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .under-footer {
-    display: flex;
-    height: 21px;
+      }
+    }
   }
 }

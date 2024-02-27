@@ -42,6 +42,7 @@ const CustomCard: React.FC<CardProps & { cardType?: CardType; pageType?: PagesTy
       </div>
       <div className='card-content'>
         <h3 className='card-title'>{title}</h3>
+        {foodIcon && <img src={foodIcon} alt='Food Icon' className='food-icon-desktop' />}
         <div className='description-rating'>
           <div className='description'>
             {description && <p className='card-description'>{description}</p>}

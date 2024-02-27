@@ -12,18 +12,16 @@
 @mixin titles_style {
   @include font-style;
   font-size: 4.4vw;
-  font-weight: 200;
   text-transform: uppercase;
-  line-height: 24px;
   margin-left: 6vw;
   letter-spacing: 0.45vw;
 
   @include desktop {
       letter-spacing: 0.15vw;
       margin-top: 5.6vw;
-      margin-left: 30vw;
       font-size: 1.95vw;
       margin-bottom: 2.9vw;
+      text-align: center;
     }
 }
 

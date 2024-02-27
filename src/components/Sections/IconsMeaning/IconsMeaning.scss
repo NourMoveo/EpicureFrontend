@@ -48,32 +48,35 @@
 
   /* Media query for desktop */
   @include desktop {
-    margin-top: 40px;
-    height: 23vh;
-    padding-top: 39px;
+    margin-top: 5.5vw;
+    height: 22vw;
+    padding-top: 1vw;
 
     .title {
-      font-size: 30px;
-      letter-spacing: 2.14px;
+      font-size: 2.09vw;
+      letter-spacing: 0.15vw;
+      margin-bottom:3vw;
     }
 
     .icon-container {
       flex-direction: row;
       justify-content: center;
-      gap: 40px;
-
+      gap: 2.8vw;
+      margin-top: 0;
+      padding: 0;
       .icon-item {
-        width: 136px;
-        height: 127px;
-
+        width: 9.4vw;
+        height: auto;
+        gap: 1vw;
         .icon-img {
-          width: 76.948px;
-          height: 57.445px;
+          width: 7.5vw;
+          height: auto;
         }
 
         .icon-label {
           padding: 0;
-          font-size: 24px;
+          font-size: 1.65vw;
+          letter-spacing: 0.2vw;
         }
       }
     }

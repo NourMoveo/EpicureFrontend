@@ -10,6 +10,11 @@
   background-color: $secondary-offwhite-color;
   cursor: pointer;
 
+  .food-icon-desktop{
+    @include mobile{
+      display: none;
+    }
+  }
   .image-container {
     .card-image {
       width: 100%;
@@ -47,7 +52,9 @@
       }
 
       .rating-image {
-        display: none;
+        @include mobile {
+          display: none;
+        }
       }
     }
 
@@ -95,6 +102,7 @@
 
         .description-rating {
           display: flex;
+          flex-direction: column;
 
           .description {
             margin-right: 8vw;
@@ -105,6 +113,13 @@
               line-height: 5.4vw;
               letter-spacing: 0.53vw;
             }
+          }
+
+          .rating-image {
+            width: 216px;
+            height: 40px;
+            margin-left: 38px;
+            margin-bottom: 18px;
           }
 
         }
@@ -191,13 +206,14 @@
 @include desktop {
   .card {
     gap: 0;
-    margin: 1.68vw;
-    width: 26.5vw;
+    margin: 0;
+    margin-right: 1.7vw;
+    width: 26.4vw;
     align-items: center;
     text-align: center;
 
     .image-container {
-      height: 21.2vw;
+      height: 16.35vw;
       width: 100%;
 
       .card-image {
@@ -207,13 +223,6 @@
     }
 
     .card-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      @include font-style;
-      margin: 0;
-      padding: 0;
-
       .card-title {
         font-size: 2.77vw;
         font-weight: 400;
@@ -221,14 +230,13 @@
       }
 
       .description-rating {
-        display: flex;
-
         .description {
+          justify-content: center;
+          margin-right: 0vw;
+
           .card-description {
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
-            line-height: 2.5vw;
+            line-height: 3vw;
+            font-size: 1.65vw;
             letter-spacing: 0.1vw;
             overflow-y: scroll;
           }
@@ -237,55 +245,113 @@
     }
 
     &.restaurant-card {
-      height: 405px;
-
+      height: 28vw;
 
       .card-content {
-        .card-title {
+        margin-top: -3vw;
+
+        .description-rating {
+          display: flex;
+          flex-direction: column;
+
+          .description {
+
+            margin-top: -2vw;
+            justify-content: center;
+
+            .card-description {
+              font-size: 1.65vw;
+              letter-spacing: 0.1vw;
+              overflow-y: scroll;
+            }
+          }
+          .rating-image {
+            width: 15vw;
+            height: auto;
+          }
         }
-        padding: 0;
       }
     }
 
     &.dish-card {
       cursor: auto;
+      height: 45.4vw;
 
+    .image-container {
+      .card-image {
+        width: 100%;
+        height: 21.35vw;
+        object-fit: cover;
+      }
+    }
       .card-content {
-        height: 65.5vw;
+        margin-top: 4vw;
+        .card-title{
+          padding: 0px 70px 0px 40px;
+          margin-bottom: 0.8vw;
+          
+        }
+        .food-icon-desktop {
+          width: auto;
+          height: 2.15vw;
+          margin-right: 1.8vw;
+        }
+        .description-rating{
+          .description{
+            .card-description{
+              letter-spacing: 0.13vw;
+              line-height: 2.1vw;
+              margin-left: -3vw;
+              margin-right: 2vw;
+            }
+          }
+        }
       }
 
       .price-foodIcon-container {
         display: flex;
         flex-grow: 1;
         align-items: flex-end;
+        
 
         .price-foodIcon {
           display: flex;
           flex-direction: column;
-
-          .food-icon {
-            width: auto;
-            height: 6.15vw;
+          justify-content: flex-end;
+          .food-icon{
+            display: none;
           }
-
+          
           .card-price {
-            margin-top: 4vw;
-            margin-bottom: 4vw;
-
+            display: flex;
+            justify-content:flex-end;
+            align-items: center;
+            margin: 0;
+            margin-bottom: 1vw;
+            .line {
+              width: 7.8vw;
+              height:  0.01vw;
+              background: $primary-grey-color;
+              align-self: center;
+            }
             .value-logo-container {
               display: flex;
               align-items: flex-end;
-
+          
               .ils-icon {
-                margin-right: 0.7vw;
+                height: 1.3vw;
+                width: auto;
+                margin-bottom: -0.2vw;
+                margin-right: 0.4vw;
+                margin-left: 0.4vw;
               }
 
               .price-value {
                 @include font-style;
-                font-size: 4.3vw;
-                font-weight: 400;
+                font-size: 1.65vw;
                 line-height: 19px;
                 letter-spacing: 1.97px;
+                margin-right: 0.4vw;
               }
             }
           }
@@ -294,26 +360,25 @@
     }
 
     &.chef-restaurant-card {
-      width: 231px;
-      height: 357px;
+      width: 16.2vw;
+      height: 24.8vw;
       display: flex;
-      justify-content: flex-start;
-
+      
       .image-container {
-        width: 231px;
-        height: 224px;
+        width: 100%;
+        height: 15.6vw;
         object-fit: cover;
 
       }
 
       .card-content {
-        padding: 20px 0px 0px 0px;
-        gap: 0px;
-        height: 133px;
+        padding-top: 1.5vw;
+        gap: 0vw;
+
 
         .card-title {
-          font-size: 30px;
-          line-height: 47px;
+          font-size: 2.1vw;
+          line-height: 3.25vw;
         }
       }
 

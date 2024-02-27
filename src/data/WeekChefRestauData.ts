@@ -12,7 +12,6 @@ const WeekChefRestauData: Cards = {
     }, {
       title: "Mashya",
       image: Mashya,
-      description:"Yanir Green",
     }
   ]
 };

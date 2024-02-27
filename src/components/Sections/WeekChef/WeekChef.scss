@@ -12,7 +12,7 @@
 .WeekChef-text {
   @include titles_style;
   margin-left: 0;
-  line-height: 24px;
+  line-height: 4.1vw;
 }
 
 .chef-container {
@@ -29,6 +29,7 @@
     background-size: cover;
     display: flex;
     align-items: flex-end;
+
     width: 89.5vw;
     height: 69.7vw;
     .chef-img-name {
@@ -38,6 +39,7 @@
       align-items: center;
       width: 100%;
       height: 12.6vw;
+      object-fit: contain;
 
       .chef-name {
         @include font-style;
@@ -53,8 +55,8 @@
     text-align: justify;
     margin-top: 7vw;
     line-height: 7.45vw;
-    font-size:  4.8vw;
-    letter-spacing:  0.33vw;
+    font-size: 4.8vw;
+    letter-spacing: 0.33vw;
     overflow-y: scroll;
   }
 }
@@ -63,47 +65,51 @@
 @include desktop {
   .WeekChef-main-title {
     letter-spacing: 0.3vw;
-    margin-top: 6vh;
+    margin-top: 6.1vw;
     font-size: 2.5vw;
-    margin-left: 545px;
+    margin-bottom: 0vw;
   }
 
   .WeekChef-text {
-    margin-left: 127px;
-    font-size: 30px;
+    margin-left: 8.75vw;
+    font-size: 2.05vw;
+    text-align: left;
   }
 
   .chef-container {
     display: flex;
     flex-direction: column;
     padding: 0;
-    gap: 40px;
+
 
     .image-container {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
-      gap: 63.5px;
-      margin-left: 127.5px;
-      margin-right: 129px;
+      gap: 4.4vw;
+      margin-left: 8.85vw;
+      margin-right: 9vw;
+
 
       .chef-image-container {
-        min-width: 478px;
-        min-height: 372px;
+        width: 187vw;
+        height: 25.8vw;
 
         .chef-img-name {
-          height: 78px;
+          height: 5.4vw;
 
           .chef-name {
-            font-size: 2.2vw;
+            font-size: 2.6vw;
+            letter-spacing: 0.2vw;
           }
         }
       }
 
       .chef-description {
-        font-size: 24px;
-        line-height: 35px;
-        margin-top: 61px;
+        font-size: 1.67vw;
+        line-height:2.6vw;
+        letter-spacing: 0.085vw;
+        margin-top: 6vw;
       }
     }
   }
