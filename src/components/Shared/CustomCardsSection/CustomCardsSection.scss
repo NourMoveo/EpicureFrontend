@@ -71,6 +71,7 @@
       margin-left: 0;
     }
 
+
     .swiper {
       @include desktop {
         display: none;
@@ -80,7 +81,7 @@
     .desktop-all-restaurants {
       margin-top: 0;
       display: flex;
-      align-items:flex-end;
+      align-items: flex-end;
       flex-direction: row;
       gap: 12px;
       margin-top: 18.2px;
@@ -111,8 +112,30 @@
         display: none;
       }
     }
+
+&.restaurant-page {
+  &.restaurant-card {
+    .desktop-section {
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      grid-template-rows: repeat(3, auto); 
+      gap: 20px; 
+      width: 1185px;
+      height: 1200px; 
+      overflow-y: auto; 
+
+    }
+    .all-restaurants {
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+}
+
+
     &.chef-restaurant-card {
-      align-items:flex-start;
+      align-items: flex-start;
       padding-left: 8.6vw;
     }
   }

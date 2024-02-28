@@ -21,7 +21,7 @@ const DishesData: Cards = {
       description: "Basil dough, cashew \"butter\", demi-glace, bison & radish",
       foodIcon: VeganIcon,
       price: 65,
-    }
+    },
   ],
 };
 
