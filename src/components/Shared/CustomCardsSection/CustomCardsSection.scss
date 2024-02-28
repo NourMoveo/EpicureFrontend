@@ -29,7 +29,11 @@
       height: 6.5vw;
     }
   }
-
+  .swiper {
+    .swiper-slide {
+      max-width: fit-content;
+    }
+  }
   &.restaurant-page {
     display: flex;
     justify-content: center;
@@ -37,12 +41,6 @@
 
     .all-restaurants {
       display: none;
-    }
-  }
-
-  .swiper {
-    .swiper-slide {
-      max-width: fit-content;
     }
   }
 
