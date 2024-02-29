@@ -1,0 +1,387 @@
+@import '../../../themes/mixins';
+@import '../../../themes/variables';
+
+.card {
+  margin-left: 5.9vw;
+  width: 65vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $secondary-offwhite-color;
+  cursor: pointer;
+
+  .food-icon-desktop{
+    @include mobile{
+      display: none;
+    }
+  }
+  .image-container {
+    .card-image {
+      width: 100%;
+      height: 45vw;
+      object-fit: cover;
+    }
+  }
+
+  .card-content {
+    @include font-style;
+    display: flex;
+    flex-direction: column;
+    padding-left: 4.3vw;
+
+
+    .card-title {
+      font-size: 4.97vw;
+      font-weight: 400;
+      letter-spacing: 2.67px;
+    }
+
+    .description-rating {
+      display: flex;
+
+      .description {
+        margin-right: 8vw;
+
+        .card-description {
+          margin: 0;
+          font-size: 4.27vw;
+          line-height: 5.4vw;
+          letter-spacing: 0.53vw;
+          overflow-y: scroll;
+        }
+      }
+
+      .rating-image {
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+
+  }
+
+  &.restaurant-card {
+    height: 69vw;
+
+    .card-title {
+      margin: 0;
+    }
+
+    .card-content {
+      padding: 4.2vw;
+      gap: 2.2vw;
+    }
+
+
+    &.restaurant-page {
+      margin-left: 0;
+      width: 89vw;
+      height: 76.8vw;
+      margin-bottom: 6.75vw;
+
+      .image-container {
+        .card-image {
+          width: 100%;
+          height: 55.01vw;
+          object-fit: cover;
+        }
+      }
+
+      .card-content {
+        @include font-style;
+        display: flex;
+        flex-direction: column;
+        padding-left: 4.3vw;
+
+
+        .card-title {
+          font-size: 4.97vw;
+          font-weight: 400;
+          letter-spacing: 2.67px;
+        }
+
+        .description-rating {
+          display: flex;
+          flex-direction: column;
+
+          .description {
+            margin-right: 8vw;
+
+            .card-description {
+              margin: 0;
+              font-size: 4.27vw;
+              line-height: 5.4vw;
+              letter-spacing: 0.53vw;
+            }
+          }
+
+          .rating-image {
+            width: 216px;
+            height: 40px;
+            margin-left: 38px;
+            margin-bottom: 18px;
+          }
+
+        }
+
+      }
+    }
+  }
+
+  &.dish-card {
+    cursor: auto;
+
+    .card-content {
+      height: 65.5vw;
+    }
+
+    .price-foodIcon-container {
+      display: flex;
+      flex-grow: 1;
+      align-items: flex-end;
+
+      .price-foodIcon {
+        display: flex;
+        flex-direction: column;
+
+        .food-icon {
+          width: auto;
+          height: 6.15vw;
+        }
+
+        .card-price {
+          margin-top: 4vw;
+          margin-bottom: 4vw;
+
+          .value-logo-container {
+            display: flex;
+            align-items: flex-end;
+
+            .ils-icon {
+              margin-right: 0.7vw;
+            }
+
+            .price-value {
+              @include font-style;
+              font-size: 4.3vw;
+              font-weight: 400;
+              line-height: 19px;
+              letter-spacing: 1.97px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.chef-restaurant-card {
+    cursor: auto;
+
+    height: 62.85vw;
+    display: flex;
+    justify-content: flex-start;
+
+    .card-title {
+      margin: 0;
+    }
+
+
+    .card-content {
+      padding: 4.3vw;
+      gap: 2.15vw;
+    }
+
+    .image-container {
+      width: 64.8vw;
+      height: 40.5vw;
+
+      .card-image {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .card {
+    gap: 0;
+    margin: 0;
+    margin-right: 1.7vw;
+    width: 26.4vw;
+    align-items: center;
+    text-align: center;
+
+    .image-container {
+      height: 16.35vw;
+      width: 100%;
+
+      .card-image {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .card-content {
+      .card-title {
+        font-size: 2.77vw;
+        font-weight: 400;
+        letter-spacing: 0.18vw;
+      }
+
+      .description-rating {
+        .description {
+          justify-content: center;
+          margin-right: 0vw;
+
+          .card-description {
+            line-height: 3vw;
+            font-size: 1.65vw;
+            letter-spacing: 0.1vw;
+            overflow-y: scroll;
+          }
+        }
+      }
+    }
+
+    &.restaurant-card {
+      height: 28vw;
+
+      .card-content {
+        margin-top: -3vw;
+
+        .description-rating {
+          display: flex;
+          flex-direction: column;
+
+          .description {
+
+            margin-top: -2vw;
+            justify-content: center;
+
+            .card-description {
+              font-size: 1.65vw;
+              letter-spacing: 0.1vw;
+              overflow-y: scroll;
+            }
+          }
+          .rating-image {
+            width: 15vw;
+            height: auto;
+          }
+        }
+      }
+    }
+
+    &.dish-card {
+      cursor: auto;
+      height: 45.4vw;
+
+    .image-container {
+      .card-image {
+        width: 100%;
+        height: 21.35vw;
+        object-fit: cover;
+      }
+    }
+      .card-content {
+        margin-top: 4vw;
+        .card-title{
+          padding: 0px 70px 0px 40px;
+          margin-bottom: 0.8vw;
+          
+        }
+        .food-icon-desktop {
+          width: auto;
+          height: 2.15vw;
+          margin-right: 1.8vw;
+        }
+        .description-rating{
+          .description{
+            .card-description{
+              letter-spacing: 0.13vw;
+              line-height: 2.1vw;
+              margin-left: -3vw;
+              margin-right: 2vw;
+            }
+          }
+        }
+      }
+
+      .price-foodIcon-container {
+        display: flex;
+        flex-grow: 1;
+        align-items: flex-end;
+        
+
+        .price-foodIcon {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          .food-icon{
+            display: none;
+          }
+          
+          .card-price {
+            display: flex;
+            justify-content:flex-end;
+            align-items: center;
+            margin: 0;
+            margin-bottom: 1vw;
+            .line {
+              width: 7.8vw;
+              height:  0.01vw;
+              background: $primary-grey-color;
+              align-self: center;
+            }
+            .value-logo-container {
+              display: flex;
+              align-items: flex-end;
+          
+              .ils-icon {
+                height: 1.3vw;
+                width: auto;
+                margin-bottom: -0.2vw;
+                margin-right: 0.4vw;
+                margin-left: 0.4vw;
+              }
+
+              .price-value {
+                @include font-style;
+                font-size: 1.65vw;
+                line-height: 19px;
+                letter-spacing: 1.97px;
+                margin-right: 0.4vw;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.chef-restaurant-card {
+      width: 16.2vw;
+      height: 24.8vw;
+      display: flex;
+      
+      .image-container {
+        width: 100%;
+        height: 15.6vw;
+        object-fit: cover;
+
+      }
+
+      .card-content {
+        padding-top: 1.5vw;
+        gap: 0vw;
+
+
+        .card-title {
+          font-size: 2.1vw;
+          line-height: 3.25vw;
+        }
+      }
+
+    }
+  }
+}

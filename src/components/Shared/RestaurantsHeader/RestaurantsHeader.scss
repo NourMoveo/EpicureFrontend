@@ -1,0 +1,45 @@
+@import "../../../themes/mixins";
+
+.restaurants-header {
+  display: flex;
+  padding: 4.8vw;
+
+  button {
+    @include font-style;
+    padding: 2vw;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 4.8vw;
+    color: #333;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 2.5vw;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%; /* Position the line in the center */
+      transform: translateX(-50%); /* Center the line horizontally */
+      bottom: 0.7vw;
+      width: 75%;
+      height: 0.6vw;
+      background-color: transparent;
+      transition: background-color 0.3s ease; /* Add transition for line color change */
+    }
+
+    &.active {
+      font-weight: 400; /* Make the text bold for active button */
+    }
+
+    &.active::after {
+      background-color: orange; /* Change line color for active button */
+    }
+
+    &:hover {
+      color: #555; /* Change text color on hover */
+    }
+  }
+}

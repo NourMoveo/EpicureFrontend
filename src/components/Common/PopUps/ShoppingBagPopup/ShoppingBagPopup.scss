@@ -1,0 +1,98 @@
+@import '../../../../themes/mixins';
+@import '../../../../themes/variables';
+
+/* Styles for mobile */
+
+.bag-popup {
+  @include popup-style;
+  height: 58vw;
+  &.open {
+    display: block;
+    opacity: 1; /* Ensure visibility when open */
+  }
+
+  .bag-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16.2vw;
+    gap: 5.5vw;
+    .order-history-button {
+      display:none;
+    }
+
+    .content {
+      @include font-style;
+      display: flex;
+      height: 100%;
+      font-size: 4.3vw;
+      letter-spacing: 0.5vw;
+      text-transform: uppercase;
+      opacity: 0.6; /* Default opacity for mobile */
+      padding: 0vw 35vw 0vw 31vw;
+      text-align: center;
+    }
+
+    .BagIcon {
+      margin-right: 6vw;
+      width: 11vw;
+      height: auto;
+      cursor: pointer;
+      opacity: 0.6; /* Default opacity for mobile */
+    }
+  }
+}
+
+/* Media query for desktop */
+
+@include desktop {
+  .bag-popup {
+    width: 35vw;
+    height: 40.5vw;
+    left: 62.8vw;
+  .bag-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18vw;
+    gap: 2vw;
+
+    .order-history-button {
+      display: block; /* Ensure button is visible by default on mobile */
+      margin-top: 4vw;
+      padding: 1.2vw;
+      @include font-style;
+      font-size: 1.5vw;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      background-color: $primary-white-color;
+      border: 0.15vw solid $primary-dark-color;
+      color: $primary-dark-color;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+
+      &:hover {
+        background-color: $primary-dark-color;
+        color: $primary-white-color;
+      }
+    }
+    .content {
+      padding: 0vw 9.5vw 0vw 9vw;
+      font-size: 1.55vw;
+      letter-spacing: 0.15vw;
+      opacity: 0.3; /* Default opacity for desktop */
+    }
+
+    .BagIcon {
+      width: 9vw;
+      padding: 0vw 0vw 0vw 5vw;
+      height: auto;
+      opacity: 0.3; /* Default opacity for desktop */
+    }
+  }
+}
+}

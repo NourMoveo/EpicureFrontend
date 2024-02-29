@@ -1,0 +1,84 @@
+@import "../../../themes/mixins";
+@import "../../../themes/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top:6.3vw;
+  margin-top: 12.2vw;
+  align-items: center;
+  height: 177vw; /* Adjust height as needed */
+
+  /* Styles for mobile */
+  background: $secondary-light-color;
+
+  .title {
+    @include font-style;
+    font-size: 4.82vw;
+    letter-spacing: 0.32vw;
+    text-transform: uppercase;
+    margin-bottom: 8.7vw;
+
+  }
+
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15vw;
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8.5vw;
+
+      .icon-img {
+        width: auto;
+        height: 12vw;
+      }
+
+      .icon-label {
+        @include font-style;
+        font-size:4.8vw;
+        letter-spacing: 0.5vw;
+      }
+    }
+  }
+
+  /* Media query for desktop */
+  @include desktop {
+    margin-top: 5.5vw;
+    height: 22vw;
+    padding-top: 1vw;
+
+    .title {
+      font-size: 2.09vw;
+      letter-spacing: 0.15vw;
+      margin-bottom:3vw;
+    }
+
+    .icon-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2.8vw;
+      margin-top: 0;
+      padding: 0;
+      .icon-item {
+        width: 9.4vw;
+        height: auto;
+        gap: 1vw;
+        .icon-img {
+          width: 7.5vw;
+          height: auto;
+        }
+
+        .icon-label {
+          padding: 0;
+          font-size: 1.65vw;
+          letter-spacing: 0.2vw;
+        }
+      }
+    }
+  }
+}

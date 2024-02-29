@@ -1,0 +1,44 @@
+@import "../../../../themes/mixins";
+@import "../../../../themes/variables";
+
+.menu-popup {
+  @include popup-style;
+  height: 90vw;
+}
+
+.menu-popup.open {
+  opacity: 1;
+}
+
+.menu-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-popup ul li:hover {
+  background-color: $primary-white-color;
+  cursor: pointer;
+}
+
+.popup-buttons {
+  @include font-style;
+  font-size: 4.8vw;
+  letter-spacing:0.5vw;
+  .first-section {
+    padding: 6vw 0vw 5vw 6vw;
+    line-height: 11vw;
+  }
+
+  .line {
+    width: 100%;
+    height: 0.3vw;
+    background: rgba($primary-grey-color, 0.1);
+    align-self: center;
+  }
+
+  .second-section {
+    padding: 2vw 0px 0px 6vw;
+    line-height: 17.5vw;
+  }
+}

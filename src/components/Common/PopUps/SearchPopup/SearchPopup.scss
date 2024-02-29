@@ -1,0 +1,59 @@
+@import '../../../../themes/mixins';
+@import '../../../../themes/variables';
+
+/* Styles for mobile */
+
+.search-popup {
+  @include popup-style;
+  padding: 10vw 0px 0px 9.5vw;
+  top: calc(100% + 0.07vw);
+  height: 90vw;
+
+  &.open {
+    opacity: 1;
+  }
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 83vw;
+  height: 8vw;
+  border-radius: 0.9vw;
+  border: 0.1vw solid $primary-dark-color;
+  padding: 3vw 3.3vw;
+  gap: 0.8vw;
+
+  .search-input {
+    @include font-style;
+    border: none;
+    background-color: transparent;
+    flex: 1;
+    font-size: 3.2vw;
+    letter-spacing: 0.35vw;
+    opacity: 0.5;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .search-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+}
+
+/* Media query for desktop */
+
+@include desktop {
+  .search-popup {
+    display: none;
+  }
+
+  .search-bar {
+    display: none;
+  }
+}

@@ -1,0 +1,175 @@
+@import '../../../themes/mixins';
+@import '../../../themes/variables';
+
+
+// Mobile styles
+.navbar-container {
+  position: relative;
+  display: flex;
+  height: 10vw;
+  padding-left: 4.5vw;
+  justify-content: space-between;
+
+}
+
+.navbar-left {
+  width: 50%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-hamburger-menu,
+.navbar-logo {
+  @include icon-style;
+}
+
+.navbar-icon-left-logo {
+  margin-bottom: 0.5vh;
+  margin-top: 1.5vw;
+  width: auto;
+  height: 8vw;
+}
+
+.navbar-icon-left-menu {
+  padding-top: 0.5vh;
+  height: 6.9vw;
+  width: auto;
+}
+
+.desktop-searchbar,
+.animated-search-bar,
+.navbar-links {
+  display: none;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1vw;
+}
+
+.right-icons {
+  display: flex;
+  align-items: center;
+
+}
+
+
+.navbar-icon {
+  margin-right: 5vw;
+  height: 5vw;
+}
+
+
+.search-popup-title {
+  @include font-style;
+  font-size: 4.25vw;
+  margin-left: 30vw;
+  margin-top: 0.5vw;
+}
+
+.exit-icon {
+  height: auto;
+  width: 10vw;
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.7vw;
+}
+
+
+// Desktop styles
+@include desktop {
+  .navbar-container {
+    height: 4.45vw;
+    margin-left: 2.7vw;
+    padding-bottom: 0.6vw;
+
+    .navbar-left {
+      width: 0;
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+
+      .navbar-icon-left-logo {
+        padding: 0.8vw 0vw 1.6vw 0vw;
+        width: auto;
+        height: 5vw;
+      }
+
+      .navbar-links {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5vw;
+
+        .big-link {
+          @include font-style;
+          font-size: 1.88vw;
+          letter-spacing: 0.15vw;
+          margin-right: 0.5vw;
+          margin-left: 0.2vw;
+        }
+
+        .small-link {
+          @include font-style;
+          font-size: 1.25vw;
+          letter-spacing: 0.15vw;
+          margin-left: 1.9vw;
+        }
+      }
+    }
+
+    .right-icons {
+      display: flex;
+      margin-right: 6.7vw;
+
+      .navbar-icon {
+        margin-right: 1.5vw;
+        height: 2vw;
+      }
+    }
+
+    .desktop-searchbar {
+      display: flex;
+
+      .animated-search-bar {
+        display: flex;
+        padding: 0.313vw 0vw 0.313vw 0.52vw;
+
+        &:hover {
+          display: flex;
+          border: 0.1vw solid black;
+          border-radius: 0.52vw;
+          transform: translate(-6%);
+
+        }
+
+        .search-input {
+          @include font-style;
+          font-size: 1vw;
+
+          &:focus {
+            outline: none;
+          }
+
+          opacity: 0;
+          border: none;
+          transition: width 0.3s,
+          opacity 0.3s,
+          transform 0.3s;
+          outline: none;
+          transform-origin: left;
+        }
+        &:hover .search-input {
+          width: 20vw; // Adjust as needed
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .navbar-hamburger-menu {
+    display: none;
+  }
+}
