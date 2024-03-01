@@ -9,7 +9,7 @@ import { IconsMeaningProps } from "@/models/Types";
 const IconsMeaning: React.FC<IconsMeaningProps> = ({ icons }) => {
   return (
     <Fade>
-      <div className='container'>
+      <div className='main-container'>
         <h3 className='title'>the meaning of our icons:</h3>
         <div className='icon-container'>
           {icons.map((icon) => (

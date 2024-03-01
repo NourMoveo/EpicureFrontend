@@ -14,6 +14,7 @@ import AboutUs from "./Sections/AboutUs/AboutUs"
 import CustomCard from "./Shared/CustomCard/CustomCard";
 import CustomCardsSection from "./Shared/CustomCardsSection/CustomCardsSection";
 import RestaurantsHeader from './Shared/RestaurantsHeader/RestaurantsHeader';
+import MultiRangeSlider from './Shared/MultiRangeSlider/MultiRangeSlider';
 //Swiper
 import { SwiperConfig } from "./Shared/Swiper/Swiper";
 
@@ -26,5 +27,5 @@ export {
     SearchPopup,MenuPopup,ShoppingBagPopup,
     Navbar,Footer,
     Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs, 
-    CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig
+    CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig ,MultiRangeSlider,
 };

@@ -10,10 +10,7 @@ const Restaurants = () => {
       <h2 className="restaurant-header">Restaurants</h2>
       <RestaurantsHeader />
       <CustomCardsSection cardsData={RestaurantsData} cardType={1} pageType={2} layoutDirection="vertical"/>
-      <div className="footer">
-      <div className='line'></div>
       <Footer />
-      </div>
     </>
   );
 };

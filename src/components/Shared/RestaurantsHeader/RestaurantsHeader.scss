@@ -1,9 +1,15 @@
 @import "../../../themes/mixins";
 
 .restaurants-header {
+  
   display: flex;
   padding: 4.8vw;
-
+  @include mobile {
+    button.MapView,
+    button.OpenNow {
+      display: none;
+    }
+  }
   button {
     @include font-style;
     padding: 2vw;
@@ -11,7 +17,6 @@
     background-color: transparent;
     cursor: pointer;
     font-size: 4.8vw;
-    color: #333;
     position: relative;
 
     &:not(:last-child) {
@@ -21,28 +26,149 @@
     &::after {
       content: '';
       position: absolute;
-      left: 50%; /* Position the line in the center */
-      transform: translateX(-50%); /* Center the line horizontally */
+      left: 50%;
+      /* Position the line in the center */
+      transform: translateX(-50%);
+      /* Center the line horizontally */
       bottom: 0.7vw;
       width: 75%;
       height: 0.6vw;
       background-color: transparent;
-      transition: background-color 0.3s ease; /* Add transition for line color change */
+      transition: background-color 0.3s ease;
+      /* Add transition for line color change */
     }
 
     &.active {
-      font-weight: 400; /* Make the text bold for active button */
+      font-weight: 400;
+      /* Make the text bold for active button */
     }
 
     &.active::after {
-      background-color: orange; /* Change line color for active button */
+      background-color: orange;
+      /* Change line color for active button */
     }
 
     &:hover {
-      color: #555; /* Change text color on hover */
+      color: #555;
+      /* Change text color on hover */
     }
   }
-  @include desktop{
-    
+}
+
+.button-wrapper {
+  display: none;
+}
+
+@include desktop {
+  .restaurants-header {
+    display: flex;
+    padding: 3.3vw 0vw 2.8vw 0vw;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      @include font-style;
+      padding: 0vw;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 1.25vw;
+      color: #333;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        transform: translateX(-50%);
+        bottom: 0.7vw;
+        width: 75%;
+        height: 0vw;
+        background-color: transparent;
+        transition: background-color 0.3s ease;
+      }
+
+      &.active {
+        font-weight: 400;
+      }
+    }
   }
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary-light-color;
+  width: 100%;
+  height: 4.2vw;
+  box-sizing: border-box;
+  animation: fadeInUp 0.5s ease;
+}
+.popup-container {
+  width: 353px ;
+  height: 162px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 16.22vw; 
+  left: 41.1%; 
+  transform: translateX(-50%); 
+  z-index: 9; 
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-title {
+@include font-style;
+font-size: 18px;
+letter-spacing: 1.92;
+margin-bottom: 8px;
+font-weight: 400;
+}
+
+.range-display {
+  @include font-style;
+  margin-bottom: 22px;
+  size: 14px;
+
+}
+
+.range-display img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+  .additional-button {
+    @include font-style;
+    padding: 1rem;
+    border: none;
+    background-color: transparent;
+    font-size:  1.25vw;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .arrow-icon {
+      margin-left: 0.5rem;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
 }

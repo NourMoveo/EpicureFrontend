@@ -27,6 +27,7 @@ import VegitarianIcon from './Icons/Vegitarian.svg';
 import ExitIcon from './Icons/Exit.svg';
 import FourStarsIcon from './Icons/FourStarsRating.svg';
 import ThreeStarsIcon from './Icons/ThreeStarsRating.svg';
+import DownArrow from './Icons/DownArrow.svg'
 // Restau
 import onzaRestau from './Restaurants/Onza.png';
 import claroRestau from './Restaurants/Claro.png';
@@ -61,6 +62,7 @@ export {
   ExitIcon,
   FourStarsIcon,
   ThreeStarsIcon,
+  DownArrow,
   
   // Restau
   onzaRestau,

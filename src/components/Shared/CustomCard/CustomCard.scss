@@ -33,7 +33,7 @@
     .card-title {
       font-size: 4.97vw;
       font-weight: 400;
-      letter-spacing: 2.67px;
+      letter-spacing: 0.38vw;
     }
 
     .description-rating {
@@ -141,6 +141,7 @@
         .food-icon {
           width: auto;
           height: 6.15vw;
+          margin-bottom: 1vw;
         }
 
         .card-price {
@@ -152,15 +153,18 @@
             align-items: flex-end;
 
             .ils-icon {
+              height: auto;
+              width: 2.5vw;
               margin-right: 0.7vw;
+              margin-bottom: -1.5vw
             }
 
             .price-value {
               @include font-style;
               font-size: 4.3vw;
               font-weight: 400;
-              line-height: 19px;
-              letter-spacing: 1.97px;
+              line-height: 2vw;
+              letter-spacing: 0.3VW;
             }
           }
         }
@@ -282,7 +286,7 @@
       .card-content {
         margin-top: 4vw;
         .card-title{
-          padding: 0px 70px 0px 40px;
+          padding: 0vw 6.7vw 0vw 3.8vw;
           margin-bottom: 0.8vw;
           
         }
@@ -344,8 +348,8 @@
               .price-value {
                 @include font-style;
                 font-size: 1.65vw;
-                line-height: 19px;
-                letter-spacing: 1.97px;
+                line-height: 1.5vw;
+                letter-spacing: 0.2vw;
                 margin-right: 0.4vw;
               }
             }
