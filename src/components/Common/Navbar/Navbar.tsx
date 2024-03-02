@@ -9,7 +9,7 @@ import {
 } from "@/assets/homePhotos";
 import "./Navbar.scss";
 import { MenuPopup, SearchPopup, ShoppingBagPopup } from "@/components";
-
+import { Link } from "react-router-dom";
 const Navbar: React.FC = () => {
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
   const [isSearchPopupOpen, setIsSearchPopupOpen] = useState(false);
@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 1024);
+      setIsDesktop(window.innerWidth > 768);
     };
 
     window.addEventListener("resize", handleResize);
@@ -36,9 +36,11 @@ const Navbar: React.FC = () => {
     setIsBagPopupOpen(false);
   };
 
-  const handleLogoClick = () => {
-    window.location.reload();
-  };
+    const [activeLink, setActiveLink] = useState("");
+  
+    const handleLinkClick = (linkName: string) => {
+      setActiveLink(linkName);
+    };
 
   return (
     <header className="navbar-container">
@@ -60,36 +62,42 @@ const Navbar: React.FC = () => {
           <button className="navbar-hamburger-menu" onClick={() => togglePopup(setIsMenuPopupOpen)}>
             <img className="navbar-icon-left-menu" src={HamburMenu} alt="Menu" />
           </button>
-          <button className="navbar-logo" onClick={handleLogoClick}>
-            <img
-              className="navbar-icon-left-logo"
-              src={LogoWithoutName}
-              alt="Epicure Logo"
-            />
+          <button className="navbar-logo" >
+            <Link to="/">
+              <img
+                className="navbar-icon-left-logo"
+                src={LogoWithoutName}
+                alt="Epicure Logo"
+              />
+            </Link>
           </button>
           <div className="navbar-links">
-            <div className="big-link">EPICURE</div>
-            <div className="small-link">Restaurants</div>
+            <div className='big-link'>
+              <Link to="/" onClick={() => handleLinkClick("EPICURE")} className="navbar-link">EPICURE</Link>
+            </div>
+            <div className={`small-link ${activeLink === "Restaurants" ? "active" : ""}`}>
+              <Link to="/restaurants" onClick={() => handleLinkClick("Restaurants")} className="navbar-link">Restaurants</Link>
+            </div>
             <div className="small-link">Chefs</div>
           </div>
         </div>
         <div className="navbar-right">
           <div className="right-icons">
-          <div className="desktop-searchbar">
-            {isDesktop && (
-              <div
-                className="animated-search-bar"
-                onClick={() => togglePopup(setIsSearchPopupOpen)}
-              >
-                <input
-                  className="search-input"
-                  type="text"
-                  placeholder="Search for restaurant cuisine, chef"
-                />
-                <img className="navbar-icon" src={SearchIcon} alt="Search" />
-              </div>
-            )}
-          </div>
+            <div className="desktop-searchbar">
+              {isDesktop && (
+                <div
+                  className="animated-search-bar"
+                  onClick={() => togglePopup(setIsSearchPopupOpen)}
+                >
+                  <input
+                    className="search-input"
+                    type="text"
+                    placeholder="Search for restaurant cuisine, chef"
+                  />
+                  <img className="navbar-icon" src={SearchIcon} alt="Search" />
+                </div>
+              )}
+            </div>
             {!isDesktop && (
               <img
                 className="navbar-icon"

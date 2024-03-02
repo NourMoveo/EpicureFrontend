@@ -11,6 +11,16 @@
   justify-content: space-between;
 }
 
+.navbar-link {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit color from parent */
+}
+.active {
+  border-bottom: 2px solid $secondary-orange-color; /* Orange line under active link */
+  border-radius: 4%;
+}
+
+
 .navbar-left {
   width: 50%;
   justify-content: space-between;

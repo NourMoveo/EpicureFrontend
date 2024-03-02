@@ -6,14 +6,12 @@ import {IconsData,ChefData} from "../../data";
 const HomePage = () => {
   return (
     <>
-      <Navbar />
       <Hero/>
       <Restaurants/>
       <Dishes/>
       <IconsMeaning icons={IconsData}/>
       <WeekChef chefDetails={ChefData}/>
       <AboutUs/>
-      <Footer/>
     </>
   );
 };
