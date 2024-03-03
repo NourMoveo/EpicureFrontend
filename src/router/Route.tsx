@@ -1,32 +1,35 @@
 import { createBrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomePage, RestaurantsPage } from '../pages';
-import { Navbar ,Footer} from '../components';
-
+import { HomePage, RestaurantsPage } from '../pages'; // Import RestaurantDetails component
+import { Navbar, Footer, RestaurantDetails } from '../components';
 import { Outlet } from "react-router-dom";
 
 function Layout() {
   return (
-      <>
-        <Navbar/>
-        <Outlet />
-        <Footer />
-      </>
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
   );
 }
 
 const router = createBrowserRouter([
   {
-    element: <Layout/>,
-    children: [  
+    element: <Layout />,
+    children: [
       {
         path: '/',
-        element: <HomePage/>
+        element: <HomePage />
       },
       {
         path: '/restaurants',
-        element: <RestaurantsPage/>
+        element: <RestaurantsPage />
       },
-    ]
+      {
+        path: '/restaurant/:title' ,
+        element: < RestaurantDetails />
+    },
+]
   }
 ])
 

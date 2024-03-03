@@ -9,12 +9,14 @@ import IconsMeaning from "./Sections/IconsMeaning/IconsMeaning";
 import Restaurants from "./Sections/Restaurants/Restaurants";
 import WeekChef from "./Sections/WeekChef/WeekChef";
 import AboutUs from "./Sections/AboutUs/AboutUs"
+import RestaurantDetails from './Sections/RestaurantDetails/RestaurantDetails';
 
 // Shared Components
 import CustomCard from "./Shared/CustomCard/CustomCard";
 import CustomCardsSection from "./Shared/CustomCardsSection/CustomCardsSection";
 import RestaurantsHeader from './Shared/RestaurantsHeader/RestaurantsHeader';
 import MultiRangeSlider from './Shared/MultiRangeSlider/MultiRangeSlider';
+
 //Swiper
 import { SwiperConfig } from "./Shared/Swiper/Swiper";
 
@@ -26,6 +28,6 @@ import ShoppingBagPopup from './Common/PopUps/ShoppingBagPopup/ShoppingBagPopup'
 export {
     SearchPopup,MenuPopup,ShoppingBagPopup,
     Navbar,Footer,
-    Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs, 
+    Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs, RestaurantDetails,
     CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig ,MultiRangeSlider,
 };

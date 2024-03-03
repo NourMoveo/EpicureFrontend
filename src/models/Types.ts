@@ -12,17 +12,16 @@ export type CardProps = {
     description?: string;
     // restaurants
     rating?: string;
-    dishes?: CustomCardsSectionProps;
+    dishes?: Cards;
     open?: Date; // Regular opening time
     close?: Date; // Regular closing time
-    exceptionOpen?: Date; // Exception opening time
-    exceptionClose?: Date; // Exception closing time
-    MealType?: MealType;
     maxPrice?: Number;
     minPrice?:Number;
     // dish
     foodIcon?: string;
     price?: Number;
+    MealType?: MealType;
+
 };
 
 

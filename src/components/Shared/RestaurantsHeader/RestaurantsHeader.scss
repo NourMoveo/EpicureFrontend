@@ -1,7 +1,7 @@
 @import "../../../themes/mixins";
 
 .restaurants-header {
-  
+ 
   display: flex;
   padding: 4.8vw;
   @include mobile {
@@ -93,6 +93,7 @@
     }
   }
 .button-wrapper {
+  margin-bottom: 3vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,6 +118,7 @@
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
 }
 
 .popup-title {

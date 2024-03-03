@@ -8,23 +8,17 @@ const RestaurantsData: Cards = {
       image: claroRestau,
       description: "Ran Shmueli",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards:DishesData.cards },
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
+      
     }, {
       title: "Lumina",
       image: Lumina,
       description: "Meir Adoni",
       rating:ThreeStarsIcon,
-      dishes: {
-        cardsData: { cards: DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData
+      ,
       minPrice:65,
       maxPrice:98,
     }, {
@@ -32,11 +26,7 @@ const RestaurantsData: Cards = {
       image: TigerLilly,
       description: "Yanir Green",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards: DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     }, {
@@ -44,11 +34,7 @@ const RestaurantsData: Cards = {
       image: TigerLilly,
       description: "Yanir Green",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards: DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     }, {
@@ -56,11 +42,7 @@ const RestaurantsData: Cards = {
       image: TigerLilly,
       description: "Yanir Green",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards:DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     },{
@@ -68,11 +50,7 @@ const RestaurantsData: Cards = {
       image: claroRestau,
       description: "Ran Shmueli",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards:DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     }, {
@@ -80,11 +58,7 @@ const RestaurantsData: Cards = {
       image: Lumina,
       description: "Meir Adoni",
       rating:ThreeStarsIcon,
-      dishes: {
-        cardsData: { cards:DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     }, {
@@ -92,11 +66,7 @@ const RestaurantsData: Cards = {
       image: TigerLilly,
       description: "Yanir Green",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards:DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     }, {
@@ -104,11 +74,7 @@ const RestaurantsData: Cards = {
       image: TigerLilly,
       description: "Yanir Green",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards:DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     }, {
@@ -116,11 +82,7 @@ const RestaurantsData: Cards = {
       image: TigerLilly,
       description: "Yanir Green",
       rating:FourStarsIcon,
-      dishes: {
-        cardsData: { cards:DishesData.cards},
-        cardType: CardType.DishType,
-        pageType: PagesType.HomePage
-      },
+      dishes:  DishesData,
       minPrice:65,
       maxPrice:98,
     },],

@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomCardsSection, Navbar, Footer, RestaurantsHeader } from "../../components";
+import { CustomCardsSection, RestaurantsHeader } from "../../components";
 import { RestaurantsData } from "../../data";
 import "./RestaurantsPage.scss"; // Import SCSS file
 

@@ -28,6 +28,7 @@ import ExitIcon from './Icons/Exit.svg';
 import FourStarsIcon from './Icons/FourStarsRating.svg';
 import ThreeStarsIcon from './Icons/ThreeStarsRating.svg';
 import DownArrow from './Icons/DownArrow.svg'
+import ClockIcon from './Icons/clock.svg';
 // Restau
 import onzaRestau from './Restaurants/Onza.png';
 import claroRestau from './Restaurants/Claro.png';
@@ -46,6 +47,7 @@ export {
   // General Photos
   MainHomePage,
   // Icons
+  ClockIcon,
   appleLogo,
   ARArrow,
   BagIcon,
