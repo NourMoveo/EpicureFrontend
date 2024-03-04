@@ -11,7 +11,7 @@ import { CustomCard, SwiperConfig } from "@/components";
 import { CustomCardsSectionProps, CardType, CardProps, PagesType } from "@/models/Types";
 import { ARArrow } from "@/assets/homePhotos";
 
-const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: string /*"row" | "column" */ }> = ({ cardsData, cardType, pageType, layoutDirection }) => {
+const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: string }> = ({ cardsData, cardType, pageType, layoutDirection }) => {
   let className = "";
 
   switch (cardType) {

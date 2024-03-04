@@ -83,3 +83,14 @@ export type AboutUsSec = {
   firstP: string;
   seconedP: string;
 };
+
+export type ChefsProps = {
+  chefs:ChefProps[];
+};
+
+export type ChefProps = {
+  fName: string;
+  lName: string;
+  image: string;
+  description: string;
+};

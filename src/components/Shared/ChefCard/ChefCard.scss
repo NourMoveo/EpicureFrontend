@@ -1,0 +1,29 @@
+@import '../../../themes/mixins';
+@import '../../../themes/variables';
+
+.chef-image-container {
+    margin-top: 4.3vw;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    width: 89.5vw;
+    height: 69.7vw;
+  
+    .chef-img-name {
+      background-color: rgba($secondary-white-color, 0.88);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 12.6vw;
+      object-fit: contain;
+  
+      .chef-name {
+        @include font-style;
+        font-size: 4.8vw;
+        font-weight: 400;
+        letter-spacing: 0.7vw;
+      }
+    }
+  }
+  
