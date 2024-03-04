@@ -1,8 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./RestaurantsHeader.scss";
-import { DownArrow, ILSLogo } from "../../../assets/homePhotos";
-import { MultiRangeSlider, SingleDistanceSlider } from "../../../components";
-
+import { DownArrow } from "../../../assets/homePhotos";
+import { MultiRangeSlider, SingleDistanceSlider, RangeFilter } from "../../../components";
 
 const buttonsData = [
   { name: "All", label: "All" },
@@ -10,29 +9,45 @@ const buttonsData = [
   { name: "MostPopular", label: "Most Popular" },
   { name: "OpenNow", label: "Open Now" },
   { name: "MapView", label: "Map View" },
-  // Add more button data as needed
 ];
 
 const additionalButtonsData = [
   { name: "PriceRange", label: "Price Range" },
   { name: "Distance", label: "Distance" },
   { name: "Rating", label: "Rating" },
-  // Add more additional button data as needed
 ];
 
 const RestaurantsHeader = () => {
   const [isPriceRangeOpen, setIsPriceRangeOpen] = useState(false);
   const [isDistanceOpen, setIsDistanceOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState("All");
+  const [isRatingOpen, setIsRatingOpen] = useState(false);
+  const [activeButton, setActiveButton] = useState("All"); // Set "All" as default
+  const [activeAdditionalButton, setActiveAdditionalButton] = useState("");
 
   const handleClick = (buttonName: string) => {
-    setActiveButton(buttonName);
+    // Close all popups if the same button is clicked twice
+    if (activeButton === buttonName || activeAdditionalButton === buttonName) {
+      closePopups();
+      setActiveButton("");
+      setActiveAdditionalButton("");
+      return;
+    }
+
+    // Close all popups
+    closePopups();
+
+    if (additionalButtonsData.some(button => button.name === buttonName)) {
+      setActiveAdditionalButton(buttonName);
+    } else {
+      setActiveButton(buttonName);
+    }
+
     if (buttonName === "PriceRange") {
       togglePopup(setIsPriceRangeOpen);
     } else if (buttonName === "Distance") {
       togglePopup(setIsDistanceOpen);
-    } else {
-      closePopups();
+    } else if (buttonName === "Rating") {
+      togglePopup(setIsRatingOpen);
     }
   };
 
@@ -43,6 +58,7 @@ const RestaurantsHeader = () => {
   const closePopups = () => {
     setIsPriceRangeOpen(false);
     setIsDistanceOpen(false);
+    setIsRatingOpen(false);
   };
 
   return (
@@ -62,7 +78,7 @@ const RestaurantsHeader = () => {
         {additionalButtonsData.map(({ name, label }) => (
           <button
             key={name}
-            className="additional-button"
+            className={activeAdditionalButton === name ? "active additional-button" : "additional-button"}
             onClick={() => handleClick(name)}
           >
             {label} <img src={DownArrow} alt="Down Arrow" className="arrow-icon" />
@@ -73,9 +89,7 @@ const RestaurantsHeader = () => {
         <MultiRangeSlider
           min={12}
           max={357}
-          onChange={({ min, max }: { min: number; max: number }) => {
-            // Implement onChange functionality if needed
-          }}
+          onChange={({ min, max }: { min: number; max: number }) => {}}
           isOpen={isPriceRangeOpen}
           togglePopup={() => togglePopup(setIsPriceRangeOpen)}
         />
@@ -83,13 +97,14 @@ const RestaurantsHeader = () => {
       {isDistanceOpen && (
         <SingleDistanceSlider
           currentLocation="Your Location"
-          maxDistance={4} // Example max distance value
-          onChange={(value: number) => {
-            // Implement onChange functionality if needed
-          }}
+          maxDistance={4}
+          onChange={(value: number) => {}}
           isOpen={isDistanceOpen}
           togglePopup={() => togglePopup(setIsDistanceOpen)}
         />
+      )}
+      {isRatingOpen && (
+        <RangeFilter/>
       )}
     </div>
   );

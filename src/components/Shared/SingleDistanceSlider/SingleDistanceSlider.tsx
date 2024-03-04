@@ -53,10 +53,14 @@ const SingleDistanceSlider: FC<SingleDistanceSliderProps> = ({ maxDistance, onCh
         setIsRangeChanged(false);
     };
 
+    const handleSliderClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        event.stopPropagation(); // Prevent popup from closing when clicking inside it
+    };
+
     return (
         <div className="distance-popup-container" onClick={togglePopup}>
             <div className="distance-popup-title">Distance</div>
-            <div className="distance-container">
+            <div className="distance-container" onClick={handleSliderClick}>
                 <div className="distance-slider">
                     <div className="distance-slider__track"></div>
                     <div ref={range} className="distance-slider__range"></div>

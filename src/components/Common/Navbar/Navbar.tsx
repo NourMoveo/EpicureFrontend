@@ -10,15 +10,21 @@ import {
 import "./Navbar.scss";
 import { MenuPopup, SearchPopup, ShoppingBagPopup } from "@/components";
 import { Link } from "react-router-dom";
+
 const Navbar: React.FC = () => {
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
   const [isSearchPopupOpen, setIsSearchPopupOpen] = useState(false);
   const [isBagPopupOpen, setIsBagPopupOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [activeLink, setActiveLink] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth > 768);
+      // Close all popups when switching to desktop view
+      if (window.innerWidth > 768) {
+        closePopups();
+      }
     };
 
     window.addEventListener("resize", handleResize);
@@ -27,6 +33,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   const togglePopup = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+    closePopups(); // Close all other popups
     setter(prevState => !prevState);
   };
 
@@ -36,11 +43,14 @@ const Navbar: React.FC = () => {
     setIsBagPopupOpen(false);
   };
 
-    const [activeLink, setActiveLink] = useState("");
-  
-    const handleLinkClick = (linkName: string) => {
-      setActiveLink(linkName);
-    };
+  const handleLinkClick = (linkName: string) => {
+    setActiveLink(linkName);
+    closePopups(); // Close all popups when a link is clicked
+  };
+
+  const handleBagIconClick = () => {
+    setIsBagPopupOpen(prevState => !prevState); // Toggle bag popup
+  };
 
   return (
     <header className="navbar-container">
@@ -48,7 +58,7 @@ const Navbar: React.FC = () => {
         <div className="sub-navbar">
           <button
             className="exit-icon"
-            onClick={closePopups}
+            onClick={closePopups} // Close all popups when exit icon is clicked
           >
             <img className="exit-icon" src={ExitIcon} alt="Exit" />
             <div className="search-popup-title">
@@ -57,65 +67,63 @@ const Navbar: React.FC = () => {
           </button>
         </div>
       )}
-      <>
-        <div className="navbar-left">
-          <button className="navbar-hamburger-menu" onClick={() => togglePopup(setIsMenuPopupOpen)}>
-            <img className="navbar-icon-left-menu" src={HamburMenu} alt="Menu" />
-          </button>
-          <button className="navbar-logo" >
-            <Link to="/">
-              <img
-                className="navbar-icon-left-logo"
-                src={LogoWithoutName}
-                alt="Epicure Logo"
-              />
-            </Link>
-          </button>
-          <div className="navbar-links">
-            <div className='big-link'>
-              <Link to="/" onClick={() => handleLinkClick("EPICURE")} className="navbar-link">EPICURE</Link>
-            </div>
-            <div className={`small-link ${activeLink === "Restaurants" ? "active" : ""}`}>
-              <Link to="/restaurants" onClick={() => handleLinkClick("Restaurants")} className="navbar-link">Restaurants</Link>
-            </div>
-            <div className="small-link">Chefs</div>
+      <div className="navbar-left">
+        <button className="navbar-hamburger-menu" onClick={() => togglePopup(setIsMenuPopupOpen)}>
+          <img className="navbar-icon-left-menu" src={HamburMenu} alt="Menu" />
+        </button>
+        <button className="navbar-logo" >
+          <Link to="/">
+            <img
+              className="navbar-icon-left-logo"
+              src={LogoWithoutName}
+              alt="Epicure Logo"
+            />
+          </Link>
+        </button>
+        <div className="navbar-links">
+          <div className='big-link'>
+            <Link to="/" onClick={() => handleLinkClick("EPICURE")} className="navbar-link">EPICURE</Link>
           </div>
+          <div className={`small-link ${activeLink === "Restaurants" ? "active" : ""}`}>
+            <Link to="/restaurants" onClick={() => handleLinkClick("Restaurants")} className="navbar-link">Restaurants</Link>
+          </div>
+          <div className="small-link">Chefs</div>
         </div>
-        <div className="navbar-right">
-          <div className="right-icons">
-            <div className="desktop-searchbar">
-              {isDesktop && (
-                <div
-                  className="animated-search-bar"
-                  onClick={() => togglePopup(setIsSearchPopupOpen)}
-                >
-                  <input
-                    className="search-input"
-                    type="text"
-                    placeholder="Search for restaurant cuisine, chef"
-                  />
-                  <img className="navbar-icon" src={SearchIcon} alt="Search" />
-                </div>
-              )}
-            </div>
-            {!isDesktop && (
-              <img
-                className="navbar-icon"
-                src={SearchIcon}
-                alt="Search"
+      </div>
+      <div className="navbar-right">
+        <div className="right-icons">
+          <div className="desktop-searchbar">
+            {isDesktop && (
+              <div
+                className="animated-search-bar"
                 onClick={() => togglePopup(setIsSearchPopupOpen)}
-              />
+              >
+                <input
+                  className="search-input"
+                  type="text"
+                  placeholder="Search for restaurant cuisine, chef"
+                />
+                <img className="navbar-icon" src={SearchIcon} alt="Search" />
+              </div>
             )}
-            <img className="navbar-icon" src={UserIcon} alt="User Account" />
+          </div>
+          {!isDesktop && (
             <img
               className="navbar-icon"
-              src={BagIcon}
-              alt="Shopping Bag"
-              onClick={() => togglePopup(setIsBagPopupOpen)}
+              src={SearchIcon}
+              alt="Search"
+              onClick={() => togglePopup(setIsSearchPopupOpen)}
             />
-          </div>
+          )}
+          <img className="navbar-icon" src={UserIcon} alt="User Account" />
+          <img
+            className="navbar-icon"
+            src={BagIcon}
+            alt="Shopping Bag"
+            onClick={handleBagIconClick}
+          />
         </div>
-      </>
+      </div>
       {isMenuPopupOpen && (
         <MenuPopup isOpen={isMenuPopupOpen} togglePopup={() => togglePopup(setIsMenuPopupOpen)} />
       )}

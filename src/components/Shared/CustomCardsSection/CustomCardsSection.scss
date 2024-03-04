@@ -5,6 +5,10 @@
   height: 100%;
   box-sizing: border-box;
 
+  .link-route{
+    text-decoration: none; 
+    color: inherit; 
+  }
   .all-restaurants {
     padding-left: 7.5vw;
     display: flex;

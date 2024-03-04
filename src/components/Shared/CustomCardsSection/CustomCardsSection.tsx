@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Fade } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -79,17 +80,17 @@ const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: 
 
           <div className="desktop-all-restaurants">
             {cardType === CardType.RestaurantType && (
-              <div className='all-restaurants'>
+              <Link to="/restaurants" className='all-restaurants link-route'>
                 <span className='all-restaurants-text'>All Restaurants</span>
                 <img src={ARArrow} alt='All Restaurants' className='arrows-icon' />
-              </div>
+              </Link>
             )}
           </div>
 
-          <div className='all-restaurants'>
+          <Link to="/restaurants" className='all-restaurants link-route'>
             <span className='all-restaurants-text'>All Restaurants</span>
             <img src={ARArrow} alt='All Restaurants' className='arrows-icon' />
-          </div>
+          </Link>
         </div>
       </Fade>
     </>

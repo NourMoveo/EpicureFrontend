@@ -80,6 +80,22 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({ min, max, onChange, isOpe
     setIsRangeChanged(false);
   };
 
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.stopPropagation(); // Stop event propagation
+    const value = parseInt(event.target.value, 10);
+    if (event.target === minValRef.current) {
+      const newValue = Math.min(value, maxVal - 1);
+      setMinVal(newValue);
+    } else if (event.target === maxValRef.current) {
+      const newValue = Math.max(value, minVal + 1);
+      setMaxVal(newValue);
+    }
+  };
+
+  const handleSliderClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation(); // Prevent popup from closing when clicking inside it
+  };
+
   return (
     <div className="popup-container" onClick={togglePopup}>
       <div className="popup-title">Price Range Selected</div>
@@ -98,22 +114,14 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({ min, max, onChange, isOpe
           {max}
         </div>
       </div>
-      <div className="container">
+      <div className="container" onClick={handleSliderClick}>
         <input
           type="range"
           min={min}
           max={max}
           value={minVal}
           ref={minValRef}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            const value = Math.min(+event.target.value, maxVal - 1);
-            setMinVal(value);
-            event.target.value = value.toString();
-
-            if (!event.target.classList.contains('thumb--orange')) {
-              event.target.classList.add('thumb--orange');
-            }
-          }}
+          onChange={handleInputChange}
           className={classnames("thumb thumb--zindex-3", {
             "thumb--zindex-5": minVal > max - 100,
           })}
@@ -124,15 +132,7 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({ min, max, onChange, isOpe
           max={max}
           value={maxVal}
           ref={maxValRef}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            const value = Math.max(+event.target.value, minVal + 1);
-            setMaxVal(value);
-            event.target.value = value.toString();
-
-            if (!event.target.classList.contains('thumb--orange')) {
-              event.target.classList.add('thumb--orange');
-            }
-          }}
+          onChange={handleInputChange}
           className="thumb thumb--zindex-4"
         />
         <div className="slider">

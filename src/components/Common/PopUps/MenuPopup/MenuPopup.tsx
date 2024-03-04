@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './MenuPopup.scss';
-
+import { Link } from 'react-router-dom';
 interface MenuPopupProps {
   isOpen: boolean;
   togglePopup: () => void;
@@ -21,7 +21,9 @@ const MenuPopup: React.FC<MenuPopupProps> = ({ isOpen, togglePopup }) => {
       {isOpen && (
         <ul className="popup-buttons">
           <div className='first-section'>
+          <Link to="/restaurants" className='link-route'>
             <li onClick={handleMenuItemClick}>Restaurants</li>
+            </Link>
             <li onClick={handleMenuItemClick}>Chefs</li>
           </div>
           <div className='line'></div>
