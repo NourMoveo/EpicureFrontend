@@ -52,8 +52,14 @@ const ChefsPage = () => {
             ))}
           </Swiper>
         </Fade>
-      </div>
-
+          <div className="desktop-section">
+            {ChefsData.chefs.map((chef: ChefProps) => (
+                  <div>
+                    <ChefCard chef={chef} />
+                  </div>
+                ))}
+          </div>
+          </div>
     </div>
 
   );

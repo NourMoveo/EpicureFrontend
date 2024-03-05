@@ -1,4 +1,4 @@
-import { ChefYossi } from '../assets/homePhotos'
+import { ChefYossi } from '../assets/Photos'
 
 const ChefData: { fName: string; lName: string; image: string; description: string; } = {
   fName: "Yossi",

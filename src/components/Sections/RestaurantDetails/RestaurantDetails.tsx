@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardProps } from "@/models/Types";
 import RestaurantData from "@/data/Restaurants";
-import { ClockIcon } from '@/assets/homePhotos';
+import { ClockIcon } from '@/assets/Photos';
 import './RestaurantDetails.scss'
 import { CustomCardsSection} from "@/components";
 

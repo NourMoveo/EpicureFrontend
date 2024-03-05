@@ -16,7 +16,7 @@
 
       .menu-button {
         @include font-style;
-        padding: 2vw;
+        padding: 2vw 2vw 0vw 2vw;
         border: none;
         background-color: transparent;
         cursor: pointer;
@@ -26,8 +26,10 @@
 
       .menu-button.active {
         font-weight: 400;
-        border-bottom: 2px solid $secondary-orange-color; /* Orange line under active link */
+        border-bottom: 0.5vw solid $secondary-orange-color;
+        /* Orange line under active link */
         border-radius: 4%;
+        
       }
     }
   }
@@ -45,32 +47,66 @@
     }
   }
 }
-
-@include desktop {
-  .chefs-title {
+@include mobile {
+  .desktop-section {
     display: none;
-  }
+  }}
+@include desktop {
 
-  .chefs-header {
-    display: flex;
-    padding: 3.3vw 0vw 2.8vw 0vw;
-    align-items: center;
-    justify-content: center;
-  }
+  .chefs-page {
+    .chefs-title {
+      display: none;
+    }
+  
+    .header-container {
+      .chefs-header {
+        display: flex;
+        padding: 3.3vw vw 2.8vw 0vw;
+        align-items: center;
+        justify-content: center;
+        gap:2vw;
+        margin-bottom: -2vw;
+        .menu-button {
+          @include font-style;
+          padding: 0vw;
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          font-size: 1.25vw;
+          color: #333;
+          position: relative;
+        }
+  
+        .menu-button.active {
+          font-weight: 400;
+          border-bottom: 2px solid transparent;
+          
+          border-radius: 4%;
+        }
+      }
+    }
+  
+    .chefs-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .desktop-section {
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        grid-template-rows: repeat(3, auto); 
+        gap: 1vw; 
+        width: 83.5vw;
+        height: 83.3vw; 
+        overflow-y: auto; 
+      }
+      .swiper {
+        @include desktop {
+          display: none;
+        }
+      }
 
-  .button {
-    @include font-style;
-    padding: 2vw;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 4.8vw;
-    position: relative;
+    }
   }
-
-  .button.activeButton {
-    font-weight: bold;
-    border-bottom: 2px solid $secondary-orange-color; /* Orange line under active link */
-    border-radius: 4%;
-  }
+  
+ 
 }

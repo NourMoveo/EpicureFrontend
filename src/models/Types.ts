@@ -8,8 +8,7 @@ export type CardProps = {
   image: string;
   customClass?: string;
   children?:ChildNode;
-    // dishes & Restaurants 
-    description?: string;
+    description: string;
     // restaurants
     rating?: string;
     dishes?: Cards;

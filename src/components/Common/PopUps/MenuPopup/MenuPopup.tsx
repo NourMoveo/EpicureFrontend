@@ -24,7 +24,9 @@ const MenuPopup: React.FC<MenuPopupProps> = ({ isOpen, togglePopup }) => {
           <Link to="/restaurants" className='link-route'>
             <li onClick={handleMenuItemClick}>Restaurants</li>
             </Link>
+            <Link to="/chefs" className='link-route'>
             <li onClick={handleMenuItemClick}>Chefs</li>
+            </Link>
           </div>
           <div className='line'></div>
           <div className='second-section'>

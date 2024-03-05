@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useEffect, useState, useRef } from "react";
 import "./MultiRangeSlider.scss";
 import classnames from "classnames";
-import { ILSLogo } from "../../../assets/homePhotos";
+import { ILSLogo } from "../../../assets/Photos";
 
 interface MultiRangeSliderProps {
   min: number;
@@ -106,7 +106,7 @@ const MultiRangeSlider: FC<MultiRangeSliderProps> = ({ min, max, onChange, isOpe
         <div className="value">
           {min}
         </div>
-        -
+        <div className="mini-line">-</div>
         <div className="ils-icon">
           <img className="ils-icon" src={ILSLogo} alt="ILS Icon" />
         </div>

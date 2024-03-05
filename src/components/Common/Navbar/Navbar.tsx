@@ -6,7 +6,7 @@ import {
   UserIcon,
   BagIcon,
   ExitIcon,
-} from "@/assets/homePhotos";
+} from "@/assets/Photos";
 import "./Navbar.scss";
 import { MenuPopup, SearchPopup, ShoppingBagPopup } from "@/components";
 import { Link } from "react-router-dom";

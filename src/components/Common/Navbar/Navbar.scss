@@ -114,7 +114,7 @@ button.exit-icon{
     height: 4.45vw;
     padding-bottom: 0.6vw;
     padding-left: 7.2vw;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2); /* Add border from the bottom */
+    // border-bottom: 0.5px solid rgba(0, 0, 0, 0.2); /* Add border from the bottom */
     .navbar-left {
       width: 0;
       justify-content: space-between;
@@ -122,9 +122,9 @@ button.exit-icon{
       align-items: center;
 
       .navbar-icon-left-logo {
-        padding: 0.8vw 0vw 1.6vw 0vw;
+        padding: 0.5vw 0vw 1.85vw 0vw;
         width: auto;
-        height: 5vw;
+        height: 4.5vw;
       }
 
       .navbar-links {

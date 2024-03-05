@@ -9,7 +9,7 @@ import "swiper/css/scrollbar";
 import "./CustomCardsSection.scss";
 import { CustomCard, SwiperConfig } from "@/components";
 import { CustomCardsSectionProps, CardType, CardProps, PagesType } from "@/models/Types";
-import { ARArrow } from "@/assets/homePhotos";
+import { ARArrow } from "@/assets/Photos";
 
 const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: string }> = ({ cardsData, cardType, pageType, layoutDirection }) => {
   let className = "";

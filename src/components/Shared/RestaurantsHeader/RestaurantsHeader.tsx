@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./RestaurantsHeader.scss";
-import { DownArrow } from "../../../assets/homePhotos";
+import { DownArrow } from "../../../assets/Photos";
 import { MultiRangeSlider, SingleDistanceSlider, RangeFilter } from "../../../components";
 
 const buttonsData = [
@@ -17,14 +17,14 @@ const additionalButtonsData = [
   { name: "Rating", label: "Rating" },
 ];
 
-const RestaurantsHeader = () => {
+const RestaurantsHeader = ({ onMapViewClick, onAllButtonClick }) => {
   const [isPriceRangeOpen, setIsPriceRangeOpen] = useState(false);
   const [isDistanceOpen, setIsDistanceOpen] = useState(false);
   const [isRatingOpen, setIsRatingOpen] = useState(false);
   const [activeButton, setActiveButton] = useState("All"); // Set "All" as default
   const [activeAdditionalButton, setActiveAdditionalButton] = useState("");
 
-  const handleClick = (buttonName: string) => {
+  const handleClick = (buttonName) => {
     // Close all popups if the same button is clicked twice
     if (activeButton === buttonName || activeAdditionalButton === buttonName) {
       closePopups();
@@ -48,10 +48,15 @@ const RestaurantsHeader = () => {
       togglePopup(setIsDistanceOpen);
     } else if (buttonName === "Rating") {
       togglePopup(setIsRatingOpen);
+    } else if (buttonName === "MapView") {
+      onMapViewClick(); // Callback to parent component
+    } else if (buttonName === "All") {
+      setActiveButton("All");
+      onAllButtonClick(); // Callback to parent component
     }
   };
 
-  const togglePopup = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+  const togglePopup = (setter) => {
     setter(prevState => !prevState);
   };
 
@@ -89,7 +94,7 @@ const RestaurantsHeader = () => {
         <MultiRangeSlider
           min={12}
           max={357}
-          onChange={({ min, max }: { min: number; max: number }) => {}}
+          onChange={({ min, max }) => {}}
           isOpen={isPriceRangeOpen}
           togglePopup={() => togglePopup(setIsPriceRangeOpen)}
         />
@@ -98,13 +103,13 @@ const RestaurantsHeader = () => {
         <SingleDistanceSlider
           currentLocation="Your Location"
           maxDistance={4}
-          onChange={(value: number) => {}}
+          onChange={(value) => {}}
           isOpen={isDistanceOpen}
           togglePopup={() => togglePopup(setIsDistanceOpen)}
         />
       )}
       {isRatingOpen && (
-        <RangeFilter/>
+        <RangeFilter />
       )}
     </div>
   );
