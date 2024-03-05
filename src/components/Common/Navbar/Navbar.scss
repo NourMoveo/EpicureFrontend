@@ -9,8 +9,17 @@
   height: 10vw;
   padding-left: 4.5vw;
   justify-content: space-between;
-
 }
+
+.navbar-link {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit color from parent */
+}
+.active {
+  border-bottom: 2px solid $secondary-orange-color; /* Orange line under active link */
+  border-radius: 4%;
+}
+
 
 .navbar-left {
   width: 50%;
@@ -22,6 +31,7 @@
 .navbar-hamburger-menu,
 .navbar-logo {
   @include icon-style;
+  cursor: pointer;
 }
 
 .navbar-icon-left-logo {
@@ -52,6 +62,7 @@
 .right-icons {
   display: flex;
   align-items: center;
+  cursor: pointer;
 
 }
 
@@ -65,18 +76,35 @@
 .search-popup-title {
   @include font-style;
   font-size: 4.25vw;
-  margin-left: 30vw;
-  margin-top: 0.5vw;
+  margin-left: 36vw;
+  margin-top: -5vw;
 }
 
-.exit-icon {
-  height: auto;
+button.exit-icon{
+  padding-top: 1.7vw;
+  @include icon-style;
   width: 10vw;
-  display: flex;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-top: 0.7vw;
+  .exit-icon {
+    width: 6vw;
+    height: auto;
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+}
+
+.sub-navbar {
+  position: fixed;
+  height: 10vw;
+  padding-left: 4.5vw;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -84,9 +112,9 @@
 @include desktop {
   .navbar-container {
     height: 4.45vw;
-    margin-left: 2.7vw;
     padding-bottom: 0.6vw;
-
+    padding-left: 7.2vw;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2); /* Add border from the bottom */
     .navbar-left {
       width: 0;
       justify-content: space-between;

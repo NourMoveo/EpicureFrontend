@@ -5,7 +5,10 @@
   @include popup-style;
   height: 90vw;
 }
-
+.link-route{
+  text-decoration: none; 
+  color: inherit; 
+}
 .menu-popup.open {
   opacity: 1;
 }

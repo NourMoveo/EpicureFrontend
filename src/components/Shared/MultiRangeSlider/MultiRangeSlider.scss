@@ -1,0 +1,212 @@
+@import "../../../themes/variables";
+@import "../../../themes/mixins";
+
+
+.popup-container {
+  padding-top: 1vw;
+  width: 24.5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 16.22vw; 
+  left: 40%; 
+  transform: translateX(-50%);
+  z-index: 9; 
+  background-color: white;
+  border: 0.1vw solid #ccc;
+  box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease; // Add transition for smooth height change
+}
+
+// Rest of your SCSS styles...
+
+.popup-title {
+@include font-style;
+font-size: 1.25vw;
+letter-spacing: 0.1vw;
+margin-bottom: 0.6vw;
+font-weight: 400;
+}
+
+.range-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+  .value{
+    @include font-style;
+    font-size: 1vw;
+  // margin-bottom: 1.6vw;
+  margin-right: 0.1vw;
+  }
+  .ils-icon{
+    width: 0.55vw;
+    margin-bottom: -0.05vw;
+    margin-right: 0.25vw;
+    margin-left: 0.1vw;
+  }
+
+}
+
+
+.container {
+
+  background-color: $secondary-offwhite-color;
+  border-radius: 0.3vw;
+  margin-top: 1vw;
+  height: 0vw;
+  z-index: 1;
+  width: 21.5vw;
+  height: 3.7vw;
+  padding: 2.3vw 0vw 0vw 1vw;
+
+  .slider {
+    position: relative;
+    width: 18.9vw;
+    margin-left: 0.1vw;
+
+    .slider__left-value,
+    .slider__right-value {
+      position: absolute;
+    }
+
+    .slider__track,
+    .slider__range {
+      border-radius: 1vw;
+      height: 0.3vw;
+      position: absolute;
+    }
+
+    .slider__track {
+      background-color: $secondary-light-color;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .slider__range {
+      background-color: $primary-grey-color;
+      z-index: 2;
+    }
+
+    .slider__left-value,
+    .slider__right-value {
+      display: flex;
+      flex-direction: row;
+      margin-top: -2vw;
+      .min-value,
+      .max-value {
+        @include font_style;
+        font-size: 1vw;
+        line-height: 1.5vw;
+        letter-spacing: 0.11vw;
+        font-weight: 300;
+        &--orange {
+          color: $secondary-orange-color; // Change color to orange when values changed
+        }
+      }
+      .ils-icon{
+        margin-top: 0.6vw;
+        margin-right: 0.1vw;
+        .ils-img{
+          width: 0.5vw;
+        }
+        &--orange {
+          color: $secondary-orange-color; // Change color to orange when values changed
+        }
+      }
+    }
+    
+    .slider__left-value {
+      left: 0;
+      &--orange {
+        color: $secondary-orange-color; // Change color to orange when values changed
+      }
+    }
+    
+    .slider__right-value {
+      right: -0.5vw;
+      &--orange {
+        color: $secondary-orange-color; // Change color to orange when values changed
+      }
+    }
+    
+  }
+
+
+  /* Removing the default appearance */
+  .thumb,
+  .thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: $primary-dark-color;
+  }
+
+  .thumb {
+    pointer-events: none;
+    position: absolute;
+    height: 0;
+    width: 19vw;
+    outline: none;
+  }
+
+  .thumb--zindex-3 {
+    z-index: 3;
+  }
+
+  .thumb--zindex-4 {
+    z-index: 4;
+  }
+
+  .thumb--zindex-5 {
+    z-index: 5;
+  }
+
+  .thumb::-webkit-slider-thumb {
+    background-color: $primary-dark-color;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 1.4vw;
+    width: 1.4vw;
+    margin-top: 0;
+    pointer-events: all;
+    position: relative;
+
+  }
+
+  /* When thumb is active, show the pseudo-element */
+  .thumb::-webkit-slider-thumb:active::after,
+  .thumb::-webkit-slider-thumb:focus::after {
+    opacity: 0;
+  }
+
+  /* Adding orange color for thumb when active */
+  .thumb--orange::-webkit-slider-thumb {
+    background-color:  $secondary-orange-color;
+  }
+
+     /* Clear button */
+     .clear-button {
+      @include font_style;
+      font-size: 0.9vw;
+      letter-spacing: 0.2vw;
+      font-weight: 400;
+      text-transform: uppercase;
+      width: 9vw;
+      height: 2.5vw;
+      position: absolute;
+      top: 3.5vw;
+      margin-left: 5.3vw;
+      transform: translateY(-50%);
+      background-color: white;
+      border: 0.1vw solid black;
+      cursor: pointer;
+        &:hover {
+        background-color: black; /* Change background color on hover */
+        color: white; /* Change text color on hover */
+    }
+    }
+}
+
+

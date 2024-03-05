@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Fade } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -35,24 +36,25 @@ const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: 
     case PagesType.OrdersPage:
       className += " order-page";
       break;
-        case PagesType.HomePage:
+    case PagesType.HomePage:
       className += " home-page";
       break;
     default:
       break;
   }
 
+  // Determine whether to show only three cards
+  const showOnlyThreeCards = pageType === PagesType.HomePage;
+
   // Log the className to the console
   console.log("Final className:", className);
-
-  const maxCardsToShow = cardType === CardType.ChefRestaurantType ? Math.floor(1440 / 231) : Math.floor(1440 / 380);
 
   return (
     <>
       <Fade>
         <div className={`cards-section ${className}`}>
           <Swiper className='swiper' {...SwiperConfig(layoutDirection)}>
-            {cardsData.cards.map((card: CardProps) => (
+            {cardsData.cards.map((card: CardProps, index: number) => (
               <SwiperSlide className='swiper-slide' key={card.title}>
                 <div onClick={() => cardType === CardType.DishType}>
                   <CustomCard {...card} customClass={className} />
@@ -62,25 +64,33 @@ const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: 
           </Swiper>
 
           <div className="desktop-section">
-            {cardsData.cards.slice(0, maxCardsToShow).map((card: CardProps) => (
-              <div onClick={() => cardType === CardType.DishType}>
-                <CustomCard {...card} customClass={className} />
-              </div>
-            ))}
+            {/* Conditionally render only three cards on the home page */}
+            {showOnlyThreeCards
+              ? cardsData.cards.slice(0, 3).map((card: CardProps) => (
+                  <div onClick={() => cardType === CardType.DishType}>
+                    <CustomCard {...card} customClass={className} />
+                  </div>
+                ))
+              : cardsData.cards.map((card: CardProps) => (
+                  <div onClick={() => cardType === CardType.DishType}>
+                    <CustomCard {...card} customClass={className} />
+                  </div>
+                ))}
           </div>
+
           <div className="desktop-all-restaurants">
             {cardType === CardType.RestaurantType && (
-              <div className='all-restaurants'>
+              <Link to="/restaurants" className='all-restaurants link-route'>
                 <span className='all-restaurants-text'>All Restaurants</span>
                 <img src={ARArrow} alt='All Restaurants' className='arrows-icon' />
-              </div>
+              </Link>
             )}
           </div>
 
-          <div className='all-restaurants'>
+          <Link to="/restaurants" className='all-restaurants link-route'>
             <span className='all-restaurants-text'>All Restaurants</span>
             <img src={ARArrow} alt='All Restaurants' className='arrows-icon' />
-          </div>
+          </Link>
         </div>
       </Fade>
     </>

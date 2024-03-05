@@ -1,14 +1,27 @@
-import{ ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 // Defines the structure of each individual card
+
 export type CardProps = {
+  // common
   title: string;
   image: string;
-  description?: string;
-  foodIcon?: string;
-  price?: number;
-  rating?: string;
   customClass?: string;
+  children?:ChildNode;
+    // dishes & Restaurants 
+    description?: string;
+    // restaurants
+    rating?: string;
+    dishes?: Cards;
+    open?: Date; // Regular opening time
+    close?: Date; // Regular closing time
+    maxPrice?: Number;
+    minPrice?:Number;
+    // dish
+    foodIcon?: string;
+    price?: Number;
+    MealType?: MealType;
+
 };
 
 
@@ -17,11 +30,19 @@ export type Cards = {
   cards: CardProps[];
 };
 
+export enum MealType {
+  Breakfast = "Breakfast",
+  Lunch = "Lunch",
+  Dinner = "Dinner"
+}
+
 // Specifies props for the CustomCardsSection component
 export type CustomCardsSectionProps = {
   cardsData: Cards;
-  cardType: number;
-  pageType:number;
+  cardType: Number;
+  pageType: Number;
+  minRestauPrice?:Number;
+  maxRestauPrice?:Number;
 };
 
 // Enumerates different types of cards
@@ -31,7 +52,7 @@ export enum CardType {
   ChefRestaurantType = 3,
 }
 export enum PagesType {
-  HomePage=1,
+  HomePage = 1,
   RestaurantsPage = 2,
   OrdersPage = 3
 }
