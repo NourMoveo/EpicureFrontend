@@ -32,21 +32,22 @@ font-weight: 400;
 .range-display {
   display: flex;
   flex-direction: row;
-  justify-content: end;
-  align-items: end;
   .value{
     @include font-style;
     font-size: 1vw;
-  // margin-bottom: 1.6vw;
+  margin-bottom: 0.2vw;
   margin-right: 0.1vw;
   }
   .ils-icon{
     width: 0.55vw;
+    height: 1.7vw;
     margin-bottom: -0.05vw;
     margin-right: 0.25vw;
     margin-left: 0.1vw;
   }
-
+.mini-line{
+  font-size: 1vw;
+}
 }
 
 
@@ -106,10 +107,11 @@ font-weight: 400;
         }
       }
       .ils-icon{
-        margin-top: 0.6vw;
+        margin:0;
         margin-right: 0.1vw;
         .ils-img{
           width: 0.5vw;
+          height: 2vw;
         }
         &--orange {
           color: $secondary-orange-color; // Change color to orange when values changed

@@ -6,7 +6,7 @@ import {
   UserIcon,
   BagIcon,
   ExitIcon,
-} from "@/assets/homePhotos";
+} from "@/assets/Photos";
 import "./Navbar.scss";
 import { MenuPopup, SearchPopup, ShoppingBagPopup } from "@/components";
 import { Link } from "react-router-dom";
@@ -87,7 +87,9 @@ const Navbar: React.FC = () => {
           <div className={`small-link ${activeLink === "Restaurants" ? "active" : ""}`}>
             <Link to="/restaurants" onClick={() => handleLinkClick("Restaurants")} className="navbar-link">Restaurants</Link>
           </div>
-          <div className="small-link">Chefs</div>
+          <div className={`small-link ${activeLink === "Chefs" ? "active" : ""}`}>
+          <Link to="/chefs" onClick={() => handleLinkClick("Chefs")} className="navbar-link">Chefs</Link>
+        </div>
         </div>
       </div>
       <div className="navbar-right">

@@ -9,7 +9,7 @@ import GarbanzoFrito from './Dishes/GarbanzoFrito.png';
 import SmokedPizza from './Dishes/SmokedPizza.png';
 // General Photos
 import MainHomePage from './Hero/MainHomePage.png';
-
+import Map from './Map/Map.svg'
 // Icons
 import appleLogo from './Icons/appleLogo.svg'
 import ARArrow from './Icons/ARArrow.svg'
@@ -46,6 +46,7 @@ export {
   SmokedPizza,
   // General Photos
   MainHomePage,
+  Map,
   // Icons
   ClockIcon,
   appleLogo,

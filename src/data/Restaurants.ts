@@ -1,5 +1,5 @@
 import { Cards,CardType,PagesType } from "../models/Types";
-import { claroRestau,FourStarsIcon,Lumina,TigerLilly ,ThreeStarsIcon } from "../assets/homePhotos";
+import { claroRestau,FourStarsIcon,Lumina,TigerLilly ,ThreeStarsIcon } from "../assets/Photos";
 import DishesData from  "../data/Dishes";
 const RestaurantsData: Cards = {
   cards: [

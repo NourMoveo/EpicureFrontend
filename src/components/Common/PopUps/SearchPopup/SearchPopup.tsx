@@ -6,7 +6,7 @@
 
 import React from 'react';
 import './SearchPopup.scss';
-import { SearchIcon } from '../../../../assets/homePhotos';
+import { SearchIcon } from '../../../../assets/Photos';
 
 interface SearchPopupProps {
   isOpen: boolean;

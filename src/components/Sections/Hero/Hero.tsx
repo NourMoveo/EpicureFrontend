@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchIcon } from "@/assets/homePhotos";
+import { SearchIcon } from "@/assets/Photos";
 import './Hero.scss';
 /**
  * rendering the hero section of the application.

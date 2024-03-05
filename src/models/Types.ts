@@ -8,8 +8,7 @@ export type CardProps = {
   image: string;
   customClass?: string;
   children?:ChildNode;
-    // dishes & Restaurants 
-    description?: string;
+    description: string;
     // restaurants
     rating?: string;
     dishes?: Cards;
@@ -82,4 +81,15 @@ export type AboutUsSec = {
   title: string;
   firstP: string;
   seconedP: string;
+};
+
+export type ChefsProps = {
+  chefs:ChefProps[];
+};
+
+export type ChefProps = {
+  fName: string;
+  lName: string;
+  image: string;
+  description: string;
 };

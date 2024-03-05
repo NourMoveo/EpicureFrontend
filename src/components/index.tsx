@@ -18,6 +18,7 @@ import RestaurantsHeader from './Shared/RestaurantsHeader/RestaurantsHeader';
 import MultiRangeSlider from './Shared/MultiRangeSlider/MultiRangeSlider';
 import SingleDistanceSlider from './Shared/SingleDistanceSlider/SingleDistanceSlider'
 import RangeFilter from './Shared/RatingFilter/RatingFilter'
+import ChefCard from './Shared/ChefCard/ChefCard';
 //Swiper
 import { SwiperConfig } from "./Shared/Swiper/Swiper";
 
@@ -33,5 +34,5 @@ export {
     Navbar,Footer,
     Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs, RestaurantDetails,
     CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig ,MultiRangeSlider,SingleDistanceSlider,
-    RatingComponent,RangeFilter,
+    RatingComponent,RangeFilter,ChefCard,
 };

@@ -1,5 +1,5 @@
 import { Cards } from "../models/Types";
-import { PadKiMao,GarbanzoFrito,SmokedPizza, SpicyFoodIcon,VeganIcon } from '../assets/homePhotos';
+import { PadKiMao,GarbanzoFrito,SmokedPizza, SpicyFoodIcon,VeganIcon } from '../assets/Photos';
 
 const DishesData: Cards = {
   cards: [

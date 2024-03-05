@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CardProps, CardType, PagesType } from "@/models/Types";
 import "./CustomCard.scss";
-import { ILSLogo } from "@/assets/homePhotos";
+import { ILSLogo } from "@/assets/Photos";
 
 const CustomCard: React.FC<CardProps & { cardType?: CardType; pageType?: PagesType }> = ({ title, image, description, foodIcon, price, rating, customClass, cardType, pageType }) => {
   let cardClassName = "card";
@@ -50,7 +50,7 @@ const CustomCard: React.FC<CardProps & { cardType?: CardType; pageType?: PagesTy
               <div className='line'></div>
               <div className='value-logo-container'>
                 <img src={ILSLogo} alt='ILS' className='ils-icon' />
-                <span className='price-value'>{price} </span>
+                {price &&<span className='price-value'>{price} </span>}
               </div>
               <div className='line-dish'></div>
               <div className='line'></div>
