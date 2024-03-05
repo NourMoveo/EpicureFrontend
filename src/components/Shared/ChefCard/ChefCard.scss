@@ -4,10 +4,13 @@
 .chef-image-container {
     margin-top: 4.3vw;
     background-size: cover;
+    object-fit:cover;
     display: flex;
     align-items: flex-end;
-    width: 89.5vw;
-    height: 69.7vw;
+    width: 90vw;
+    height: 90vw;
+    background-position-x:40%;
+    
   
     .chef-img-name {
       background-color: rgba($secondary-white-color, 0.88);

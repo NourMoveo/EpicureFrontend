@@ -5,7 +5,7 @@ import { ChefProps } from "@/models/Types";
 
 const ChefCard: React.FC<{ chef: ChefProps }> = ({ chef }) => {
   const backgroundImageStyle = {
-    backgroundImage: `url(${chef})`,
+    backgroundImage: `url(${chef.image})`,
   };
 
   return (
