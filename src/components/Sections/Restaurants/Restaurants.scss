@@ -4,6 +4,10 @@
     @include titles_style;
     margin-top: 6vw;
     margin-bottom: 4vw;
+    @include desktop{
+      margin-right: 7.2vw;
+    }
+    
   }
 
 

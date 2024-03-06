@@ -88,7 +88,7 @@
       align-items: flex-end;
       flex-direction: row;
       margin-top: 1.8vw;
-      margin-left: 54vw;
+      margin-left: 56vw;
       .all-restaurants {
         display: flex;
 
@@ -104,8 +104,9 @@
 
         .arrows-icon {
           cursor: pointer;
-          width: 2.3vw;
+          width: 2vw;
           height: auto;
+          margin-left: -0.5vw;
         }
       }
     }

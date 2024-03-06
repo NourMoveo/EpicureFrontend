@@ -120,9 +120,9 @@ button.exit-icon{
       justify-content: space-between;
       display: flex;
       align-items: center;
-
+      padding-top: 0.5vw;
       .navbar-icon-left-logo {
-        padding: 0.5vw 0vw 1.85vw 0vw;
+        padding: 0.7vw 0vw 1.3vw 0vw;
         width: auto;
         height: 4.5vw;
       }
@@ -151,11 +151,12 @@ button.exit-icon{
 
     .right-icons {
       display: flex;
-      margin-right: 6.7vw;
+      margin-right: 6vw;
 
       .navbar-icon {
-        margin-right: 1.5vw;
-        height: 2vw;
+        margin-top: 0.5vw;
+        margin-right: 1.8vw;
+        height: 1.8vw;
       }
     }
 

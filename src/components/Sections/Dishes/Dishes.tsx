@@ -9,7 +9,7 @@ import {DishesData} from "@/data";
 const Dishes = () => {
   return (
     <div className="dishes-container">
-      <h2 className="dishes-header">Signature Dish Of:</h2>
+      <h2 className="dishes-header">Signature Dishs Of:</h2>
       <CustomCardsSection cardsData={DishesData} cardType={2} pageType={1} layoutDirection='horizontal'/>
     </div>
   )
