@@ -1,12 +1,12 @@
-import { VegitarianIcon, VeganIcon, SpicyFoodIcon } from '../assets/Photos'
+import { VegetarianIcon, VeganIcon, SpicyFoodIcon } from '../../assets/Photos'
 const IconsData: { name: string; image: string }[] = [
   {
     name: "Spicy",
     image: SpicyFoodIcon,
   },
   {
-    name: "Vegitarian",
-    image: VegitarianIcon,
+    name: "Vegetarian",
+    image: VegetarianIcon,
   },
   {
     name: "Vegan",

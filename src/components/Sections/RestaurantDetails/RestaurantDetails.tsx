@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { CardProps } from "@/models/Types";
-import RestaurantData from "@/data/Restaurants";
-import { ClockIcon } from '@/assets/Photos';
-import './RestaurantDetails.scss'
-import { CustomCardsSection} from "@/components";
+import { CardProps, Cards } from "@/models/Types";
+import RestaurantData from "@/data/MockData/Restaurants";
+import { ClockIcon } from "@/assets/Photos";
+import "./RestaurantDetails.scss";
+import { CustomCardsSection } from "@/components";
 
 const RestaurantDetails: React.FC = () => {
   const { title = "" } = useParams<{ title?: string }>();
 
+  // Find the restaurant with the given title
   const restaurant: CardProps | undefined = RestaurantData.cards.find(
     (r: CardProps) => r.title === decodeURIComponent(title)
   );
 
+  // Function to get the status of the restaurant (open or closed)
   const getStatus = (): string => {
     const now = new Date();
     if (restaurant && restaurant.open && restaurant.close && now >= restaurant.open && now <= restaurant.close) {
@@ -22,7 +24,17 @@ const RestaurantDetails: React.FC = () => {
     }
   };
 
+  // State to manage the active tab (Breakfast, Lunch, Dinner)
   const [activeTab, setActiveTab] = useState("Breakfast");
+
+  // Function to filter dishes based on meal type
+  const getDishesByType = (type: string, dishesData: CardProps[]): Cards => {
+    const filteredDishes = dishesData.filter((dish) => dish.type === type);
+    return { cards: filteredDishes };
+  };
+
+  // Get the dishes data for the selected restaurant or provide an empty array as default
+  const dishesData = restaurant?.dishes || { cards: [] };
 
   return (
     <div className="restaurant-details-container">
@@ -45,7 +57,30 @@ const RestaurantDetails: React.FC = () => {
             </div>
           </div>
           <div className="dishes-section">
-            <CustomCardsSection cardsData={restaurant.dishes} cardType={2} pageType={2} layoutDirection="vertical"/>
+            {activeTab === "Breakfast" && (
+              <CustomCardsSection
+                cardsData={getDishesByType("Breakfast", dishesData.cards)}
+                cardType={2}
+                pageType={2}
+                layoutDirection="vertical"
+              />
+            )}
+            {activeTab === "Lunch" && (
+              <CustomCardsSection
+                cardsData={getDishesByType("Lunch", dishesData.cards)}
+                cardType={2}
+                pageType={2}
+                layoutDirection="vertical"
+              />
+            )}
+            {activeTab === "Dinner" && (
+              <CustomCardsSection
+                cardsData={getDishesByType("Dinner", dishesData.cards)}
+                cardType={2}
+                pageType={2}
+                layoutDirection="vertical"
+              />
+            )}
           </div>
         </>
       ) : (

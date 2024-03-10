@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CardProps, CardType, PagesType } from "@/models/Types";
 import "./CustomCard.scss";
 import { ILSLogo } from "@/assets/Photos";
+import { RatingComponent } from '@/components';
 
 const CustomCard: React.FC<CardProps & { cardType?: CardType; pageType?: PagesType }> = ({ title, image, description, foodIcon, price, rating, customClass, cardType, pageType }) => {
   let cardClassName = "card";
@@ -40,7 +41,8 @@ const CustomCard: React.FC<CardProps & { cardType?: CardType; pageType?: PagesTy
         <div className='description'>
           {description && <p className='card-description'>{description}</p>}
         </div>
-        {rating && <img src={rating} alt='Rating Stars' className='rating-image' />}
+        {rating &&<div className="rating"> <RatingComponent number={rating} />
+            </div>}
       </div>
       <div className="price-foodIcon-container">
         <div className="price-foodIcon">

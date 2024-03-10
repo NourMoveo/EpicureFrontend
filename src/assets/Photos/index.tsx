@@ -23,7 +23,7 @@ import SearchIcon from './Icons/Search.svg';
 import SpicyFoodIcon from './Icons/SpicyFood.svg';
 import UserIcon from './Icons/User.svg';
 import VeganIcon from './Icons/Vegan.svg';
-import VegitarianIcon from './Icons/Vegitarian.svg';
+import VegetarianIcon from './Icons/Vegetarian.svg';
 import ExitIcon from './Icons/Exit.svg';
 import FourStarsIcon from './Icons/FourStarsRating.svg';
 import ThreeStarsIcon from './Icons/ThreeStarsRating.svg';
@@ -61,7 +61,7 @@ export {
   SpicyFoodIcon,  
   UserIcon,
   VeganIcon,
-  VegitarianIcon,
+  VegetarianIcon,
   ExitIcon,
   FourStarsIcon,
   ThreeStarsIcon,

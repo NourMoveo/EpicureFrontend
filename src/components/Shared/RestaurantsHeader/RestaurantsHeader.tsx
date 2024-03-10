@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./RestaurantsHeader.scss";
 import { DownArrow } from "../../../assets/Photos";
 import { MultiRangeSlider, SingleDistanceSlider, RangeFilter } from "../../../components";
@@ -17,53 +17,91 @@ const additionalButtonsData = [
   { name: "Rating", label: "Rating" },
 ];
 
-const RestaurantsHeader = ({ onMapViewClick, onAllButtonClick }) => {
+const RestaurantsHeader = ({ onButtonClick, onAdditionalButtonClick }) => {
   const [isPriceRangeOpen, setIsPriceRangeOpen] = useState(false);
   const [isDistanceOpen, setIsDistanceOpen] = useState(false);
   const [isRatingOpen, setIsRatingOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState("All"); // Set "All" as default
-  const [activeAdditionalButton, setActiveAdditionalButton] = useState("");
+  const [activeButton, setActiveButton] = useState(buttonsData[0].name);
+  const [activeAdditionalButton, setActiveAdditionalButton] = useState(null);
+  const [lastClickedButton, setLastClickedButton] = useState(null);
+  const popupsRef = useRef(null);
+
+  useEffect(() => {
+    onButtonClick(activeButton);
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [activeButton]);
+
+  useEffect(() => {
+    if (!isPriceRangeOpen) {
+      setActiveAdditionalButton(null);
+    }
+  }, [isPriceRangeOpen]);
+
+  useEffect(() => {
+    if (!isDistanceOpen) {
+      setActiveAdditionalButton(null);
+    }
+  }, [isDistanceOpen]);
+
+  useEffect(() => {
+    if (!isRatingOpen) {
+      setActiveAdditionalButton(null);
+    }
+  }, []);
 
   const handleClick = (buttonName) => {
-    // Close all popups if the same button is clicked twice
-    if (activeButton === buttonName || activeAdditionalButton === buttonName) {
-      closePopups();
-      setActiveButton("");
-      setActiveAdditionalButton("");
-      return;
-    }
-
-    // Close all popups
     closePopups();
-
-    if (additionalButtonsData.some(button => button.name === buttonName)) {
-      setActiveAdditionalButton(buttonName);
-    } else {
+    const isMainButton = buttonsData.some((button) => button.name === buttonName);
+    if (isMainButton) {
       setActiveButton(buttonName);
     }
+    onButtonClick(buttonName);
+    if (additionalButtonsData.some((button) => button.name === buttonName)) {
+      setActiveAdditionalButton(buttonName);
+      onAdditionalButtonClick(buttonName); // Call onAdditionalButtonClick when an additional button is clicked
+    }
+    // Add double click event listener to remove 'active' class and close popup
+    if (buttonName === lastClickedButton) {
+      togglePopupBasedOnButtonName(buttonName);
+      setLastClickedButton(null); // Reset lastClickedButton after handling double click
+    } else {
+      setLastClickedButton(buttonName);
+    }
+  };
 
+  const togglePopupBasedOnButtonName = (buttonName) => {
     if (buttonName === "PriceRange") {
       togglePopup(setIsPriceRangeOpen);
     } else if (buttonName === "Distance") {
       togglePopup(setIsDistanceOpen);
     } else if (buttonName === "Rating") {
       togglePopup(setIsRatingOpen);
-    } else if (buttonName === "MapView") {
-      onMapViewClick(); // Callback to parent component
-    } else if (buttonName === "All") {
-      setActiveButton("All");
-      onAllButtonClick(); // Callback to parent component
     }
   };
 
   const togglePopup = (setter) => {
-    setter(prevState => !prevState);
+    setter((prevState) => !prevState);
   };
 
   const closePopups = () => {
     setIsPriceRangeOpen(false);
     setIsDistanceOpen(false);
     setIsRatingOpen(false);
+    setActiveAdditionalButton(null);
+  };
+
+  const handleOutsideClick = (event) => {
+    if (popupsRef.current && !popupsRef.current.contains(event.target)) {
+      closePopups();
+    }
+  };
+
+  const handleDoubleClick = (buttonName) => {
+    setActiveAdditionalButton(null);
   };
 
   return (
@@ -72,19 +110,21 @@ const RestaurantsHeader = ({ onMapViewClick, onAllButtonClick }) => {
         {buttonsData.map(({ name, label }) => (
           <button
             key={name}
-            className={activeButton === name ? "active" : ""}
+            className={activeButton === name ? "active" : name}
             onClick={() => handleClick(name)}
           >
             {label}
           </button>
         ))}
       </div>
-      <div className="button-wrapper">
+      <div className="button-wrapper" ref={popupsRef}>
         {additionalButtonsData.map(({ name, label }) => (
           <button
             key={name}
-            className={activeAdditionalButton === name ? "active additional-button" : "additional-button"}
+            id={name} // added id to identify the button
+            className={`additional-button ${activeAdditionalButton === name ? "active" : ""}`}
             onClick={() => handleClick(name)}
+            onDoubleClick={() => handleDoubleClick(name)}
           >
             {label} <img src={DownArrow} alt="Down Arrow" className="arrow-icon" />
           </button>
@@ -108,9 +148,7 @@ const RestaurantsHeader = ({ onMapViewClick, onAllButtonClick }) => {
           togglePopup={() => togglePopup(setIsDistanceOpen)}
         />
       )}
-      {isRatingOpen && (
-        <RangeFilter />
-      )}
+      {isRatingOpen && <RangeFilter />}
     </div>
   );
 };

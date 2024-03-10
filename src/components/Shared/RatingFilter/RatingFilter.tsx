@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RatingComponent } from '@/components';
 import './RatingFilter.scss';
+import { Cards } from '@/models/Types';
 
 interface RangeFilterPopupProps {
   onFilterChange: (selectedRatings: number[]) => void;
@@ -11,19 +12,17 @@ const RatingFilter: React.FC<RangeFilterPopupProps> = ({ onFilterChange }) => {
   const [popupHeight, setPopupHeight] = useState<number>(9.5); // Initial height
 
   const handleRatingChange = (rating: number) => {
-    if (selectedRatings.includes(rating)) {
-      setSelectedRatings(selectedRatings.filter((r) => r !== rating));
-    } else {
-      setSelectedRatings([...selectedRatings, rating]);
-    }
+    const updatedRatings = selectedRatings.includes(rating)
+      ? selectedRatings.filter((r) => r !== rating)
+      : [...selectedRatings, rating];
+    
+    setSelectedRatings(updatedRatings);
+    onFilterChange(updatedRatings); // Send updated ratings to the restaurant page
   };
 
   const handleClearFilter = () => {
     setSelectedRatings([]);
-  };
-
-  const applyFilter = () => {
-    onFilterChange(selectedRatings);
+    onFilterChange([]); // Send an empty array to clear the filter
   };
 
   useEffect(() => {
@@ -61,5 +60,23 @@ const RatingFilter: React.FC<RangeFilterPopupProps> = ({ onFilterChange }) => {
     </div>
   );
 };
+export const mergeCardsByRating = (arraysOfCards: Cards[], selectedRatings: number[]): Cards => {
+  let mergedArray: Cards = { cards: [] }; // Initialize merged array
+
+  selectedRatings.forEach(index => {
+    // Check if the index is within the bounds of arraysOfCards
+    if (index >= 0 && index < arraysOfCards.length) {
+      // Check if arraysOfCards[index] and arraysOfCards[index].cards are defined
+      if (arraysOfCards[index] && arraysOfCards[index].cards) {
+        // Concatenate the cards from arraysOfCards at the given index to the merged array
+        mergedArray.cards = mergedArray.cards.concat(arraysOfCards[index].cards);
+      }
+    }
+  });
+
+  return mergedArray;
+};
+
+
 
 export default RatingFilter;

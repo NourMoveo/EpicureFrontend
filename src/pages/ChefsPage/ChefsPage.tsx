@@ -7,21 +7,37 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { ChefCard, SwiperConfig } from '@/components';
-import ChefsData from '@/data/Chefs';
 import { ChefProps } from "@/models/Types";
+import { newChefs, mostViewedChefs } from "@/data/dataFetcher/dataFetcher";
 
 const menuButtons = [
   { name: "All", label: "All" },
   { name: "New", label: "New" },
-  { name: "MostPopular", label: "Most Viewed" },
+  { name: "Most Viewed", label: "Most Viewed" },
 ];
 
 const ChefsPage = () => {
-  const [activeButton, setActiveButton] = useState("All"); // Set "All" as default
+  const [activeButton, setActiveButton] = useState("All");
 
   const handleClick = (buttonName: string) => {
-    setActiveButton(buttonName === activeButton ? "" : buttonName);
+    if (buttonName !== activeButton) {
+      setActiveButton(buttonName);
+    }
   };
+  
+  const getChefsByButton = (buttonName: string): ChefProps[] => {
+    switch (buttonName) {
+      case "New":
+        return newChefs.chefs;
+      case "Most Viewed":
+        return mostViewedChefs.chefs;
+      default:
+        // Default case returns all chefs
+        return [...newChefs.chefs, ...mostViewedChefs.chefs];
+    }
+  };
+
+  const chefsToShow = getChefsByButton(activeButton);
 
   return (
     <div className="chefs-page">
@@ -43,7 +59,7 @@ const ChefsPage = () => {
       <div className="chefs-card">
         <Fade>
           <Swiper className='swiper' {...SwiperConfig("vertical")}>
-            {ChefsData.chefs.map((chef: ChefProps) => (
+            {chefsToShow.map((chef: ChefProps) => (
               <SwiperSlide className='swiper-slide' key={chef.fName}>
                 <div>
                   <ChefCard chef={chef} />
@@ -52,16 +68,15 @@ const ChefsPage = () => {
             ))}
           </Swiper>
         </Fade>
-          <div className="desktop-section">
-            {ChefsData.chefs.map((chef: ChefProps) => (
-                  <div>
-                    <ChefCard chef={chef} />
-                  </div>
-                ))}
-          </div>
-          </div>
+        <div className="desktop-section">
+          {chefsToShow.map((chef: ChefProps) => (
+            <div key={chef.fName}>
+              <ChefCard chef={chef} />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-
   );
 };
 

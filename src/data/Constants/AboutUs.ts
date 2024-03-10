@@ -1,5 +1,5 @@
-import { AboutUsSec } from "../models/Types";
-import { googleLogo, appleLogo, EpicureFL } from '../assets/Photos'
+import { AboutUsSec } from "../../models/Types";
+import { googleLogo, appleLogo, EpicureFL } from '../../assets/Photos'
 const AboutUsData: AboutUsSec = {
   epicLogo: EpicureFL,
   title: "ABOUT US:",

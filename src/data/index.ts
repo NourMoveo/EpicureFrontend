@@ -1,8 +1,8 @@
-import AboutUsData from './AboutUs'
-import ChefData from './Chef'
-import DishesData from './Dishes'
-import IconsData from './Icons'
-import RestaurantsData from './Restaurants'
-import WeekChefRestauData from './WeekChefRestauData'
+import AboutUsData from './Constants/AboutUs'
+import ChefData from './MockData/Chef'
+import DishesData from './MockData/Dishes'
+import IconsData from './MockData/Icons'
+import RestaurantsData from './MockData/Restaurants'
+import WeekChefRestauData from './MockData/WeekChefRestauData'
 
 export { AboutUsData, ChefData, DishesData, IconsData, RestaurantsData, WeekChefRestauData }

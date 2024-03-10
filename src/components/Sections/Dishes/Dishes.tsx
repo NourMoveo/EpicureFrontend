@@ -1,6 +1,6 @@
 import './Dishes.scss';
 import { CustomCardsSection } from "@/components";
-import {DishesData} from "@/data";
+import {SignatureDishes} from "@/data/dataFetcher/dataFetcher";
 
 /*
 *This file implements a component called "Dishes" that renders a section displaying the signature dishes of Epicure.
@@ -10,7 +10,7 @@ const Dishes = () => {
   return (
     <div className="dishes-container">
       <h2 className="dishes-header">Signature Dishs Of:</h2>
-      <CustomCardsSection cardsData={DishesData} cardType={2} pageType={1} layoutDirection='horizontal'/>
+      <CustomCardsSection cardsData={SignatureDishes} cardType={2} pageType={1} layoutDirection='horizontal'/>
     </div>
   )
 }

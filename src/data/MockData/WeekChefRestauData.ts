@@ -1,5 +1,5 @@
-import { Cards } from "../models/Types";
-import { onzaRestau ,KitchenMarket,Mashya} from "../assets/Photos";
+import { Cards } from "../../models/Types";
+import { onzaRestau ,KitchenMarket,Mashya} from "../../assets/Photos";
 
 const WeekChefRestauData: Cards = {
   cards: [

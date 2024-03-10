@@ -4,22 +4,25 @@ import { ReactNode } from 'react';
 
 export type CardProps = {
   // common
-  title: string;
+  title?: string;
   image: string;
   customClass?: string;
   children?:ChildNode;
-    description: string;
+    description?: string;
     // restaurants
-    rating?: string;
+    rating?: number;
     dishes?: Cards;
     open?: Date; // Regular opening time
     close?: Date; // Regular closing time
     maxPrice?: Number;
     minPrice?:Number;
+    distance?:Number;
     // dish
     foodIcon?: string;
     price?: Number;
-    MealType?: MealType;
+    MealType?: DishType;
+    isSignature?:boolean;
+    
 
 };
 
@@ -30,6 +33,12 @@ export type Cards = {
 };
 
 export enum MealType {
+  Breakfast = "Breakfast",
+  Lunch = "Lunch",
+  Dinner = "Dinner"
+}
+
+export enum DishType {
   Breakfast = "Breakfast",
   Lunch = "Lunch",
   Dinner = "Dinner"
@@ -70,6 +79,7 @@ export type ChefWeekProps = {
     lName: string,
     image: string,
     description: string;
+    restaurants:Cards;
   };
 };
 
@@ -92,4 +102,5 @@ export type ChefProps = {
   lName: string;
   image: string;
   description: string;
+  restaurants:Cards;
 };

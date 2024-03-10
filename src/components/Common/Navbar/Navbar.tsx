@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   HamburMenu,
   LogoWithoutName,
@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
   const [isBagPopupOpen, setIsBagPopupOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,6 +31,19 @@ const Navbar: React.FC = () => {
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
+        closePopups();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const togglePopup = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
@@ -53,7 +67,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="navbar-container">
+    <header className="navbar-container" ref={navbarRef}>
       {(isMenuPopupOpen || isSearchPopupOpen) && !isDesktop && (
         <div className="sub-navbar">
           <button
