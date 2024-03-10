@@ -15,6 +15,7 @@
     "classnames": "^2.5.1",
     "framer-motion": "^11.0.3",
     "i": "^0.3.7",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-awesome-reveal": "^4.2.8",
@@ -24,6 +25,7 @@
     "swiper": "^11.0.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.17",
     "@types/react": "^18.2.55",
     "@types/react-anchor-link-smooth-scroll": "^1.0.2",

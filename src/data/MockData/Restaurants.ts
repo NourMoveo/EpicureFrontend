@@ -89,11 +89,41 @@
 // };
 
 // export default RestaurantsData;
-import { Cards } from "../../models/Types";
+import { Cards, CardProps } from "../../models/Types";
 import { allRestaurants, newRestaurants, openNowRestaurants, popularRestaurants } from "../dataFetcher/dataFetcher";
 
 // Assuming `Cards` contains an array of `CardProps`
 const RestaurantsData: Cards = allRestaurants;
+
+function getMinMaxPrice(restaurants: Cards): { minAllPrice: Number, maxAllPrice: Number } {
+    let minAllPrice: Number = Infinity;
+    let maxAllPrice:Number = -Infinity;
+
+    for (const restaurant of restaurants.cards) {
+        // Check if the restaurant has a price
+        if (restaurant.minPrice !== undefined && restaurant.maxPrice !== undefined) {
+            if (restaurant.minPrice < minAllPrice) {
+                minAllPrice = restaurant.minPrice;
+            }
+            if (restaurant.maxPrice > maxAllPrice) {
+                maxAllPrice = restaurant.maxPrice;
+            }
+        }
+    }
+
+    // If no price information found, set default values
+    if (minAllPrice === Infinity) {
+        minAllPrice = 0;
+    }
+    if (maxAllPrice === -Infinity) {
+        maxAllPrice = 0;
+    }
+
+    return { minAllPrice, maxAllPrice };
+}
+
+const { minAllPrice, maxAllPrice } = getMinMaxPrice(RestaurantsData);
+
 
 function groupRestaurantsByRating(restaurants: Cards): Cards[] {
     const RestaurantRatingGroup: Cards[] = [];
@@ -116,13 +146,29 @@ function groupRestaurantsByRating(restaurants: Cards): Cards[] {
     return RestaurantRatingGroup;
 }
 
+function filterRestaurantsByPriceRange(minimum: Number, maximum: Number, restaurants: Cards): Cards {
+    const filteredRestaurants: CardProps[] = [];
+
+    for (const restaurant of restaurants.cards) {
+        // Check if the restaurant has price information
+        if (restaurant.minPrice !== undefined && restaurant.maxPrice !== undefined) {
+            // Check if the restaurant's minimum price is greater than the received minimum or if the maximum price is less than the received maximum
+            if (restaurant.minPrice > minimum || restaurant.maxPrice < maximum) {
+                filteredRestaurants.push(restaurant);
+            }
+        }
+    }
+
+    return { cards: filteredRestaurants };
+}
+
 const AllRestaurantsGroupedByRating: Cards[] = groupRestaurantsByRating(RestaurantsData);
 const NewRestaurantsGroupedByRating: Cards[] = groupRestaurantsByRating(newRestaurants);
 const OpenNowRestaurantsGroupedByRating: Cards[] = groupRestaurantsByRating(openNowRestaurants);
 const PopularRestaurantsGroupedByRating: Cards[] = groupRestaurantsByRating(popularRestaurants);
 
 export {
-    AllRestaurantsGroupedByRating,NewRestaurantsGroupedByRating,OpenNowRestaurantsGroupedByRating, PopularRestaurantsGroupedByRating
+    AllRestaurantsGroupedByRating,NewRestaurantsGroupedByRating,OpenNowRestaurantsGroupedByRating, PopularRestaurantsGroupedByRating,filterRestaurantsByPriceRange,minAllPrice, maxAllPrice
 
 }
 

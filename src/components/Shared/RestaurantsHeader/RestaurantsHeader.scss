@@ -118,7 +118,9 @@
     &:hover {
       background-color: rgba(0, 0, 0, 0.15);
     }
-  
+    &.active{
+      background-color: rgba(0, 0, 0, 0.15);
+    }
   
     @keyframes fadeInUp {
       from {

@@ -1,0 +1,10 @@
+.route {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .outlet {
+    flex-grow: 1;
+  }
+}

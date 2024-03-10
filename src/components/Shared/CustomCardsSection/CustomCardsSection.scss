@@ -87,7 +87,7 @@
       display: flex;
       align-items: flex-end;
       flex-direction: row;
-      margin-top: 1.8vw;
+      margin-top: 1vw;
       margin-left: 56vw;
       .all-restaurants {
         display: flex;
@@ -99,6 +99,7 @@
           font-weight: 400;
           line-height: 3.4vw;
           letter-spacing:0.2vw;
+          margin-right: 1vw;
           text-transform: capitalize;
         }
 

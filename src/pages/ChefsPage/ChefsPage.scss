@@ -1,6 +1,7 @@
 @import "../../themes/mixins";
 
 .chefs-page {
+
   .chefs-title {
     @include titles_style;
     letter-spacing: 0.3vw;
@@ -54,6 +55,7 @@
 @include desktop {
 
   .chefs-page {
+    padding-bottom: 5vw;
     .chefs-title {
       display: none;
     }
@@ -94,10 +96,12 @@
         display: grid; 
         grid-template-columns: repeat(3, 1fr); 
         grid-template-rows: repeat(3, auto); 
-        gap: 1vw; 
+        row-gap:2.778vw; 
+        column-gap: 1.667vw;
         width: 83.5vw;
-        height: 83.3vw; 
-        overflow-y: auto; 
+        // height: 83.3vw; 
+        // margin-bottom: 3vw;
+        // overflow-y: auto; 
       }
       .swiper {
         @include desktop {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./RestaurantsHeader.scss";
 import { DownArrow } from "../../../assets/Photos";
 import { MultiRangeSlider, SingleDistanceSlider, RangeFilter } from "../../../components";
-
+import {minAllPrice, maxAllPrice } from "@/data/MockData/Restaurants";
 const buttonsData = [
   { name: "All", label: "All" },
   { name: "New", label: "New" },
@@ -132,8 +132,8 @@ const RestaurantsHeader = ({ onButtonClick, onAdditionalButtonClick }) => {
       </div>
       {isPriceRangeOpen && (
         <MultiRangeSlider
-          min={12}
-          max={357}
+          min={minAllPrice}
+          max={maxAllPrice}
           onChange={({ min, max }) => {}}
           isOpen={isPriceRangeOpen}
           togglePopup={() => togglePopup(setIsPriceRangeOpen)}

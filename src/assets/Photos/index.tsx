@@ -29,6 +29,7 @@ import FourStarsIcon from './Icons/FourStarsRating.svg';
 import ThreeStarsIcon from './Icons/ThreeStarsRating.svg';
 import DownArrow from './Icons/DownArrow.svg'
 import ClockIcon from './Icons/clock.svg';
+import LoadingGif from './Icons/loadingGif.gif';
 // Restau
 import onzaRestau from './Restaurants/Onza.png';
 import claroRestau from './Restaurants/Claro.png';
@@ -66,6 +67,7 @@ export {
   FourStarsIcon,
   ThreeStarsIcon,
   DownArrow,
+  LoadingGif,
   
   // Restau
   onzaRestau,
