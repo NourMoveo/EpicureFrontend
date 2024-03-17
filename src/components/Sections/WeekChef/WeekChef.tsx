@@ -1,7 +1,7 @@
 import './WeekChef.scss'
 import { ChefWeekProps } from "@/models/Types";
-import { CustomCardsSection } from "@/components";
-import { WeekChefRestauData } from "@/data";
+// import { CustomCardsSection } from "@/components";
+// import { WeekChefRestauData } from "@/data";
 
 /**
  * This component renders the details of the Chef of the week along with their image and description,
@@ -26,8 +26,7 @@ const WeekChef: React.FC<ChefWeekProps> = ({ chefDetails }) => {
         </div>
         <h2 className='WeekChef-text'>{chefDetails.fName}’s Restaurants</h2>
       </div>
-      <CustomCardsSection cardsData={WeekChefRestauData} cardType={3} pageType={1} layoutDirection='horizontal'/>
-    </>
+ </>
   );
 };
 

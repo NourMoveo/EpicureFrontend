@@ -4,10 +4,10 @@ import { ReactNode } from 'react';
 
 export type CardProps = {
   // common
+  id?:string;
   title?: string;
   image: string;
   customClass?: string;
-  children?:ChildNode;
     description?: string;
     // restaurants
     rating?: number;
@@ -22,6 +22,8 @@ export type CardProps = {
     price?: Number;
     MealType?: DishType;
     isSignature?:boolean;
+    dishSides?: string[];
+    changes?: string[];
     
 
 };

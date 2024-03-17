@@ -25,6 +25,7 @@ export const transformChefsData = async (data: DBChef[]): Promise<ChefsProps> =>
       const restaurants = await transformRestaurantsById(chef.restaurants);
       return {
         chefs: [{
+          id:chef._id,
           fName: chef.fName,
           lName: chef.lName,
           image: chef.image,
@@ -45,6 +46,7 @@ export const transformChefsData = async (data: DBChef[]): Promise<ChefsProps> =>
 export const transformDishesData = (data:  DBDish[]): Promise<Cards> => {
   const cardPromises = data.map(async (dish) => {
     return {
+      id: dish._id,
       title: dish.title,
       image: dish.image,
       description: dish.ingredients,
@@ -52,6 +54,8 @@ export const transformDishesData = (data:  DBDish[]): Promise<Cards> => {
       price: dish.price,
       isSignature: dish.isSignature,
       type: dish.type,
+      dishSides: dish.dishSides,
+      changes: dish.changes,
     };
   });
 
@@ -63,6 +67,7 @@ export const transformRestaurantsData = (data: DBRestaurant[]): Promise<Cards> =
     const dishes = await transformRestaurantDishesById(restaurant.dishes);
     const chef = await transformChefById(restaurant.chef);
     return {
+      id:restaurant._id,
       title: restaurant.title,
       image: restaurant.image,
       description: chef.fName+" "+chef.lName,
@@ -98,7 +103,7 @@ const transformRestaurantDishesById = async (dishIds: string[]): Promise<Cards> 
 };
 
 
-const transformRestaurantsById = async (restaurantIds: string[]): Promise<Cards> => {
+export const transformRestaurantsById = async (restaurantIds: string[]): Promise<Cards> => {
   try {
     const restaurantRequests = restaurantIds.map((restaurantId) => {
       return apiService.get<DBRestaurant>(`/restaurants/${restaurantId}`);

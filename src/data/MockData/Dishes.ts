@@ -82,9 +82,9 @@
 // export default DishesData;
 
 
-import { Cards } from "../../models/Types";
-import { PadKiMao,GarbanzoFrito,SmokedPizza, SpicyFoodIcon,VeganIcon } from '../../assets/Photos';
-import {SignatureDishes} from "../dataFetcher/dataFetcher";
+// import { Cards } from "../../models/Types";
+// import { PadKiMao,GarbanzoFrito,SmokedPizza, SpicyFoodIcon,VeganIcon } from '../../assets/Photos';
+// import {SignatureDishes} from "../dataFetcher/dataFetcher";
 
-const DishesData: Cards = SignatureDishes;
-export default DishesData;
+// const DishesData: Cards = SignatureDishes;
+// export default DishesData;

@@ -24,16 +24,3 @@ export const fetchAllData = async <T, U>(
 
 
 
-export const allRestaurants: Cards = await fetchAllData<DBRestaurant, Cards>("/restaurants", transformRestaurantsData);
-export const popularRestaurants: Cards = await fetchAllData<DBRestaurant, Cards>("/restaurants/popular", transformRestaurantsData);
-export const newRestaurants: Cards = await fetchAllData<DBRestaurant, Cards>("/restaurants/new", transformRestaurantsData);
-export const openNowRestaurants: Cards = await fetchAllData<DBRestaurant, Cards>("/restaurants/open-now", transformRestaurantsData);
-
-export const allChefs: ChefsProps = await fetchAllData<DBChef, ChefsProps>("/chefs", transformChefsData);
-
-export const chefOfTheWeek: ChefsProps = await fetchAllData<DBChef, ChefsProps>("/chefs/chef-of-the-week", transformChefsData);
-export const mostViewedChefs: ChefsProps = await fetchAllData<DBChef, ChefsProps>("/chefs/most-viewed", transformChefsData);
-export const newChefs: ChefsProps = await fetchAllData<DBChef, ChefsProps>("/chefs/new", transformChefsData);
-
-export const allDishes: Cards = await fetchAllData<DBDish, Cards>("/dishes", transformDishesData);
-export const SignatureDishes: Cards = await fetchAllData<DBDish, Cards>("/dishes/signature", transformDishesData);

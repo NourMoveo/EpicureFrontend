@@ -1,8 +1,9 @@
-import  RestaurantsPage  from "./RestaurantsPage/RestaurantsPage";
+// import  RestaurantsPage  from "./Resta÷urantsPage/RestaurantsPage";
 import  HomePage  from "./HomePage/HomePage";
-import  ChefsPage  from "./ChefsPage/ChefsPage";
+// import  ChefsPage  from "./ChefsPage/ChefsPage";
 
 
 export{
-    RestaurantsPage,HomePage,ChefsPage
+    HomePage,
+    // RestaurantsPage,ChefsPage
 };

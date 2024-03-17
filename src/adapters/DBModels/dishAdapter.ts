@@ -10,6 +10,8 @@ export interface DBDish {
   restaurant: string;
   isSignature:boolean;
   type:string;
+  dishSides: string[];
+  changes: string[];
 }
 
 class DishAdapter {
@@ -17,6 +19,10 @@ class DishAdapter {
 
   async getAllDishes(): Promise<DBDish[]> {
     const response = await apiService.get<DBDish[]>(`${DishAdapter.endpoint}`);
+    return response.data;
+  }
+  async getSignatureDishes(): Promise<DBDish[]> {
+    const response = await apiService.get<DBDish[]>(`${DishAdapter.endpoint}/signature`);
     return response.data;
   }
 }

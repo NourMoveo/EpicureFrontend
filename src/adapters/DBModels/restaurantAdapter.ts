@@ -20,6 +20,10 @@ class RestaurantAdapter {
     const response = await apiService.get<DBRestaurant[]>(`${RestaurantAdapter.endpoint}`);
     return response.data;
   }
+  async getPopularRestaurants(): Promise<DBRestaurant[]> {
+    const response = await apiService.get<DBRestaurant[]>(`${RestaurantAdapter.endpoint}`);
+    return response.data;
+  }
 }
 
 export const restaurantAdapter = new RestaurantAdapter();

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./RestaurantsHeader.scss";
 import { DownArrow } from "../../../assets/Photos";
 import { MultiRangeSlider, SingleDistanceSlider, RangeFilter } from "../../../components";
-import {minAllPrice, maxAllPrice } from "@/data/MockData/Restaurants";
+// import {minAllPrice, maxAllPrice } from "@/data/MockData/Restaurants";
 const buttonsData = [
   { name: "All", label: "All" },
   { name: "New", label: "New" },
@@ -25,7 +25,8 @@ const RestaurantsHeader = ({ onButtonClick, onAdditionalButtonClick }) => {
   const [activeAdditionalButton, setActiveAdditionalButton] = useState(null);
   const [lastClickedButton, setLastClickedButton] = useState(null);
   const popupsRef = useRef(null);
-
+  const minAllPrice=100;
+  const maxAllPrice =10;
   useEffect(() => {
     onButtonClick(activeButton);
     document.addEventListener("click", handleOutsideClick);

@@ -1,18 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { CardProps, Cards } from "@/models/Types";
-import RestaurantData from "@/data/MockData/Restaurants";
+// import RestaurantData from "@/data/MockData/Restaurants";
 import { ClockIcon } from "@/assets/Photos";
 import "./RestaurantDetails.scss";
 import { CustomCardsSection } from "@/components";
-
+import { RootState } from "@/redux/store/store";
 const RestaurantDetails: React.FC = () => {
   const { title = "" } = useParams<{ title?: string }>();
 
-  // Find the restaurant with the given title
-  const restaurant: CardProps | undefined = RestaurantData.cards.find(
-    (r: CardProps) => r.title === decodeURIComponent(title)
-  );
+  const dispatch = useDispatch();
+  const restaurant = useSelector((state: RootState) => state.homePage.selectedCard);
+
 
   // Function to get the status of the restaurant (open or closed)
   const getStatus = (): string => {
@@ -29,7 +29,7 @@ const RestaurantDetails: React.FC = () => {
 
   // Function to filter dishes based on meal type
   const getDishesByType = (type: string, dishesData: CardProps[]): Cards => {
-    const filteredDishes = dishesData.filter((dish) => dish.type === type);
+    const filteredDishes = dishesData.filter((dish) => dish.MealType === type);
     return { cards: filteredDishes };
   };
 

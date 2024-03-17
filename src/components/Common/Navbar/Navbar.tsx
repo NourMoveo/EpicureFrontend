@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
                 <input
                   className="search-input"
                   type="text"
-                  placeholder="Search for restaurant cuisine, chef"
+                  placeholder="Search for restaurant, cuisine and chef"
                 />
                 <img className="navbar-icon" src={SearchIcon} alt="Search" />
               </div>
@@ -132,12 +132,17 @@ const Navbar: React.FC = () => {
             />
           )}
           <img className="navbar-icon" src={UserIcon} alt="User Account" />
+
           <img
             className="navbar-icon"
             src={BagIcon}
             alt="Shopping Bag"
             onClick={handleBagIconClick}
           />
+          <span className="bag-quantity">
+            <span>3</span>
+          </span>
+
         </div>
       </div>
       {isMenuPopupOpen && (

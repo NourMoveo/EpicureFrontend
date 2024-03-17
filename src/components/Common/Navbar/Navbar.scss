@@ -46,6 +46,23 @@
   height: 6.9vw;
   width: auto;
 }
+.nav-bag{
+  display: flex;
+  align-items: center;
+}
+.bag-quantity {
+  position: absolute;
+  top: 1vw;
+  left: 87.5vw;
+  font-family: "Helvetica Neue";
+  color: black;
+  font-weight: 106.667vw;
+  font-size: 2.133vw;
+  color: white;
+  background-color: black;
+  padding: 0.533vw 1.067vw 1.067vw 1.333vw;
+  border-radius: 50vw;
+}
 
 .desktop-searchbar,
 .animated-search-bar,
@@ -157,6 +174,19 @@ button.exit-icon{
         margin-top: 0.5vw;
         margin-right: 1.8vw;
         height: 1.8vw;
+      }
+      .bag-quantity {
+        position: absolute;
+        top: 0.5vw;
+        left: 88.5vw;
+        font-family: "Helvetica Neue";
+        color: black;
+        font-weight: 106.667vw;
+        font-size: 1vw;
+        color: white;
+        background-color: black;
+        padding: 0.3vw 0.65vw 0.3vw 0.65vw;
+        border-radius: 50vw;
       }
     }
 
