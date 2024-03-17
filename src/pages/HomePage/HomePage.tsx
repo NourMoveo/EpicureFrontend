@@ -7,10 +7,10 @@ import { IconsData } from "../../data";
 import { CustomCardsSection } from "@/components";
 import { Cards } from '@/models/Types';
 import { LoadingGif } from "../../assets/Photos";
-
+import "./HomePage.scss"
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [isLoading, setIsLoading] = useState(true); // State to manage loading state
+  const [isLoading, setIsLoading] = useState(true);
 
   const { popularRestaurants, signatureDishes, chefOfTheWeek } = useSelector(
     (state: RootState) => state.homePage
@@ -25,22 +25,21 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    // Dispatch action to fetch home page data
     dispatch(fetchHomePageData())
       .then(() => {
-        setIsLoading(false); // Set loading to false when data is fetched
+        setIsLoading(false); 
       })
       .catch((error) => {
         console.error("Error fetching home page data:", error);
-        setIsLoading(false); // Set loading to false in case of error
+        setIsLoading(false); 
       });
   }, [dispatch]);
 
   return (
     <>
-      {isLoading ? ( // Show loading spinner while data is being fetched
+      {isLoading ? ( 
         <div className="loading-spinner">
-          <img src={LoadingGif} alt="Loading..." />
+          <img className="loading" src={LoadingGif} alt="Loading..." />
         </div>
       ) : (
         <>

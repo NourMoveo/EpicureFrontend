@@ -1,5 +1,3 @@
-import { CustomCardsSection } from "@/components";
-// import { RestaurantsData } from "@/data";
 import "./Restaurants.scss";
 /*
  *responsible for rendering a section displaying popular restaurants within the Epicure application. 

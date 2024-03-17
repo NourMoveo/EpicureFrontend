@@ -1,0 +1,24 @@
+@import "../../themes/mixins";
+@import "../../themes/variables";
+
+.loading-spinner {
+  position: relative;
+  top: 65vw;
+  left: 35vw;
+  margin-bottom: 130vw;
+  .loading {
+    width: 30vw;
+    height: auto;
+  }
+}
+@include desktop {
+  .loading-spinner {
+    left: 41vw;
+    top: 10vw;
+    margin-bottom: 20vw;
+    .loading {
+      width: 15vw;
+      height: auto;
+    }
+  }
+}
