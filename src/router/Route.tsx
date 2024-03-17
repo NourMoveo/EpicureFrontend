@@ -1,5 +1,5 @@
 import { createBrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomePage,RestaurantsPage} from '../pages'; // Import RestaurantDetails component
+import { HomePage,RestaurantsPage , ChefsPage} from '../pages'; // Import RestaurantDetails component
 import { Navbar, Footer } from '../components';
 import { Outlet } from "react-router-dom";
 
@@ -21,10 +21,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <HomePage />
       },
-      // {
-      //   path: '/chefs',
-      //   element: <ChefsPage/>
-      // },
+      {
+        path: '/chefs',
+        element: <ChefsPage/>
+      },
       {
         path: '/restaurants',
         element: <RestaurantsPage />
