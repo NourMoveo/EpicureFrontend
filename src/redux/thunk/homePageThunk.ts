@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { Cards, ChefsProps ,CardProps} from "../../models/Types";
+import { Cards, ChefsProps} from "../../models/Types";
 import { restaurantAdapter } from "../../adapters/DBModels/restaurantAdapter";
 import { dishAdapter } from "../../adapters/DBModels/dishAdapter";
 import { chefAdapter } from "../../adapters/DBModels/chefAdapter";

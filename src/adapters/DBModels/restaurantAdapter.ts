@@ -21,7 +21,19 @@ class RestaurantAdapter {
     return response.data;
   }
   async getPopularRestaurants(): Promise<DBRestaurant[]> {
-    const response = await apiService.get<DBRestaurant[]>(`${RestaurantAdapter.endpoint}`);
+    const response = await apiService.get<DBRestaurant[]>(`${RestaurantAdapter.endpoint}/popular`);
+    return response.data;
+  }
+  async getNewRestaurants(): Promise<DBRestaurant[]> {
+    const response = await apiService.get<DBRestaurant[]>(`${RestaurantAdapter.endpoint}/new`);
+    return response.data;
+  }
+  async getOpenNowRestaurants(): Promise<DBRestaurant[]> {
+    const response = await apiService.get<DBRestaurant[]>(`${RestaurantAdapter.endpoint}/open-now`);
+    return response.data;
+  }
+  async groupRestaurantsByRating(): Promise<DBRestaurant[][]> {
+    const response = await apiService.get<DBRestaurant[][]>(`${RestaurantAdapter.endpoint}/group-by-rating`);
     return response.data;
   }
 }

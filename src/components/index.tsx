@@ -9,7 +9,6 @@ import IconsMeaning from "./Sections/IconsMeaning/IconsMeaning";
 import Restaurants from "./Sections/Restaurants/Restaurants";
 import WeekChef from "./Sections/WeekChef/WeekChef";
 import AboutUs from "./Sections/AboutUs/AboutUs"
-import RestaurantDetails from './Sections/RestaurantDetails/RestaurantDetails';
 
 // Shared Components
 import CustomCard from "./Shared/CustomCard/CustomCard";
@@ -32,7 +31,7 @@ import RatingComponent from './SVGFiles/RatingSVG/RatingSVG'
 export {
     SearchPopup,MenuPopup,ShoppingBagPopup,
     Navbar,Footer,
-    Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs, RestaurantDetails,
+    Dishes, Hero, IconsMeaning, Restaurants, WeekChef, AboutUs,
     CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig ,MultiRangeSlider,SingleDistanceSlider,
     RatingComponent,RangeFilter,ChefCard,
 };
