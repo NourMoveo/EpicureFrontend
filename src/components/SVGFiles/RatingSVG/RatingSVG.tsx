@@ -1,5 +1,6 @@
 import React from 'react';
 import './RatingSVG.scss'
+
 const StarSVG = ({ filled }: { filled: boolean }): JSX.Element => (
     <svg
         width="20"
@@ -20,7 +21,9 @@ const RatingComponent: React.FC<{ number: number }> = ({ number }) => {
     return (
         <div className='svg-stars'>
             {[...Array(5)].map((_, index) => (
-                <div className="svg-star"><StarSVG  key={index} filled={index < number} /></div>
+                <div key={index} className="svg-star">
+                    <StarSVG filled={index < number} />
+                </div>
             ))}
         </div>
     );

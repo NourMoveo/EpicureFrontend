@@ -176,72 +176,6 @@
       }
     }
 
-    &.restaurant-page {
-      width: 89vw;
-      height: 100vw;
-      margin-left: 0;
-      margin-bottom: 6.75vw;
-
-      .line-dish {
-        margin-left: 12vw;
-        margin-top: -1.2vw;
-        width: 68vw;
-        height: 0.02vw;
-        background: $primary-grey-color;
-        align-self: center;
-      }
-
-      .image-container {
-        .card-image {
-          width: 100%;
-          height: 55.5vw;
-          object-fit: cover;
-        }
-      }
-
-      .card-content {
-        padding-left: 4.3vw;
-
-        .card-title {
-          font-size: 4.8vw;
-          font-weight: 700;
-          letter-spacing: 0.72vw;
-        }
-
-        .description-rating {
-          display: flex;
-          flex-direction: column;
-
-          .description {
-            margin-right: 8vw;
-
-            .card-description {
-              margin: 0;
-              font-size: 4.3vw;
-              line-height: 5.4vw;
-              letter-spacing: 0.53vw;
-            }
-          }
-        }
-
-        .price-foodIcon-container {
-          .price-foodIcon {
-            .food-icon {
-              display: none;
-            }
-
-            .card-price {
-              .value-logo-container {
-                .price-value {
-                  font-size: 5.3vw;
-                }
-              }
-
-            }
-          }
-        }
-      }
-    }
   }
 
 
@@ -583,9 +517,9 @@
       &.restaurant-card {
         width: 26.3vw;
         height: 28.1vw;
-        margin-bottom: 6.75vw;
+        margin-bottom: 0vw;
         margin: 0;
-
+        
         .image-container {
           .card-image {
             width: 100%;

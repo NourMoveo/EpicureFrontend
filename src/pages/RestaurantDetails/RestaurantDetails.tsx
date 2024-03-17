@@ -6,7 +6,7 @@ import { CardProps, Cards } from "@/models/Types";
 import { ClockIcon } from "@/assets/Photos";
 import "./RestaurantDetails.scss";
 import { CustomCardsSection } from "@/components";
-import { RootState } from "@/redux/store/store";
+import { RootState } from "@/redux/store";
 const RestaurantDetails: React.FC = () => {
   const { title = "" } = useParams<{ title?: string }>();
 

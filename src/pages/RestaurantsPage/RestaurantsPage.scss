@@ -2,6 +2,7 @@
 @import "../../themes/variables";
 // Restaurants.scss
 .restaurants-page{
+  height: 100%;
 .restaurant-header {
   @include titles_style;
   letter-spacing: 0.3vw;
@@ -20,13 +21,23 @@
     height: 40.5vw;
   }
 }
+.no-data{
+  @include font-style;
+  margin-left: 8.5vw;
+  font-size: 3.5vw;
+}
 }
 @include desktop{
+  
   .restaurants-page{
+    height: 150vh;
+    height: 75vw;
       .restaurant-header{
     display: none;
   }
-
+  .no-data{
+    font-size: 1vw;
+  }
   }
   
 

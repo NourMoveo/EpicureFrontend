@@ -1,6 +1,6 @@
 import { createBrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomePage,} from '../pages'; // Import RestaurantDetails component
-import { Navbar, Footer, RestaurantDetails } from '../components';
+import { HomePage,RestaurantsPage} from '../pages'; // Import RestaurantDetails component
+import { Navbar, Footer } from '../components';
 import { Outlet } from "react-router-dom";
 
 function Layout() {
@@ -25,10 +25,10 @@ const router = createBrowserRouter([
       //   path: '/chefs',
       //   element: <ChefsPage/>
       // },
-      // {
-      //   path: '/restaurants',
-      //   element: <RestaurantsPage />
-      // },
+      {
+        path: '/restaurants',
+        element: <RestaurantsPage />
+      },
       // {
       //   path: '/restaurant/:title' ,
       //   element: < RestaurantDetails />

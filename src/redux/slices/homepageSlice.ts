@@ -13,7 +13,7 @@ const initialState: HomePageState = {
   popularRestaurants: { cards: [] },
   signatureDishes: { cards: [] },
   chefOfTheWeek: {
-    chefs:[]
+    chefs: []
   },
   selectedCard: null,
 };
@@ -30,6 +30,9 @@ const homePageSlice = createSlice({
     },
     setChefOfTheWeekData(state, action: PayloadAction<ChefsProps>) {
       state.chefOfTheWeek = action.payload;
+    },
+    setSelectedCard(state, action: PayloadAction<CardProps | null>) {
+      state.selectedCard = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -38,9 +41,9 @@ const homePageSlice = createSlice({
       state.signatureDishes = action.payload.signatureDishes;
       state.chefOfTheWeek = action.payload.chefOfTheWeek;
     });
-  },
+  }
 });
 
-export const { setPopularRestaurantsData, setSignatureDishesData, setChefOfTheWeekData,  } = homePageSlice.actions;
+export const { setPopularRestaurantsData, setSignatureDishesData, setChefOfTheWeekData, setSelectedCard } = homePageSlice.actions;
 
 export default homePageSlice.reducer;

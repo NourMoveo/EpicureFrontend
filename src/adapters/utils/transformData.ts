@@ -103,11 +103,16 @@ const transformRestaurantDishesById = async (dishIds: string[]): Promise<Cards> 
 };
 
 
-export const transformRestaurantsById = async (restaurantIds: string[]): Promise<Cards> => {
+export const transformRestaurantsById = async (restaurantIds: string[] | undefined): Promise<Cards> => {
   try {
+    if (!restaurantIds || restaurantIds.length === 0) {
+      return { cards: [] };
+    }
+
     const restaurantRequests = restaurantIds.map((restaurantId) => {
       return apiService.get<DBRestaurant>(`/restaurants/${restaurantId}`);
     });
+
     const restaurantResponses = await Promise.all(restaurantRequests);
     const restaurantsData: DBRestaurant[] = restaurantResponses.map((response) => response.data);
     const transformedRestaurantsData: Cards = await transformRestaurantsData(restaurantsData);

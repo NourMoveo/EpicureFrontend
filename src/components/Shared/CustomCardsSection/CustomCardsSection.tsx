@@ -54,8 +54,8 @@ const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: 
       <Fade>
         <div className={`cards-section ${className}`}>
           <Swiper className='swiper' {...SwiperConfig(layoutDirection)}>
-            {cardsData.cards.map((card: CardProps, index: number) => (
-              <SwiperSlide className='swiper-slide' key={card.title}>
+            {cardsData.cards.map((card: CardProps) => (
+              <SwiperSlide className='swiper-slide' key={card.id}> {/* Assuming 'id' is the unique identifier */}
                 <div onClick={() => cardType === CardType.DishType}>
                   <CustomCard {...card} customClass={className} />
                 </div>
@@ -67,12 +67,12 @@ const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: 
             {/* Conditionally render only three cards on the home page */}
             {showOnlyThreeCards
               ? cardsData.cards.slice(0, 3).map((card: CardProps) => (
-                  <div onClick={() => cardType === CardType.DishType}>
+                  <div key={card.id} onClick={() => cardType === CardType.DishType}>
                     <CustomCard {...card} customClass={className} />
                   </div>
                 ))
               : cardsData.cards.map((card: CardProps) => (
-                  <div onClick={() => cardType === CardType.DishType}>
+                  <div key={card.id} onClick={() => cardType === CardType.DishType}>
                     <CustomCard {...card} customClass={className} />
                   </div>
                 ))}

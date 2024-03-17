@@ -7,7 +7,7 @@ interface RestaurantsPageState {
   newRestaurants: Cards;
   popularRestaurants: Cards;
   openNowRestaurants: Cards;
-  selectedButton:string | "All";
+  selectedButton:string | " ";
 
 }
 
@@ -16,7 +16,7 @@ const initialState: RestaurantsPageState = {
   newRestaurants: { cards: [] },
   popularRestaurants: { cards: [] },
   openNowRestaurants: { cards: [] },
-  selectedButton: "All",
+  selectedButton: " ",
 };
 
 const restaurantsPageSlice = createSlice({
@@ -24,25 +24,25 @@ const restaurantsPageSlice = createSlice({
   initialState,
   reducers: {
     setAllRestaurantsData(state, action: PayloadAction<Cards>) {
-        state.popularRestaurants = action.payload;
+        state.allRestaurants = action.payload;
       },
       setNewRestaurantsData(state, action: PayloadAction<Cards>) {
-        state.popularRestaurants = action.payload;
+        state.newRestaurants = action.payload;
       },
       setPopularRestaurantsData(state, action: PayloadAction<Cards>) {
         state.popularRestaurants = action.payload;
       },
       setOpenNowRestaurantsData(state, action: PayloadAction<Cards>) {
-        state.popularRestaurants = action.payload;
+        state.openNowRestaurants= action.payload;
       },
 
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRestaurantsPageData.fulfilled, (state, action) => {
-        state.allRestaurants = action.payload.popularRestaurants;
-        state.newRestaurants = action.payload.popularRestaurants;
+        state.allRestaurants = action.payload.allRestaurants;
+        state.newRestaurants = action.payload.newRestaurants;
         state.popularRestaurants = action.payload.popularRestaurants;
-        state.openNowRestaurants = action.payload.popularRestaurants;
+        state.openNowRestaurants = action.payload.openNowRestaurants;
     });
   },
 });

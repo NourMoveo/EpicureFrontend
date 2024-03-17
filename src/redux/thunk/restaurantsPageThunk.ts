@@ -11,7 +11,7 @@ interface RestaurantsPageData {
   
   
 }
-export const fetchRestaurantsPageData = createAsyncThunk("restaurantPage/fetchData", async (): Promise<RestaurantsPageData> => {
+export const fetchRestaurantsPageData = createAsyncThunk("restaurantsPage/fetchData", async (): Promise<RestaurantsPageData> => {
     const allRestaurantsData = await restaurantAdapter.getAllRestaurants();
     const newRestaurantsData = await restaurantAdapter.getNewRestaurants();
     const popularRestaurantsData = await restaurantAdapter.getPopularRestaurants();

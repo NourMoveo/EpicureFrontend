@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import homePageReducer from "../slices/homepageSlice";
+import homePageReducer from "../slices/homePageSlice";
 import restaurantsPageReducer from "../slices/restaurantsPageSlice";
 
 export const store = configureStore({

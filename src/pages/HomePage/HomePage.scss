@@ -11,6 +11,11 @@
     height: auto;
   }
 }
+.no-data{
+  @include font-style;
+  margin-left: 8.5vw;
+  font-size: 3.5vw;
+}
 @include desktop {
   .loading-spinner {
     left: 41vw;
@@ -20,5 +25,8 @@
       width: 15vw;
       height: auto;
     }
+  }
+  .no-data{
+    font-size: 1vw;
   }
 }
