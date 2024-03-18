@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { Cards, ChefsProps} from "../../models/Types";
+import { CardProps, Cards, ChefsProps} from "../../models/Types";
 import { restaurantAdapter } from "../../adapters/DBModels/restaurantAdapter";
 import { dishAdapter } from "../../adapters/DBModels/dishAdapter";
 import { chefAdapter } from "../../adapters/DBModels/chefAdapter";
@@ -16,11 +16,12 @@ export const fetchHomePageData = createAsyncThunk("homePage/fetchData", async ()
     const popularRestaurantsData = await restaurantAdapter.getPopularRestaurants();
     const signatureDishesData = await dishAdapter.getSignatureDishes();
     const chefOfTheWeekData = await chefAdapter.getChefOfTheWeek();
+
   
     const popularRestaurants = await transformRestaurantsData(popularRestaurantsData);
     const signatureDishes = await transformDishesData(signatureDishesData);
     const chefOfTheWeek = await transformChefsData(chefOfTheWeekData);
-  
+
     return {
       popularRestaurants: { cards: popularRestaurants.cards },
       signatureDishes: { cards: signatureDishes.cards }, 

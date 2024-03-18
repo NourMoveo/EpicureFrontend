@@ -2,21 +2,22 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../redux/store/store";
 import { fetchHomePageData } from "../../redux/thunk/homePageThunk";
-import { Hero, Restaurants, Dishes, IconsMeaning, WeekChef, AboutUs } from "../../components";
+import { Hero, Restaurants, Dishes, IconsMeaning, WeekChef, AboutUs, DishOrderPopup } from "../../components";
 import { IconsData } from "../../data";
 import { CustomCardsSection } from "@/components";
 import { Cards } from '@/models/Types';
 import { LoadingGif } from "../../assets/Photos";
 import "./HomePage.scss"
+import { useMediaQuery } from "@react-hook/media-query";
 
+import { RestaurantDetails } from "../../pages";
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [isLoading, setIsLoading] = useState(true);
   const [popularRestaurantsLoading, setPopularRestaurantsLoading] = useState(true);
   const [signatureDishesLoading, setSignatureDishesLoading] = useState(true);
   const [chefOfTheWeekLoading, setChefOfTheWeekLoading] = useState(true);
-
-  const { popularRestaurants, signatureDishes, chefOfTheWeek } = useSelector(
+  const { popularRestaurants, signatureDishes, chefOfTheWeek,isModalOpen } = useSelector(
     (state: RootState) => state.homePage
   );
   const chef = chefOfTheWeek.chefs[0];
@@ -96,9 +97,9 @@ const HomePage = () => {
         </>
       )}
       <AboutUs />
+      {isModalOpen && <DishOrderPopup /> }
     </>
   );
-
 };
 
 export default HomePage;

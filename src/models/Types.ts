@@ -19,7 +19,7 @@ export type CardProps = {
     distance?:Number;
     // dish
     foodIcon?: string;
-    price?: Number;
+    price?: number;
     MealType?: DishType;
     isSignature?:boolean;
     dishSides?: string[];
@@ -53,6 +53,8 @@ export type CustomCardsSectionProps = {
   pageType: Number;
   minRestauPrice?:Number;
   maxRestauPrice?:Number;
+  layoutDirection?:string; 
+  onItemClick?:(restaurantId: string| undefined) => void;
 };
 
 // Enumerates different types of cards

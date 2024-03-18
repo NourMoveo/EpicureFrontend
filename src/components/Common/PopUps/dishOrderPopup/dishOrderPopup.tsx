@@ -1,62 +1,110 @@
-import React ,{ useState }from "react";
-import { useParams } from "react-router-dom";
-import { CardProps, Cards } from "@/models/Types";
-import {allDishes} from "@/data/dataFetcher/dataFetcher";
 import "./dishOrderPopup.scss";
-import { CustomCardsSection } from "@/components";
-const dishOrderPopup = () => {
-    const { title = "" } = useParams<{ title?: string }>();
+import { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Fade } from "react-awesome-reveal";
+import { closeModal } from "@/redux/slices/homePageSlice";
+import { RootState } from "@/redux/store/store";
+import { ExitIcon, ILSLogo } from "@/assets/Photos";
 
-    // Find the restaurant with the given title
-    const dish: CardProps | undefined = allDishes.cards.find(
-      (r: CardProps) => r.title === decodeURIComponent(title)
-    );
-    const quantity=0;
-  return (
-    <div className="dish-order-popup">
-      <div className="dish-img">
-        <img src="" alt="" />
-      </div>
-      <div className="dish-details">
-        <div className="dish-title"></div>
-        <div className="dish-description"></div>
-        <div className="dish-icon"></div>
-        <div className="dish-price">
-          <div className="line"></div>
-          <div className="value-logo-container">
-            <img src="" alt="ILS" className="ils-icon" />
-            {/*price &&*/ <span className="price-value"> </span>}
+const DishOrderPopup: React.FC = () => {
+  const dispatch = useDispatch();
+  const selectedDish = useSelector(
+    (state: RootState) => state.homePage.selectedDish
+  );
+  const handleClose = useCallback(() => {
+    dispatch(closeModal());
+  }, [dispatch]);
+  const [quantity, setQuantity] = useState(0);
+
+  const handleIncreaseQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecreaseQuantity = () => {
+    if (quantity > 0) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  const handlePopupClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    // Prevent event propagation to parent elements
+    event.stopPropagation();
+  };
+
+  const renderPopupContent = () => (
+    <div className="dish-order-popup" onClick={handleClose}>
+      <Fade cascade duration={300}>
+        <div className="popup-container" onClick={handlePopupClick}>
+          <div className="close-btn-container">
+            <button className="modal-close-btn" onClick={handleClose}>
+              <img src={ExitIcon} alt="Close" />
+            </button>
           </div>
-          <div className="line"></div>
+          {selectedDish && (
+            <>
+              <div className="dish-img">
+                <img src={selectedDish.image} alt="dish-image" />
+              </div>
+              <div className="dish-details">
+                <div className="dish-title">{selectedDish.title}</div>
+                <div className="dish-description">
+                  {selectedDish.description}
+                </div>
+                <div className="dish-icon">{selectedDish.foodIcon}</div>
+                <div className="dish-price">
+                  <div className="line" />
+                  <div className="value-logo-container">
+                    <img src={ILSLogo} alt="ILS" className="ils-icon" />
+                    <span className="price-value">{selectedDish.price}</span>
+                  </div>
+                  <div className="line" />
+                </div>
+              </div>
+              <div className="dish-side">
+                <div className="side-title">Choose a side</div>
+                <div className="side-choices">
+                  {selectedDish.dishSides?.map((dishSide, index) => (
+                    <label key={index}>
+                      <input type="checkbox" className="side-checkbox" />
+                      {dishSide}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div className="dish-changes">
+                <div className="changes-title">Changes</div>
+                <div className="side-choices">
+                  {selectedDish.changes?.map((dishChange, index) => (
+                    <label key={index}>
+                      <input type="checkbox" className="changes-checkbox" />
+                      {dishChange}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div className="dish-quantity">
+                <button
+                  className="reduce"
+                  onClick={handleDecreaseQuantity}
+                >
+                  -
+                </button>
+                <div className="quantity">{quantity}</div>
+                <button className="add" onClick={handleIncreaseQuantity}>
+                  +
+                </button>
+              </div>
+              <button className="add-to-bag">ADD TO BAG</button>
+            </>
+          )}
         </div>
-      </div>
-      <div className="dish-side">
-        <div className="side-title">Choose a side</div>
-        <div className="side-choices">
-          <input type="checkbox" 
-          className="side-checkbox"/>
-        </div>
-      </div>
-      <div className="dish-changes">
-        <div className="changes-title">Changes</div>
-        <div className="side-choices">
-          <input type="checkbox" className="changes-checkbox"/>
-        </div>
-      </div>
-      <div className="dish-quantity">
-        <button className="reduce">
-            -
-        </button>
-        <div className="quantity">
-            {quantity}
-        </div>
-        <button className="reduce">
-            +
-        </button>
-      </div>
-      <button className="add-to-bag">ADD TO BAG</button>
+      </Fade>
     </div>
   );
+
+  return renderPopupContent();
 };
 
-export default dishOrderPopup;
+export default DishOrderPopup;

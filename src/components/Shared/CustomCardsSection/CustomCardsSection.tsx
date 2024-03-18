@@ -11,7 +11,7 @@ import { CustomCard, SwiperConfig } from "@/components";
 import { CustomCardsSectionProps, CardType, CardProps, PagesType } from "@/models/Types";
 import { ARArrow } from "@/assets/Photos";
 
-const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: string }> = ({ cardsData, cardType, pageType, layoutDirection }) => {
+const CustomCardsSection: React.FC<CustomCardsSectionProps> = ({ cardsData, cardType, pageType, layoutDirection }) => {
   let className = "";
 
   switch (cardType) {
@@ -54,8 +54,8 @@ const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: 
       <Fade>
         <div className={`cards-section ${className}`}>
           <Swiper className='swiper' {...SwiperConfig(layoutDirection)}>
-            {cardsData.cards.map((card: CardProps) => (
-              <SwiperSlide className='swiper-slide' key={card.id}> {/* Assuming 'id' is the unique identifier */}
+            {cardsData.cards.map((card: CardProps, index: number) => (
+              <SwiperSlide className='swiper-slide' key={card.id || index}>
                 <div onClick={() => cardType === CardType.DishType}>
                   <CustomCard {...card} customClass={className} />
                 </div>
@@ -66,13 +66,13 @@ const CustomCardsSection: React.FC<CustomCardsSectionProps & { layoutDirection: 
           <div className="desktop-section">
             {/* Conditionally render only three cards on the home page */}
             {showOnlyThreeCards
-              ? cardsData.cards.slice(0, 3).map((card: CardProps) => (
-                  <div key={card.id} onClick={() => cardType === CardType.DishType}>
+              ? cardsData.cards.slice(0, 3).map((card: CardProps, index: number) => (
+                  <div key={card.id || index} onClick={() => cardType === CardType.DishType}>
                     <CustomCard {...card} customClass={className} />
                   </div>
                 ))
-              : cardsData.cards.map((card: CardProps) => (
-                  <div key={card.id} onClick={() => cardType === CardType.DishType}>
+              : cardsData.cards.map((card: CardProps, index: number) => (
+                  <div key={card.id || index} onClick={() => cardType === CardType.DishType}>
                     <CustomCard {...card} customClass={className} />
                   </div>
                 ))}

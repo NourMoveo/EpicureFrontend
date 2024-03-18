@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Cards} from "../../models/Types";
+import { Cards,CardProps} from "../../models/Types";
 import {fetchRestaurantsPageData} from "../thunk/restaurantsPageThunk";
 
 interface RestaurantsPageState {
@@ -7,7 +7,7 @@ interface RestaurantsPageState {
   newRestaurants: Cards;
   popularRestaurants: Cards;
   openNowRestaurants: Cards;
-  selectedButton:string | " ";
+  selectedRestaurant: CardProps | null,
 
 }
 
@@ -16,7 +16,7 @@ const initialState: RestaurantsPageState = {
   newRestaurants: { cards: [] },
   popularRestaurants: { cards: [] },
   openNowRestaurants: { cards: [] },
-  selectedButton: " ",
+  selectedRestaurant: null,
 };
 
 const restaurantsPageSlice = createSlice({
@@ -35,7 +35,9 @@ const restaurantsPageSlice = createSlice({
       setOpenNowRestaurantsData(state, action: PayloadAction<Cards>) {
         state.openNowRestaurants= action.payload;
       },
-
+      openRestaurantDetail: (state, action: PayloadAction<CardProps>) => {
+        state.selectedRestaurant= action.payload;
+      }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRestaurantsPageData.fulfilled, (state, action) => {
@@ -47,6 +49,6 @@ const restaurantsPageSlice = createSlice({
   },
 });
 
-export const { setAllRestaurantsData, setNewRestaurantsData, setPopularRestaurantsData ,  setOpenNowRestaurantsData} = restaurantsPageSlice.actions;
+export const { setAllRestaurantsData, setNewRestaurantsData, setPopularRestaurantsData ,  setOpenNowRestaurantsData, openRestaurantDetail} = restaurantsPageSlice.actions;
 
 export default restaurantsPageSlice.reducer;

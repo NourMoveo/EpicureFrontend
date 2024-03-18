@@ -11,6 +11,8 @@ import { ChefWeekProps } from "@/models/Types";
 const WeekChef: React.FC<ChefWeekProps> = ({ chefDetails }) => {
   const backgroundImageStyle = {
     backgroundImage: `url(${chefDetails.image})`,
+    WebkitFilter: 'grayscale(100%)', 
+    filter: 'grayscale(100%)', 
   };
   return (
     <>

@@ -6,7 +6,9 @@ interface HomePageState {
   popularRestaurants: Cards;
   signatureDishes: Cards;
   chefOfTheWeek: ChefsProps;
-  selectedCard: CardProps | null;
+  selectedRestaurant: CardProps | null;
+  selectedDish: CardProps | null;
+  isModalOpen: boolean;
 }
 
 const initialState: HomePageState = {
@@ -15,7 +17,10 @@ const initialState: HomePageState = {
   chefOfTheWeek: {
     chefs: []
   },
-  selectedCard: null,
+  selectedRestaurant: null,
+  isModalOpen: false,
+  selectedDish:null,
+  
 };
 
 const homePageSlice = createSlice({
@@ -31,9 +36,18 @@ const homePageSlice = createSlice({
     setChefOfTheWeekData(state, action: PayloadAction<ChefsProps>) {
       state.chefOfTheWeek = action.payload;
     },
-    setSelectedCard(state, action: PayloadAction<CardProps | null>) {
-      state.selectedCard = action.payload;
-    }
+    setSelectedRestaurant(state, action: PayloadAction<CardProps | null>) {
+      
+        state.selectedRestaurant = action.payload;
+    },
+    openModal: (state, action: PayloadAction<CardProps>) => {
+      state.isModalOpen = true;
+      state.selectedDish = action.payload;
+    },
+    closeModal: (state) => {
+      state.isModalOpen = false;
+      state.selectedDish = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchHomePageData.fulfilled, (state, action) => {
@@ -44,6 +58,6 @@ const homePageSlice = createSlice({
   }
 });
 
-export const { setPopularRestaurantsData, setSignatureDishesData, setChefOfTheWeekData, setSelectedCard } = homePageSlice.actions;
+export const { setPopularRestaurantsData, setSignatureDishesData, setChefOfTheWeekData, setSelectedRestaurant,openModal,closeModal } = homePageSlice.actions;
 
 export default homePageSlice.reducer;

@@ -10,7 +10,8 @@
   width: 90vw;
   height: 90vw;
   background-position-x: 40%;
-
+  -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%);
 
   .chef-img-name {
     background-color: rgba($secondary-white-color, 0.88);

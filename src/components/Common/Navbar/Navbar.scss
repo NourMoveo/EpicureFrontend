@@ -195,14 +195,15 @@ button.exit-icon{
 
       .animated-search-bar {
         display: flex;
-        padding: 0.313vw 0vw 0.313vw 0.52vw;
+        padding: 0.313vw 0vw 0.313÷vw 0.52vw;
 
         &:hover {
           display: flex;
           border: 0.1vw solid black;
           border-radius: 0.52vw;
-          transform: translate(-6%);
-
+          margin-bottom: -0.7vw;
+          transform: translate(-9%);
+          
         }
 
         .search-input {
@@ -222,7 +223,7 @@ button.exit-icon{
           transform-origin: left;
         }
         &:hover .search-input {
-          width: 20vw; // Adjust as needed
+          width: 21vw; // Adjust as needed
           opacity: 1;
         }
       }

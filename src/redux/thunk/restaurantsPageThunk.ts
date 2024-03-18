@@ -8,8 +8,6 @@ interface RestaurantsPageData {
   newRestaurants: Cards;
   popularRestaurants: Cards;
   openNowRestaurants: Cards;
-  
-  
 }
 export const fetchRestaurantsPageData = createAsyncThunk("restaurantsPage/fetchData", async (): Promise<RestaurantsPageData> => {
     const allRestaurantsData = await restaurantAdapter.getAllRestaurants();
