@@ -1,8 +1,6 @@
-// homePageSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Restaurant, Dish, Chef } from "@/Model/Interfaces";
 import { fetchHomePageData } from "../thunks/homePageThunk";
-import { restaurantController } from "@/Controller/APIs/RestaurantController";
 
 interface HomePageState {
   popularRestaurants: Restaurant[];
@@ -22,7 +20,7 @@ const initialState: HomePageState = {
     lName: "",
     image: "",
     description: "",
-    restaurants: [],
+    restaurant: [],
     isChefOfTheWeek: false,
     isMostViewedChef: false,
   },
@@ -43,24 +41,12 @@ const homePageSlice = createSlice({
     },
     setChefOfTheWeekData(state, action: PayloadAction<Chef>) {
       state.chefOfTheWeek = action.payload;
-            // Fetching details for each restaurant in chefOfTheWeek.restaurants
-            const restaurantPromises = state.chefOfTheWeek.restaurants.map(async (restaurant) => {
-              try {
-                const formData = new FormData();
-                const restaurantData = await restaurantController.getRestaurantById(restaurant._id, formData);
-                return restaurantData;
-              } catch (error) {
-                console.error(`Error fetching restaurant ${restaurant._id}:`, error);
-                return null;
-              }
-            });
-            // Resolve all promises and update the restaurants array
-            Promise.all(restaurantPromises).then((restaurants) => {
-              state.chefOfTheWeek.restaurants = restaurants.filter((restaurant) => restaurant !== null) as Restaurant[];
-            });
     },
     setSelectedRestaurant(state, action: PayloadAction<Restaurant | null>) {
       state.selectedRestaurant = action.payload;
+    },
+    setSelectedDish(state, action: PayloadAction<Dish | null>) {
+      state.selectedDish = action.payload;
     },
     openModal: (state, action: PayloadAction<Dish>) => {
       state.isModalOpen = true;
@@ -87,6 +73,7 @@ export const {
   setSelectedRestaurant,
   openModal,
   closeModal,
+  setSelectedDish
 } = homePageSlice.actions;
 
 export default homePageSlice.reducer;

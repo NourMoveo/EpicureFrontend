@@ -1,0 +1,15 @@
+@import '../../../../themes/mixins';
+@import '../../../../themes/variables';
+
+/* Styles for mobile */
+
+.signIn-popup {
+  @include popup-style;
+  padding: 10.667vw 0px 0px 3.2vw;
+  top: calc(100% + 0.07vw);
+  height: 157.333vw;
+
+  &.open {
+    opacity: 1;
+  }
+}

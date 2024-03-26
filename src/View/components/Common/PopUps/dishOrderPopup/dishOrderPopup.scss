@@ -1,35 +1,24 @@
-@import "../../../../themes/mixins";
- 
-
-@include desktop {
-
 .dish-order-popup {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 10;
+  overflow-y: scroll;
   .popup-container {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-
+    width: 39.792vw;
     .close-btn-container {
       width: 100%;
       height: auto;
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      margin-top: -3.3vw;
 
-      .close-btn {
+      .modal-close-btn {
         padding: 0;
         display: flex;
         flex-flow: row;
@@ -37,144 +26,7 @@
         background: transparent;
         border: none;
         cursor: pointer;
-
-        img {
-          width: 24px;
-          height: 24px;
-        }
       }
-    }
-
-    .dish-img {
-      width: 100%;
-      height: auto;
-
-      img {
-        width: 100%;
-        height: auto;
-        max-width: 200px;
-        max-height: 200px;
-      }
-    }
-
-    .dish-details {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .dish-title {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 8px;
-      }
-
-      .dish-description {
-        margin-bottom: 8px;
-        font-size: 16px;
-        text-align: center;
-      }
-
-      .dish-icon {
-        font-size: 16px;
-        margin-bottom: 8px;
-      }
-
-      .dish-price {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
-
-        .line {
-          flex-grow: 1;
-          height: 1px;
-          background-color: #000;
-        }
-
-        .value-logo-container {
-          display: flex;
-          align-items: center;
-          margin: 0 8px;
-        }
-
-        .ils-icon {
-          width: 20px;
-          height: 20px;
-          margin-right: 4px;
-        }
-
-        .price-value {
-          font-size: 16px;
-          font-weight: bold;
-        }
-      }
-    }
-
-    .dish-side,
-    .dish-changes {
-      width: 100%;
-      margin-top: 16px;
-
-      .side-title,
-      .changes-title {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 8px;
-      }
-
-      .side-choices {
-        display: flex;
-        flex-direction: column;
-
-        label {
-          margin-bottom: 4px;
-        }
-
-        .side-checkbox,
-        .changes-checkbox {
-          margin-right: 8px;
-        }
-      }
-    }
-
-    .dish-quantity {
-      display: flex;
-      align-items: center;
-      margin-top: 16px;
-
-      .reduce,
-      .add {
-        width: 30px;
-        height: 30px;
-        background-color: #ccc;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 8px;
-      }
-
-      .quantity {
-        font-size: 20px;
-        font-weight: bold;
-        width: 30px;
-        text-align: center;
-      }
-    }
-
-    .add-to-bag {
-      margin-top: 16px;
-      padding: 12px 24px;
-      background-color: #009688;
-      color: #fff;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
     }
   }
-}
-
 }

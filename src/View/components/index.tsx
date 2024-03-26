@@ -24,10 +24,11 @@ import MenuPopup from './Common/PopUps/MenuPopup/MenuPopup';
 import SearchPopup from './Common/PopUps/SearchPopup/SearchPopup';
 import ShoppingBagPopup from './Common/PopUps/ShoppingBagPopup/ShoppingBagPopup';
 import DishOrderPopup from './Common/PopUps/dishOrderPopup/dishOrderPopup';
+import SignInPopup from './Common/PopUps/SignInPopup/SignInPopup';
 //SVG files
 import RatingComponent from './SVGFiles/RatingSVG/RatingSVG'
 export {
-    SearchPopup,MenuPopup,ShoppingBagPopup,DishOrderPopup,
+    SearchPopup,MenuPopup,ShoppingBagPopup,DishOrderPopup,SignInPopup,
     Navbar,Footer,
      Hero, IconsMeaning,  WeekChef, AboutUs,
     CustomCard, CustomCardsSection, RestaurantsHeader , SwiperConfig ,MultiRangeSlider,SingleDistanceSlider,

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import "./CustomCardsSection.scss";
 import { CustomCard, SwiperConfig } from "@/View/components";
 import { ARArrow } from "@/View/Photos";
 import { useDispatch } from "react-redux";
-import { setSelectedRestaurant, openModal } from "@/Controller/redux/slices/homePageSlice";
+import { setSelectedRestaurant, openModal, setSelectedDish } from "@/Controller/redux/slices/homePageSlice";
 import { Restaurant, Dish, Chef, PagesType, CardType } from "@/Model/Interfaces";
 
 const CustomCardsSection: React.FC<{
@@ -19,19 +19,35 @@ const CustomCardsSection: React.FC<{
   pageType: PagesType;
   layoutDirection?: string;
 }> = ({ cardsData, cardType, pageType, layoutDirection }) => {
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+  
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); 
   let className = "";
   const dispatch = useDispatch();
 
   const handleRestaurantClick = useCallback(
     (restaurantCard: Restaurant) => {
-      dispatch(setSelectedRestaurant(restaurantCard)); 
+      dispatch(setSelectedRestaurant(restaurantCard));
     },
     [dispatch]
   );
-  
-  const handleDishClick = useCallback(
+
+  const handleDishForDesktopClick = useCallback(
     (dishCard: Dish) => {
-      dispatch(openModal(dishCard)); 
+      dispatch(openModal(dishCard));
+    },
+    [dispatch]
+  );
+  const handleDishForMobileClick = useCallback(
+    (dishCard: Dish) => {
+      dispatch(setSelectedDish(dishCard));
     },
     [dispatch]
   );
@@ -65,7 +81,9 @@ const CustomCardsSection: React.FC<{
   }
 
   const showOnlyThreeCards = pageType === PagesType.HomePage;
-
+  function isChef(chef: Chef | string | undefined): chef is Chef {
+    return typeof chef !== 'undefined' && typeof chef !== 'string';
+  }
   return (
     <>
       <Fade>
@@ -74,14 +92,19 @@ const CustomCardsSection: React.FC<{
             {cardsData.map((card: Restaurant | Dish | Chef, index: number) => (
               <SwiperSlide className='swiper-slide' key={index}>
                 {cardType === CardType.DishType ? (
-                  <div onClick={() => handleDishClick(card as Dish)}>
-                    <CustomCard {...(card as Dish)} customClass={className} />
-                  </div>
-                ) : cardType === CardType.RestaurantType && (card as Restaurant).title  ? (
-                  <Link to={`/restaurant/${encodeURIComponent((card as Restaurant).title)}`} className='restaurant-link' onClick={() => handleRestaurantClick(card as Restaurant)}>
-                    <CustomCard {...(card as Restaurant)} customClass={className} />
-                  </Link>
-                ) : (
+                  (isDesktop ? (
+                    <div onClick={() => handleDishForDesktopClick(card as Dish)}>
+                      <CustomCard {...(card as Dish)} customClass={className} />
+                    </div>
+                  ) :
+                    <Link to={`/dishOrder/${encodeURIComponent((card as Dish).title)}`} className='dish-link' onClick={() => handleDishForMobileClick(card as Dish)}>
+                      <CustomCard {...(card as Dish)} customClass={className} />
+                    </Link>
+                  )) : cardType === CardType.RestaurantType && (card as Restaurant).title  && typeof (card as Restaurant).chef !== 'undefined' ? (
+                    <Link to={`/restaurant/${encodeURIComponent((card as Restaurant).title)}`} className='restaurant-link' onClick={() => handleRestaurantClick(card as Restaurant)}>
+                      <CustomCard {...(card as Restaurant)} customClass={className} />
+                    </Link>
+                  ) : (
                   <CustomCard {...(card as Restaurant | Dish | Chef)} customClass={className} />
                 )}
               </SwiperSlide>
@@ -91,35 +114,47 @@ const CustomCardsSection: React.FC<{
           <div className="desktop-section">
             {showOnlyThreeCards
               ? cardsData.slice(0, 3).map((card: Restaurant | Dish | Chef, index: number) => (
-                  <div key={index}>
-                    {cardType === CardType.DishType ? (
-                      <div onClick={() => handleDishClick(card as Dish)}>
+                <div key={index}>
+                  {cardType === CardType.DishType ? (
+                    (isDesktop ? (
+                      <div onClick={() => handleDishForDesktopClick(card as Dish)}>
                         <CustomCard {...(card as Dish)} customClass={className} />
                       </div>
-                    ) : cardType === CardType.RestaurantType && (card as Restaurant).title ? (
-                      <Link to={`/restaurant/${encodeURIComponent((card as Restaurant).title)}`} className='restaurant-link' onClick={() => handleRestaurantClick(card as Restaurant)}>
-                        <CustomCard {...(card as Restaurant)} customClass={className} />
+                    ) :
+                      <Link to={`/dishOrder/${encodeURIComponent((card as Dish).title)}`} className='dish-link' onClick={() => handleDishForMobileClick(card as Dish)}>
+                        <CustomCard {...(card as Dish)} customClass={className} />
                       </Link>
-                    ) : (
-                      <CustomCard {...(card as Restaurant | Dish | Chef)} customClass={className} />
-                    )}
-                  </div>
-                ))
+                    )
+                  ) : cardType === CardType.RestaurantType && (card as Restaurant).title ? (
+                    <Link to={`/restaurant/${encodeURIComponent((card as Restaurant).title)}`} className='restaurant-link' onClick={() => handleRestaurantClick(card as Restaurant)}>
+                      <CustomCard {...(card as Restaurant)} customClass={className} />
+                    </Link>
+                  ) : (
+                    <CustomCard {...(card as Restaurant | Dish | Chef)} customClass={className} />
+                  )}
+                </div>
+              ))
               : cardsData.map((card: Restaurant | Dish | Chef, index: number) => (
-                  <div key={index}>
-                    {cardType === CardType.DishType ? (
-                      <div onClick={() => handleDishClick(card as Dish)}>
+                <div key={index}>
+                  {cardType === CardType.DishType ? (
+                    (isDesktop ? (
+                      <div onClick={() => handleDishForDesktopClick(card as Dish)}>
                         <CustomCard {...(card as Dish)} customClass={className} />
                       </div>
-                    ) : cardType === CardType.RestaurantType && (card as Restaurant).title ? (
-                      <Link to={`/restaurant/${encodeURIComponent((card as Restaurant).title)}`} className='restaurant-link' onClick={() => handleRestaurantClick(card as Restaurant)}>
-                        <CustomCard {...(card as Restaurant)} customClass={className} />
+                    ) :
+                      <Link to={`/dishOrder/${encodeURIComponent((card as Dish).title)}`} className='dish-link' onClick={() => handleDishForMobileClick(card as Dish)}>
+                        <CustomCard {...(card as Dish)} customClass={className} />
                       </Link>
-                    ) : (
-                      <CustomCard {...(card as Restaurant | Dish | Chef)} customClass={className} />
-                    )}
-                  </div>
-                ))}
+                    )
+                  ) : cardType === CardType.RestaurantType && (card as Restaurant).title ? (
+                    <Link to={`/restaurant/${encodeURIComponent((card as Restaurant).title)}`} className='restaurant-link' onClick={() => handleRestaurantClick(card as Restaurant)}>
+                      <CustomCard {...(card as Restaurant)} customClass={className} />
+                    </Link>
+                  ) : (
+                    <CustomCard {...(card as Restaurant | Dish | Chef)} customClass={className} />
+                  )}
+                </div>
+              ))}
           </div>
 
           <div className="desktop-all-restaurants">
@@ -136,7 +171,7 @@ const CustomCardsSection: React.FC<{
             <img src={ARArrow} alt='All Restaurants' className='arrows-icon' />
           </div>
         </div>
-      </Fade>
+      </Fade >
     </>
   );
 };

@@ -8,8 +8,8 @@ export interface Restaurant {
   maxPrice:number;
   minPrice:number;
   distance:number;
-  chef: string;
-  dishes: Dish[];
+  chef: Chef | string;
+  dishes: Dish[] | string[];
 }
 export interface Dish {
   _id: string;
@@ -18,7 +18,7 @@ export interface Dish {
   ingredients: string;
   flavorIcon: string;
   price: number;
-  restaurant: string;
+  restaurant: Restaurant | string;
   isSignature:boolean;
   type:string;
   dishSides: string[];
@@ -31,7 +31,7 @@ export interface Chef {
   lName: string;
   image: string;
   description: string;
-  restaurants: Restaurant[];
+  restaurant: Restaurant[] | string[];
   isChefOfTheWeek: boolean;
   isMostViewedChef:boolean;
 }
@@ -62,4 +62,30 @@ export enum PagesType {
   HomePage = 1,
   RestaurantsPage = 2,
   OrdersPage = 3
+}
+export interface dataTypes {
+  interfaceType: 'r' | 'd' | 'c';
+  data: Dish[] | Restaurant[] | Chef[];
+}
+
+export interface User{
+  fName: string;
+  lName: string;
+  phone: string;
+  email: string;
+  password: string;
+  orders: Order[] | string[];
+  role: string;
+}
+export interface OrderDish {
+  dish: Dish;
+  quantity: number;
+}
+
+export interface Order{
+  date: string;
+  total: number;
+  dishes: OrderDish[];
+  arrivingTime: number;
+  comment: string;
 }

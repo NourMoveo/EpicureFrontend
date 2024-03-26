@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import {  useSelector } from "react-redux";
-import {Restaurant ,Dish } from "@/Model/Interfaces";
+import { useSelector } from "react-redux";
+import { Restaurant, Dish } from "@/Model/Interfaces";
 import { ClockIcon } from "@/View/Photos";
 import "./RestaurantDetails.scss";
 import { CustomCardsSection } from "@/View/components";
 import { RootState } from "@/Controller/redux/store/store";
 const RestaurantDetails: React.FC = () => {
 
-  const restaurant ={...useSelector((state: RootState) => state.homePage.selectedRestaurant)};
+  const restaurant = { ...useSelector((state: RootState) => state.homePage.selectedRestaurant) };
 
 
   const getStatus = (): string => {
@@ -21,13 +21,13 @@ const RestaurantDetails: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState("Breakfast");
 
-  const getDishesByType = (type: string, dishesData: Dish[]):  Dish[] => {
+  const getDishesByType = (type: string, dishesData: Dish[]): Dish[] => {
     const filteredDishes = dishesData.filter((dish) => dish.type === type);
-    return  filteredDishes ;
+    return filteredDishes;
   };
 
   const dishesData = restaurant?.dishes || [];
- return (
+  return (
     <div className="restaurant-details-container">
       {restaurant ? (
         <>
@@ -35,7 +35,9 @@ const RestaurantDetails: React.FC = () => {
             <img src={restaurant.image} alt={restaurant.title} className="restaurant-image" />
             <div className="restaurant-content">
               <h2 className="restaurant-title">{restaurant.title}</h2>
-              <p className="restaurant-description">{restaurant.chef?.fName + " " + restaurant.chef?.lName }</p>
+              {restaurant.chef && restaurant.chef.fName && restaurant.chef.lName && (
+                <p className="restaurant-description">{restaurant.chef.fName} {restaurant.chef.lName}</p>
+              )}
               <div className="status-container">
                 <img className="clock-icon" src={ClockIcon} alt="clock icon" />
                 <p className="restaurant-status"> {getStatus()}</p>

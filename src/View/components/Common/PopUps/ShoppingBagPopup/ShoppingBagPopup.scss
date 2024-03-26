@@ -42,9 +42,52 @@
       opacity: 0.6; /* Default opacity for mobile */
     }
   }
+
+  .order-title{
+    @include font-style;
+    text-transform: uppercase;
+    font-size: 5.333vw;
+    font-weight: 400;
+    letter-spacing: 0.712vw;
+    text-align: center;
+  }
+  .restaurant-name{
+    @include font-style;
+    text-align: center;
+    font-size: 4.8vw;
+    letter-spacing: 0.525vw;
+  }
+}
+.dish-card-popup{
+  width: 90.667vw;
+height: 25.6vw;
+background-color: $secondary-offwhite-color;
+display: flex;
+.dish-img-popup{
+  width: 25.6vw;
+  height: 100%;
+  object-fit: cover;
+}
+.dish-details-popup{
+  .quantity-name-price{
+    display: flex;
+    flex-direction: column;
+    @include mobile{
+      .quantity-button{
+        display: none;
+      }
+    }
+    .quantity-value,.dish-name{
+      @include font-style;
+      font-size: 3.733vw;
+      font-weight: 400;
+      letter-spacing: 0.712vw;
+    }
+  }
 }
 
-/* Media query for desktop */
+
+}
 
 @include desktop {
   .bag-popup {

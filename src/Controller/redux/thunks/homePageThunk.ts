@@ -1,26 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { restaurantController } from "@/Controller/APIs/RestaurantController";
-import { dishController } from "@/Controller/APIs/DishController";
-import { chefController } from "@/Controller/APIs/ChefController";
-
-import { Dish, Restaurant ,Chef} from "@/Model/Interfaces";
+import { restaurantAPI } from "@/Model/APIs/RestaurantAPI";
+import { dishAPI } from "@/Model/APIs/DishAPI";
+import { chefAPI } from "@/Model/APIs/ChefAPI";
+import { setData } from "../../utils/getSetFunc";
+import { Dish, Restaurant, Chef, dataTypes } from "@/Model/Interfaces";
 
 interface HomePageData {
-  popularRestaurants: Restaurant[]; 
+  popularRestaurants: Restaurant[];
   signatureDishes: Dish[];
   chefOfTheWeek: Chef;
 }
-// Create an asynchronous thunk to fetch data for the home page
-export const fetchHomePageData = createAsyncThunk("homePage/fetchData", async (): Promise<HomePageData> => {
-    const popularRestaurants = await restaurantController.getPopularRestaurants();
-    const signatureDishes = await dishController.getSignatureDishes();
-    const chefOfTheWeek = await chefController.getChefOfTheWeek();
 
-    return {
-      popularRestaurants: popularRestaurants,
-      signatureDishes: signatureDishes, 
-      chefOfTheWeek: chefOfTheWeek, 
-    };
-    
-  });
-  
+export const fetchHomePageData = createAsyncThunk("homePage/fetchData", async (): Promise<HomePageData> => {
+  const restaurantData: dataTypes = await setData({ interfaceType: 'r', data: await restaurantAPI.getPopularRestaurants() });
+  const signatureDishes: dataTypes = await setData({ interfaceType: 'd', data: await dishAPI.getSignatureDishes() });
+  console.log("signatureDishes  :",signatureDishes)
+  const chefOfTheWeek: dataTypes = await setData({ interfaceType: 'c', data: [await chefAPI.getChefOfTheWeek()] });
+
+  return {
+    popularRestaurants:  restaurantData.data as Restaurant[] | [],
+    signatureDishes: signatureDishes.data as Dish[] | [],
+    chefOfTheWeek:  (chefOfTheWeek.data)[0] as Chef ,
+  };
+});

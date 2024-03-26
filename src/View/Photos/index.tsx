@@ -30,6 +30,8 @@ import ThreeStarsIcon from './Icons/ThreeStarsRating.svg';
 import DownArrow from './Icons/DownArrow.svg'
 import ClockIcon from './Icons/clock.svg';
 import LoadingGif from './Icons/loadingGif.gif';
+import EyeHideIcon from './Icons/EyeHide.png';
+import EyeViewIcon from './Icons/EyeView.png';
 // Restau
 import onzaRestau from './Restaurants/Onza.png';
 import claroRestau from './Restaurants/Claro.png';
@@ -68,6 +70,8 @@ export {
   ThreeStarsIcon,
   DownArrow,
   LoadingGif,
+  EyeHideIcon,
+  EyeViewIcon,
   
   // Restau
   onzaRestau,

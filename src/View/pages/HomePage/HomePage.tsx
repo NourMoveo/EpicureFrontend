@@ -41,7 +41,6 @@ const HomePage = () => {
   return (
     <>
       <Hero />
-      {console.log(popularRestaurants, signatureDishes, chefOfTheWeek)}
       <div className="sub-title-home-page">Popular Restaurants in Epicure:</div>
       {popularRestaurantsLoading ? (
         <div className="loading-spinner">
@@ -80,10 +79,10 @@ const HomePage = () => {
     {chefOfTheWeek ? (
       <>
         <WeekChef {...chefOfTheWeek} />
-        {chefOfTheWeek.restaurants && chefOfTheWeek.restaurants.length > 0 ? (
+        {chefOfTheWeek.restaurant && chefOfTheWeek.restaurant.length > 0 ? (
           
           <CustomCardsSection
-            cardsData={chefOfTheWeek.restaurants}
+            cardsData={chefOfTheWeek.restaurant} 
             cardType={3}
             pageType={1}
             layoutDirection="horizontal"

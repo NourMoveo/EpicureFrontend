@@ -8,21 +8,26 @@ import {
   ExitIcon,
 } from "@/View/Photos";
 import "./Navbar.scss";
-import { MenuPopup, SearchPopup, ShoppingBagPopup } from "@/View/components";
+import { MenuPopup, SearchPopup, ShoppingBagPopup, SignInPopup } from "@/View/components"; // Import UserPopup
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@/Controller/redux/store/store";
 
 const Navbar: React.FC = () => {
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
   const [isSearchPopupOpen, setIsSearchPopupOpen] = useState(false);
   const [isBagPopupOpen, setIsBagPopupOpen] = useState(false);
+  const [isUserPopupOpen, setIsUserPopupOpen] = useState(false); // State for user popup
   const [isDesktop, setIsDesktop] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+
   const navbarRef = useRef<HTMLDivElement>(null);
+  const totalQuantity = useSelector((state: RootState) => state.dishOrderPage.totalQuantity);
+
 
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth > 768);
-      // Close all popups when switching to desktop view
       if (window.innerWidth > 768) {
         closePopups();
       }
@@ -55,6 +60,7 @@ const Navbar: React.FC = () => {
     setIsMenuPopupOpen(false);
     setIsSearchPopupOpen(false);
     setIsBagPopupOpen(false);
+    setIsUserPopupOpen(false); // Close user popup
   };
 
   const handleLinkClick = (linkName: string) => {
@@ -64,6 +70,10 @@ const Navbar: React.FC = () => {
 
   const handleBagIconClick = () => {
     setIsBagPopupOpen(prevState => !prevState); // Toggle bag popup
+  };
+
+  const handleUserIconClick = () => {
+    setIsUserPopupOpen(prevState => !prevState); // Toggle user popup
   };
 
   return (
@@ -102,8 +112,8 @@ const Navbar: React.FC = () => {
             <Link to="/restaurants" onClick={() => handleLinkClick("Restaurants")} className="navbar-link">Restaurants</Link>
           </div>
           <div className={`small-link ${activeLink === "Chefs" ? "active" : ""}`}>
-          <Link to="/chefs" onClick={() => handleLinkClick("Chefs")} className="navbar-link">Chefs</Link>
-        </div>
+            <Link to="/chefs" onClick={() => handleLinkClick("Chefs")} className="navbar-link">Chefs</Link>
+          </div>
         </div>
       </div>
       <div className="navbar-right">
@@ -131,18 +141,21 @@ const Navbar: React.FC = () => {
               onClick={() => togglePopup(setIsSearchPopupOpen)}
             />
           )}
-          <img className="navbar-icon" src={UserIcon} alt="User Account" />
-
+          <img
+            className="navbar-icon"
+            src={UserIcon}
+            alt="User Account"
+            onClick={handleUserIconClick} // Open user popup on user icon click
+          />
           <img
             className="navbar-icon"
             src={BagIcon}
             alt="Shopping Bag"
             onClick={handleBagIconClick}
           />
-          <span className="bag-quantity">
-            <span>3</span>
-          </span>
-
+          {totalQuantity > 0 && (<span className="bag-quantity">
+            <span>{totalQuantity}</span>
+          </span>)}
         </div>
       </div>
       {isMenuPopupOpen && (
@@ -155,6 +168,7 @@ const Navbar: React.FC = () => {
         />
       )}
       {isBagPopupOpen && <ShoppingBagPopup isOpen={isBagPopupOpen} />}
+      {isUserPopupOpen && <SignInPopup isOpen={isUserPopupOpen} />} {/* Render UserPopup */}
     </header>
   );
 };

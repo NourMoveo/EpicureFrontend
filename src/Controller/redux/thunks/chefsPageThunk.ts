@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Chef } from "@/Model/Interfaces";
-import  {chefController}  from "@/Controller/APIs/ChefController";
+import  {chefAPI}  from "@/Model/APIs/ChefAPI";
+import { setData } from "../../utils/getSetFunc";
 
 
 interface ChefsPageData {
@@ -9,13 +10,13 @@ interface ChefsPageData {
   mostViewedChefs: Chef[];
 }
 export const fetchChefsPageData = createAsyncThunk("chefsPage/fetchData", async (): Promise<ChefsPageData> => {
-  const allChefs = await chefController.getAllChefs();
-  const newChefs = await chefController.getNewChefs();
-  const mostViewedChefs = await chefController.getMostViewedChefs();
+  const allChefs = await setData({ interfaceType: 'c', data: await chefAPI.getAllChefs()});
+  const newChefs = await setData({ interfaceType: 'c', data: await chefAPI.getNewChefs()});
+  const mostViewedChefs = await setData({ interfaceType: 'c', data: await chefAPI.getMostViewedChefs()});
 
   return {
-    allChefs: allChefs,
-    newChefs: newChefs,
-    mostViewedChefs: mostViewedChefs,
+    allChefs: allChefs.data as Chef[] | [],
+    newChefs: newChefs.data as Chef[] | [],
+    mostViewedChefs: mostViewedChefs.data as Chef[] | [],
   };
 });

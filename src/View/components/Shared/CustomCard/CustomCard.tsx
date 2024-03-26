@@ -3,7 +3,7 @@ import { Dish, PagesType, CardType, Chef } from "@/Model/Interfaces";
 import "./CustomCard.scss";
 import { ILSLogo } from "@/View/Photos";
 import { RatingComponent } from "@/View/components";
-import { getFoodIcon } from "@/Model/constants/func";
+import { getFlavorIcon } from "@/Controller/utils/getSetFunc";
 
 const CustomCard: React.FC<{
   title?: string;
@@ -50,7 +50,7 @@ const CustomCard: React.FC<{
   const renderCardContent = () => (
     <div className='card-content'>
       <h3 className='card-title'>{title}</h3>
-      {flavorIcon && <img src={getFoodIcon(flavorIcon)} alt='Food Icon' className='food-icon-desktop' />}
+      {flavorIcon && <img src={getFlavorIcon(flavorIcon)} alt='Food Icon' className='food-icon-desktop' />}
       <div className='description-rating'>
         <div className='description'>
           {description && <p className='card-description'>{description}</p>}
@@ -59,7 +59,7 @@ const CustomCard: React.FC<{
       </div>
       <div className="price-foodIcon-container">
         <div className="price-foodIcon">
-          {flavorIcon && <img src={getFoodIcon(flavorIcon)} alt='Food Icon' className='food-icon' />}
+          {flavorIcon && <img src={getFlavorIcon(flavorIcon)} alt='Food Icon' className='food-icon' />}
           {price && (
             <div className='card-price'>
               <div className='line'></div>

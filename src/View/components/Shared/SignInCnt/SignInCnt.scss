@@ -1,0 +1,155 @@
+@import "../../../themes/mixins";
+
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10.667vw;
+
+  .titles {
+    @include font-style;
+    text-align: center;
+
+    .main-title {
+      text-transform: uppercase;
+      font-size: 4.8vw;
+      letter-spacing: 0.712vw;
+      margin-bottom: 3.733vw;
+    }
+
+    .sub-title {
+      font-size: 4.267vw;
+      letter-spacing: 0.525vw;
+    }
+  }
+
+  .inputs {
+
+    .pass-input-ctr {
+      margin-top: 10.667vw;
+      height: 16vw;
+      width: 87.2vw;
+      border-bottom: 0.267vw solid black;
+    }
+    .email-input-ctr {
+      width: 87.2vw;
+      height: 16vw;
+      border-bottom: 0.267vw solid black;
+    }
+
+    .email-input,
+    .pass-input {
+      @include font-style;
+      font-size: 4.8vw;
+      width: 70vw;
+      height:100%;
+      border: none;
+      letter-spacing: 0.525vw;
+    }
+    
+.email-input::placeholder,
+.pass-input::placeholder {
+  /* Set initial placeholder style */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  opacity: 0.5; /* Adjust opacity as needed */
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.email-input:focus::placeholder,
+.pass-input:focus::placeholder {
+  /* Adjust placeholder style on focus */
+  opacity: 1;
+  
+  transform: translateY(-150%);
+}
+
+    .pass-input {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translate(-130%, -150%);
+      cursor: pointer;
+      color: #999; /* Adjust color as needed */
+    }
+    .view-pass {
+      width: 6vw;
+      height: 6vw;
+    }
+    .email-input:focus,
+    .pass-input:focus {
+      outline: none;
+      border-color: transparent;
+    }
+  }
+  .login-forget-pass {
+    @include font-style;
+    display: flex;
+    flex-direction: column;
+    gap: 4.267vw;
+
+    .forget-pass {
+      background-color: transparent;
+      border: none;
+      font-size: 3.733vw;
+      font-weight: 400;
+      letter-spacing: 0.525vw;
+    }
+  }
+
+  .or {
+    display: flex;
+    align-items: center;
+    gap: 3.2vw;
+
+    .line {
+      width: 33.733vw;
+      height: 0.03vw;
+      background: $primary-grey-color;
+      align-self: center;
+    }
+
+    .or-txt {
+      @include font-style;
+      color: $primary-grey-color;
+      font-weight: 400;
+      letter-spacing: 0.525vw;
+    }
+  }
+
+  .login,
+  .sign-up {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 4.8vw;
+    font-weight: 400;
+    letter-spacing: 0.712vw;
+    width: 54.933vw;
+    height: 12.8vw;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+
+  .login {
+    background-color: rgba(0, 0, 0, 0.534);
+    border: none;
+    &:hover {
+      background-color: black;
+    }
+  }
+
+  .sign-up {
+    background-color: white;
+    color: black;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
