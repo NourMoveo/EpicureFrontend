@@ -1,6 +1,8 @@
 .dish-order-popup {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +12,9 @@
   overflow-y: scroll;
   .popup-container {
     width: 39.792vw;
+    height: 72vw;
+    margin-top: -11vw;
+    margin-left: 10vw;
     .close-btn-container {
       width: 100%;
       height: auto;

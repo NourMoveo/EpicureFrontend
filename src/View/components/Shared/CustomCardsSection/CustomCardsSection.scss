@@ -5,7 +5,7 @@
   height: 100%;
   box-sizing: border-box;
 
-  .link-route, .restaurant-link{
+  .link-route, .restaurant-link ,.dish-link{
     text-decoration: none; 
     color: inherit; 
     &:hover {
@@ -17,7 +17,7 @@
     text-decoration: none;
   }
   .all-restaurants {
-    padding-left: 7.5vw;
+    padding-left: 4vw;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -95,7 +95,7 @@
       align-items: flex-end;
       flex-direction: row;
       margin-top: 1vw;
-      margin-left: 56vw;
+      margin-left: 60vw;
       .all-restaurants {
         display: flex;
 
@@ -151,7 +151,7 @@
       grid-template-columns: repeat(4, 1fr); 
       grid-template-rows: repeat(3, auto);
       gap: 1.39vw; 
-      width:80vw;
+      width:90vw;
       height: 90.3vw; 
       overflow-y: auto;
       

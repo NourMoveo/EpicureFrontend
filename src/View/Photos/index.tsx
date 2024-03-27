@@ -32,6 +32,8 @@ import ClockIcon from './Icons/clock.svg';
 import LoadingGif from './Icons/loadingGif.gif';
 import EyeHideIcon from './Icons/EyeHide.png';
 import EyeViewIcon from './Icons/EyeView.png';
+import CompletePaymentIcon from './Icons/completePayment.svg';
+import ILSOrangeIcon from './Icons/ILSOrange.svg';
 // Restau
 import onzaRestau from './Restaurants/Onza.png';
 import claroRestau from './Restaurants/Claro.png';
@@ -72,7 +74,8 @@ export {
   LoadingGif,
   EyeHideIcon,
   EyeViewIcon,
-  
+  CompletePaymentIcon,
+  ILSOrangeIcon,
   // Restau
   onzaRestau,
   claroRestau,

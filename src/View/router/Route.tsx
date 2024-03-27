@@ -3,7 +3,7 @@ import {
   HomePage,
   RestaurantsPage,
   RestaurantDetails,
-  ChefsPage,DishOrder,
+  ChefsPage,DishOrder,CheckoutPage
 } from "../pages";
 import { Navbar, Footer } from "../components";
 import { Outlet } from "react-router-dom";
@@ -48,6 +48,9 @@ const router = createBrowserRouter([
       {
         path: "/restaurant/:title",
         element: <RestaurantDetails />,
+      },      {
+        path: "/checkout",
+        element: <CheckoutPage />,
       },
       // {
       //   path: "/dish/:title",

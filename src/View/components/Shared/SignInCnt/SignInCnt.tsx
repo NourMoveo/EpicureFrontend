@@ -7,28 +7,20 @@ import { RootState } from "@/Controller/redux/store/store";
 import { Order } from "@/Model/Interfaces";
 
 import { useNavigate } from "react-router-dom";
+import { setEmail } from "@/Controller/redux/slices/signInPageSlice";
+import { useDispatch } from "react-redux";
 
 const SignInCnt = () => {
   const navigate = useNavigate(); // Initialize navigate
-
-  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+  const [email, setEmailLocal] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { order } = useSelector((state: RootState) => state.dishOrderPage);
   const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const getToken = async () => {
-      const token = await userAPI.getToken(); // Accessing through an instance of UserAPI
-      console.log("token ", !!token, "  ", token);
-      setLoggedIn(!!token);
-    };
-
-    getToken();
-  }, []);
-
   const handleSignIn = async () => {
     try {
+      dispatch(setEmail(email));
       await userAPI.userLogin(email, password);
       alert("Login successful!");
       navigate("/");
@@ -69,7 +61,7 @@ const SignInCnt = () => {
             type="text"
             placeholder="Email address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmailLocal(e.target.value)}
           />
         </div>
         <div className="pass-input-ctr">

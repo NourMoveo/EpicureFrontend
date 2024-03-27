@@ -133,8 +133,8 @@ const RestaurantsHeader = ({onButtonClick, onAdditionalButtonClick }) => {
       </div>
       {isPriceRangeOpen && (
         <MultiRangeSlider
-          min={minAllPrice}
-          max={maxAllPrice}
+          min={12}
+          max={357}
           onChange={({ min, max }) => {}}
           isOpen={isPriceRangeOpen}
           togglePopup={() => togglePopup(setIsPriceRangeOpen)}

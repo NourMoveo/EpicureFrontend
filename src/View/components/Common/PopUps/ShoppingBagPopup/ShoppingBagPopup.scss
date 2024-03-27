@@ -1,14 +1,193 @@
-@import '../../../../themes/mixins';
-@import '../../../../themes/variables';
+@import "../../../../themes/mixins";
+@import "../../../../themes/variables";
 
 /* Styles for mobile */
+.bag-content-new-dishes {
+  &.open {
+    height: 207.467vw;
+    width: 100%;
+    @include popup-style;
+    display: block;
+    opacity: 1;
+
+    .order-title {
+      @include font-style;
+      text-transform: uppercase;
+      font-size: 5.333vw;
+      font-weight: 400;
+      letter-spacing: 0.712vw;
+      text-align: center;
+      margin-top: 4.267vw;
+      line-height: 6.4vw;
+      margin-bottom: 1.067vw;
+    }
+
+    .restaurant-name {
+      @include font-style;
+      text-align: center;
+      font-size: 4.8vw;
+      letter-spacing: 0.525vw;
+      margin-bottom: 5.333vw;
+      line-height: 6.4vw;
+    }
+
+    .dishes-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5.333vw;
+      height: 75vw;
+      overflow-y: scroll;
+    }
+  }
+  .total-price {
+    @include mobile {
+      .line {
+        display: none;
+      }
+    }
+  }
+  .second-part {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    .total-quantity {
+      margin-top: 10vw;
+      display: flex;
+      @include font-style;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 5.333vw;
+      gap: 2.667vw;
+      width: 100%;
+      .ils-logo {
+        display: flex;
+        justify-self: end;
+        align-self: flex-end;
+        margin-right: 0.533vw;
+      }
+    }
+    .add-comment {
+      display: none;
+    }
+    .checkout-button {
+      text-transform: uppercase;
+      color: #fff;
+      font-size: 4.8vw;
+      font-weight: 400;
+      letter-spacing: 0.712vw;
+      width: 54.933vw;
+      height: 12.8vw;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .checkout-button {
+      background-color: black;
+      border: none;
+      cursor: pointer;
+      margin-top: 5.333vw;
+    }
+  }
+}
+
+.dish-card-popup {
+  width: 90.667vw;
+  height: 25.6vw;
+  background-color: $secondary-offwhite-color;
+  display: flex;
+  .dish-img-popup {
+    width: 25.6vw;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dish-details-popup {
+    display: flex;
+    margin-left: 6.4vw;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    .quantity-name-price {
+      display: flex;
+      margin-top: 3.2vw;
+
+      @include mobile {
+        .quantity-button {
+          display: none;
+        }
+      }
+
+      .name-price {
+        display: flex;
+        flex-direction: column;
+
+        @include mobile {
+          .dish-price {
+            display: none;
+          }
+        }
+      }
+
+      .quantity-value,
+      .dish-name {
+        @include font-style;
+        font-size: 3.733vw;
+        font-weight: 400;
+        letter-spacing: 0.712vw;
+        margin-right: 1.8vw;
+      }
+    }
+    .dish-side-changes {
+      margin-top: 2.133vw;
+      display: flex;
+      gap: 2vw;
+      .dish-side,
+      .dish-change {
+        @include font-style;
+        font-size: 3.2vw;
+        letter-spacing: 0.328vw;
+      }
+      .split-line {
+        @include font-style;
+        font-size: 3.2vw;
+      }
+    }
+    .main-dish-price {
+      display: flex;
+      justify-content: flex-end;
+      align-self: flex-end;
+      justify-self: end;
+      margin-right: 3.2vw;
+      margin-top: 2.133vw;
+
+      .price-value {
+        @include font-style;
+        font-weight: 400;
+      }
+      .ils-logo {
+        display: flex;
+        align-self: flex-end;
+        // width: 2.133vw;
+        margin-right: 0.533vw;
+        height: 3.4vw;
+      }
+    }
+  }
+}
 
 .bag-popup {
   @include popup-style;
   height: 58vw;
+
   &.open {
     display: block;
-    opacity: 1; /* Ensure visibility when open */
+    opacity: 1;
+    /* Ensure visibility when open */
   }
 
   .bag-content {
@@ -18,8 +197,9 @@
     align-items: center;
     margin-top: 16.2vw;
     gap: 5.5vw;
+
     .order-history-button {
-      display:none;
+      display: none;
     }
 
     .content {
@@ -29,7 +209,8 @@
       font-size: 4.3vw;
       letter-spacing: 0.5vw;
       text-transform: uppercase;
-      opacity: 0.6; /* Default opacity for mobile */
+      opacity: 0.6;
+      /* Default opacity for mobile */
       padding: 0vw 35vw 0vw 31vw;
       text-align: center;
     }
@@ -39,54 +220,10 @@
       width: 11vw;
       height: auto;
       cursor: pointer;
-      opacity: 0.6; /* Default opacity for mobile */
+      opacity: 0.6;
+      /* Default opacity for mobile */
     }
   }
-
-  .order-title{
-    @include font-style;
-    text-transform: uppercase;
-    font-size: 5.333vw;
-    font-weight: 400;
-    letter-spacing: 0.712vw;
-    text-align: center;
-  }
-  .restaurant-name{
-    @include font-style;
-    text-align: center;
-    font-size: 4.8vw;
-    letter-spacing: 0.525vw;
-  }
-}
-.dish-card-popup{
-  width: 90.667vw;
-height: 25.6vw;
-background-color: $secondary-offwhite-color;
-display: flex;
-.dish-img-popup{
-  width: 25.6vw;
-  height: 100%;
-  object-fit: cover;
-}
-.dish-details-popup{
-  .quantity-name-price{
-    display: flex;
-    flex-direction: column;
-    @include mobile{
-      .quantity-button{
-        display: none;
-      }
-    }
-    .quantity-value,.dish-name{
-      @include font-style;
-      font-size: 3.733vw;
-      font-weight: 400;
-      letter-spacing: 0.712vw;
-    }
-  }
-}
-
-
 }
 
 @include desktop {
@@ -94,48 +231,281 @@ display: flex;
     width: 35vw;
     height: 40.5vw;
     left: 65vw;
-  .bag-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 18vw;
-    gap: 2vw;
 
-    .order-history-button {
-      display: block; /* Ensure button is visible by default on mobile */
-      margin-top: 4vw;
-      padding: 1.2vw;
-      @include font-style;
-      font-size: 1.5vw;
-      font-weight: 400;
-      text-transform: uppercase;
-      text-align: center;
-      background-color: $primary-white-color;
-      border: 0.15vw solid $primary-dark-color;
-      color: $primary-dark-color;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
+    .bag-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18vw;
+      gap: 2vw;
 
+      .order-history-button {
+        display: block;
+        /* Ensure button is visible by default on mobile */
+        margin-top: 4vw;
+        padding: 1.2vw;
+        @include font-style;
+        font-size: 1.5vw;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+        background-color: $primary-white-color;
+        border: 0.15vw solid $primary-dark-color;
+        color: $primary-dark-color;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
 
-      &:hover {
-        background-color: $primary-dark-color;
-        color: $primary-white-color;
+        &:hover {
+          background-color: $primary-dark-color;
+          color: $primary-white-color;
+        }
+      }
+
+      .content {
+        padding: 0vw 9.5vw 0vw 9vw;
+        font-size: 1.55vw;
+        letter-spacing: 0.15vw;
+        opacity: 0.3;
+        /* Default opacity for desktop */
+      }
+
+      .BagIcon {
+        width: 9vw;
+        padding: 0vw 0vw 0vw 5vw;
+        height: auto;
+        opacity: 0.3;
+        /* Default opacity for desktop */
       }
     }
-    .content {
-      padding: 0vw 9.5vw 0vw 9vw;
-      font-size: 1.55vw;
-      letter-spacing: 0.15vw;
-      opacity: 0.3; /* Default opacity for desktop */
+  }
+  .bag-content-new-dishes {
+    &.open {
+      width: 35vw;
+      height: 40.5vw;
+      left: 65vw;
+      position: absolute;
+      top: calc(100% + 0px);
+
+      background-color: $primary-white-color;
+      z-index: 10; // <10
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: block;
+      opacity: 1;
+
+      .order-title {
+        @include font-style;
+        text-transform: uppercase;
+        font-size: 2.222vw;
+        font-weight: 400;
+        letter-spacing: 0.712vw;
+        text-align: center;
+        margin-top: 1.875vw;
+        // line-height: 6.4vw;
+        // margin-bottom: 1.067vw;
+      }
+
+      .restaurant-name {
+        @include font-style;
+        text-align: center;
+        font-size: 1.25vw;
+        letter-spacing: 0.525vw;
+        margin-bottom: 2.083vw;
+        line-height: 1.389vw;
+      }
+
+      .dishes-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.833vw;
+        height: 20.833vw;
+        overflow-y: scroll;
+      }
+
+      .total-price {
+        @include mobile {
+          .line {
+            display: none;
+          }
+        }
+      }
+      .second-part {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        .total-quantity {
+          display: none;
+        }
+        .line-desktop {
+          width: 9.444vw;
+          height: 0.01vw;
+          background: $primary-grey-color;
+          align-self: center;
+          margin-top: 1.875vw;
+          margin-bottom: 1.597vw;
+        }
+        .add-comment {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2.083vw;
+
+          .add-comment-title {
+            @include font-style;
+            font-weight: 400;
+            font-size: 1.25vw;
+          }
+
+          .comment-input {
+            @include font-style;
+            width: 24.861vw;
+            font-size: 0.833vw;
+            height: 8.472vw;
+            letter-spacing: 0.09vw;
+            text-align: start; // Align text to the start
+            &::placeholder {
+              // Use ::placeholder to style the placeholder text
+              text-align: start;
+              margin-left: 0.625vw;
+            }
+          }
+        }
+
+        .checkout-button {
+          text-transform: uppercase;
+          color: #fff;
+          font-size: 1.25vw;
+          font-weight: 400;
+          letter-spacing: 0.185vw;
+          width: 14.306vw;
+          height: 3.333vw;
+          transition: background-color 0.3s;
+          cursor: pointer;
+        }
+
+        .checkout-button {
+          background-color: black;
+          border: none;
+          cursor: pointer;
+          margin-top: 2.431vw;
+        }
+      }
     }
 
-    .BagIcon {
-      width: 9vw;
-      padding: 0vw 0vw 0vw 5vw;
-      height: auto;
-      opacity: 0.3; /* Default opacity for desktop */
+    .dish-card-popup {
+      width: 23.75vw;
+      height: 7.2vw;
+      background-color: $secondary-offwhite-color;
+      display: flex;
+      .dish-img-popup {
+        width: 6.667vw;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .dish-details-popup {
+        display: flex;
+        margin-left: 1.667vw;
+        max-width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        .quantity-name-price {
+          display: flex;
+          margin-top: 0.833vw;
+          .quantity-button {
+            background-color: transparent;
+            border: 0.1vw solid;
+            border-color: $secondary-grey-color;
+            border-radius: 20%;
+            width: 2.5vw;
+            height: 2.5vw;
+            @include font-style;
+            font-weight: 400;
+            font-size: 1.258vw;
+            color: $secondary-orange-color;
+          }
+          .quantity-value {
+            display: none;
+          }
+
+          .name-price {
+            display: flex;
+            flex-direction: column;
+
+            .dish-price {
+              display: flex;
+              @include font-style;
+              font-size: 0.903vw;
+              color: $secondary-orange-color;
+              margin-left: 0.972vw;
+              margin-top: 0.417vw;
+              gap: 0.137vw;
+              font-weight: 400;
+              .ils-logo {
+                width: 1vw;
+                // margin-right: 0.137vw;
+                height: 0.6vw;
+              }
+
+              .dish-mini-price {
+              }
+            }
+          }
+
+          .dish-name {
+            @include font-style;
+            font-size: 1.25vw;
+            font-weight: 400;
+            letter-spacing: 0.137vw;
+            margin-right: 1.8vw;
+            margin-left: 0.833vw;
+          }
+        }
+        .dish-side-changes {
+          margin-top: 0.556vw;
+          display: flex;
+          gap: 0.4vw;
+          .dish-side,
+          .dish-change {
+            @include font-style;
+            font-size: 0.833vw;
+            letter-spacing: 0.085vw;
+          }
+          .split-line {
+            @include font-style;
+            font-size: 0.833vw;
+          }
+        }
+        .main-dish-price {
+          display: flex;
+          justify-content: center;
+          align-self: flex-end;
+          justify-self: center;
+          margin-right: 0.5vw;
+          // margin-bottom: 0vw;
+          .price-value {
+            @include font-style;
+            font-weight: 400;
+            letter-spacing: 0.137vw;
+            font-size: 1.111vw;
+            margin-top: -1.7vw;
+          }
+          .ils-logo {
+            display: flex;
+            align-self: flex-end;
+            margin-top: -1.35vw;
+            margin-bottom: 9vw;
+            margin-right: 0.139vw;
+            height: 0.972vw;
+          }
+        }
+      }
     }
   }
-}
 }

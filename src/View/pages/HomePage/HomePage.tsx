@@ -11,30 +11,18 @@ import { setChefOfTheWeekData } from "@/Controller/redux/slices/homePageSlice";
 
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [popularRestaurantsLoading, setPopularRestaurantsLoading] = useState(true);
-  const [signatureDishesLoading, setSignatureDishesLoading] = useState(true);
-  const [chefOfTheWeekLoading, setChefOfTheWeekLoading] = useState(true);
-  const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen } = useSelector(
+  const { popularRestaurants, signatureDishes, chefOfTheWeek, isModalOpen, popularRestaurantsLoading, signatureDishesLoading, chefOfTheWeekLoading } = useSelector(
     (state: RootState) => state.homePage
   );
 
   useEffect(() => {
     dispatch(fetchHomePageData())
       .then(() => {
-
-        setChefOfTheWeekData(chefOfTheWeek);
         setIsLoading(false);
-        setPopularRestaurantsLoading(false);
-        setSignatureDishesLoading(false);
-        setChefOfTheWeekLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching home page data:", error);
         setIsLoading(false);
-        setPopularRestaurantsLoading(false);
-        setSignatureDishesLoading(false);
-        setChefOfTheWeekLoading(false);
       });
   }, [dispatch]);
 
@@ -71,35 +59,31 @@ const HomePage = () => {
       )}
       <IconsMeaning icons={IconsData} />
       {chefOfTheWeekLoading ? (
-  <div className="loading-spinner">
-    <img className="loading" src={LoadingGif} alt="Loading..." />
-  </div>
-) : (
-  <>
-    {chefOfTheWeek ? (
-      <>
-        <WeekChef {...chefOfTheWeek} />
-        {chefOfTheWeek.restaurant && chefOfTheWeek.restaurant.length > 0 ? (
-          
-          <CustomCardsSection
-            cardsData={chefOfTheWeek.restaurant} 
-            cardType={3}
-            pageType={1}
-            layoutDirection="horizontal"
-          />
-          
-        ) : (
-          <p key="no-restaurants" className="no-data">No restaurants associated with the chef of the week.</p>
-        )}
-      </>
-    ) : (
-      <p key="no-chef" className="no-data">No chef of the week found.</p>
-    )}
-  </>
-)}
-
+        <div className="loading-spinner">
+          <img className="loading" src={LoadingGif} alt="Loading..." />
+        </div>
+      ) : (
+        <>
+          {chefOfTheWeek ? (
+            <>
+              <WeekChef {...chefOfTheWeek} />
+              {chefOfTheWeek.restaurant && chefOfTheWeek.restaurant.length > 0 ? (
+                <CustomCardsSection
+                  cardsData={chefOfTheWeek.restaurant} 
+                  cardType={3}
+                  pageType={1}
+                  layoutDirection="horizontal"
+                />
+              ) : (
+                <p key="no-restaurants" className="no-data">No restaurants associated with the chef of the week.</p>
+              )}
+            </>
+          ) : (
+            <p key="no-chef" className="no-data">No chef of the week found.</p>
+          )}
+        </>
+      )}
       <AboutUs />
-      {isModalOpen && <DishOrderPopup />}
     </>
   );
 };

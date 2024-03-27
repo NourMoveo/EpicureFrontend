@@ -1,7 +1,7 @@
-import { User } from "@/Model/Interfaces";
+import { Order, User } from "@/Model/Interfaces";
 import { genericAPI } from "./GenericAPI";
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import Cookies from "universal-cookie";
+import Cookies from 'js-cookie';
 
 interface LoginResponse {
   token: string;
@@ -9,7 +9,6 @@ interface LoginResponse {
 
 class UserAPI {
   static readonly endpoint = "/users";
-  private cookies = new Cookies();
 
   async signUp(userData: User): Promise<void> {
     try {
@@ -20,45 +19,61 @@ class UserAPI {
     }
   }
 
-  async userLogin(email: string, password: string): Promise<string | null> {
+  async userLogin(email: string, password: string): Promise<void> {
     try {
       const response: AxiosResponse<LoginResponse> = await genericAPI.post(`${UserAPI.endpoint}/login`, { email, password });
-      const token = response.data.token;
-      this.setTokenInCookie(token); // Set token as a cookie in the front end
-      return token;
+      
+      // Extract the authToken from the response
+      const authToken = response.data.token;
+
+      // Store the authToken securely in a cookie with the name 'authToken'
+      // Set the cookie to be HTTP-only to prevent access from JavaScript
+      Cookies.set('authToken', authToken, { httpOnly: true });
+
+      // Redirect the user to a protected page or perform other actions
+      // For example:
+      window.location.href = '/';
     } catch (error) {
-      console.error("Error logging in:", error);
-      throw new Error("Error logging in");
+      // Handle login error (e.g., display error message to the user)
+      console.error('Login failed:', error);
+      throw new Error("Login failed");
     }
   }
-
-  setTokenInCookie(token: string): void {
-    this.cookies.set('token', token, { path: '/', httpOnly: true, secure: true, sameSite: 'strict' });
-  }
   
-  async addOrder(userId: string, orderData: any): Promise<void> {
+  
+  async addOrder(email: string, newOrderData: Order): Promise<void> {
     try {
+      // Retrieve the authentication token from the cookie
       const token = this.getToken();
+      console.log("token :",token)
+      console.log("email :",email)
+      console.log("newOrderData :",newOrderData)
       if (!token) {
         throw new Error("Authentication token is missing.");
       }
-  
+      console.log("token :",token)
+      console.log("email :",email)
+      console.log("newOrderData :",newOrderData)
+      // Set the request headers with the authentication token
       const headers: AxiosRequestConfig['headers'] = {
         Authorization: `Bearer ${token}`,
       };
-  
-      await genericAPI.post(`${UserAPI.endpoint}/${userId}/add-order`, orderData, headers);
+
+      // Make a POST request to the add-order endpoint with the data and headers
+      await genericAPI.post(`${UserAPI.endpoint}/add-order`, { email, newOrderData }, headers);
+
+      // Log success message
+      console.log('Order added successfully');
     } catch (error) {
       console.error("Error adding order to user:", error);
       throw new Error("Error adding order to user");
     }
   }
 
-  getToken(): string | null {
-    const token = this.cookies.get('token');
-    return token || null;
+  private getToken(): string | null {
+    const authToken = Cookies.get('authToken');
+    return authToken !== undefined ? authToken : null;
   }
-  
 }
 
 export const userAPI = new UserAPI();

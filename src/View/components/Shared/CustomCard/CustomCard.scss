@@ -126,7 +126,6 @@
 
   &.dish-card {
     cursor: auto;
-
     .card-content {
       height: 65.5vw;
     }
@@ -179,6 +178,63 @@
         }
       }
     }
+
+    &.restaurant-page {
+      width: 89vw;
+      margin-left: 0vw;
+      cursor: auto;
+      margin-bottom: 4vw;
+      .card-content {
+        height: 57vw;
+      }
+
+      .food-icon{
+        display: none;
+      }
+
+      .line-dish {
+        margin-left: 12vw;
+        margin-top: -1.2vw;
+        width: 68vw;
+        height: 0.02vw;
+        background: $primary-grey-color;
+        align-self: center;
+      }
+        .image-container {
+          .card-image {
+            width: 100%;
+            height: 55.01vw;
+            object-fit: cover;
+          }
+        }
+ 
+
+      .card-content {
+        padding-left: 4.3vw;
+
+        .card-title {
+          margin-top: 18vw;
+          font-size: 4.8vw;
+          font-weight: 700;
+          letter-spacing: 0.72vw;
+        }
+
+        .description-rating {
+          display: flex;
+          flex-direction: column;
+
+          .description {
+            margin-right: 8vw;
+
+            .card-description {
+              margin: 0;
+              font-size: 4.3vw;
+              line-height: 5.4vw;
+              letter-spacing: 0.53vw;
+            }
+          }
+        }
+      }}
 
   }
 
@@ -314,7 +370,7 @@
       .card-content {
         margin: 0;
         .card-title {
-          padding: 0vw 6.7vw 0vw 3.8vw;
+          padding: 0vw 4vw 0vw 1vw;
           margin-bottom: 0.8vw;
           margin-top: 1.667vw;
 
@@ -424,7 +480,10 @@
         height: 31vw;
         margin: 0;
         padding: 0;
-        gap:0px;        
+        gap:0px;
+        
+      margin-bottom: -24vw;  
+      margin-right: 1vw;      
         .image-container {
           .card-image {
             width: 100%;

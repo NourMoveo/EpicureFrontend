@@ -61,7 +61,9 @@ export enum CardType {
 export enum PagesType {
   HomePage = 1,
   RestaurantsPage = 2,
-  OrdersPage = 3
+  OrdersPage = 3,
+  checkoutPage=4,
+  bagShoppingPopup=5
 }
 export interface dataTypes {
   interfaceType: 'r' | 'd' | 'c';

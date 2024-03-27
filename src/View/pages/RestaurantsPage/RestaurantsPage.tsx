@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../../Controller/redux/store/store";
 import { fetchRestaurantsPageData } from "../../../Controller/redux/thunks/restaurantsPageThunk";
-import { CustomCardsSection, RestaurantsHeader } from "../../components";
+import { CustomCardsSection, DishOrderPopup, RestaurantsHeader } from "../../components";
 import { Map,LoadingGif } from "@/View/Photos";
 import "./RestaurantsPage.scss";
+import { setIsHomePage } from "@/Controller/redux/slices/homePageSlice";
 
 const RestaurantsPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,6 +14,9 @@ const RestaurantsPage = () => {
   const [isMapView, setIsMapView] = useState(false);
   const [activeAdditionalButton, setActiveAdditionalButton] = useState<string | null>(null);
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
+  const {  isModalOpen } = useSelector(
+    (state: RootState) => state.homePage
+  );
 
   const handleButtonClick = (buttonName: string) => {
     setActiveButton(buttonName);
@@ -28,6 +32,7 @@ const RestaurantsPage = () => {
   };
 
   useEffect(() => {
+    setIsHomePage(false);
     dispatch(fetchRestaurantsPageData())
       .then(() => setIsLoading(false))
       .catch((error) => {
@@ -39,7 +44,9 @@ const RestaurantsPage = () => {
   const { allRestaurants, newRestaurants, openNowRestaurants, popularRestaurants } = useSelector(
     (state: RootState) => state.restaurantsPage
   );
-
+  const { isHomePage } = useSelector(
+    (state: RootState) => state.homePage
+  );
   return (
     <div className="restaurants-page">
       <h2 className="restaurant-header">Restaurants</h2>
@@ -50,6 +57,7 @@ const RestaurantsPage = () => {
       <div className="container-content">
         {isLoading ? renderLoading() : renderContent()}
       </div>
+      {isModalOpen && <DishOrderPopup /> && !isHomePage}
     </div>
   );
 

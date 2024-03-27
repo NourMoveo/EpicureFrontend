@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Dish, Order, OrderDish } from "@/Model/Interfaces";
+import { RootState } from '@/Controller/redux/store/store';
+import { Order, OrderDish } from "@/Model/Interfaces";
 
 interface DishOrderPageState {
   order: Order;
   isModalOpen: boolean;
-  selectedDish: Dish | null;
+  selectedDish: OrderDish | null;
   totalQuantity: number;
 }
 
@@ -21,7 +22,6 @@ const initialState: DishOrderPageState = {
   totalQuantity: 0,
 };
 
-
 const dishOrderPageSlice = createSlice({
   name: "dishOrderPage",
   initialState,
@@ -31,14 +31,16 @@ const dishOrderPageSlice = createSlice({
     },
     addDishOrder(state, action: PayloadAction<OrderDish>) {
       state.order.dishes.push(action.payload);
-      state.order.total += action.payload.dish.price * action.payload.quantity;
+      state.order.total += (action.payload.dish.price * action.payload.quantity);
       state.totalQuantity += action.payload.quantity;
-      console.log(" state.order: ",  state.totalQuantity);
+      state.order.arrivingTime+=(action.payload.quantity*10)
+    },updateComment(state, action: PayloadAction<string>) {
+      state.order.comment =action.payload;
     },
-    setSelectedDish(state, action: PayloadAction<Dish | null>) {
+    setSelectedDish(state, action: PayloadAction<OrderDish | null>) {
       state.selectedDish = action.payload;
     },
-    openModal(state, action: PayloadAction<Dish>) {
+    openModal(state, action: PayloadAction<OrderDish>) {
       state.isModalOpen = true;
       state.selectedDish = action.payload;
     },
@@ -46,12 +48,9 @@ const dishOrderPageSlice = createSlice({
       state.isModalOpen = false;
       state.selectedDish = null;
     },
-  },
-  extraReducers: (builder) => {
+  }
+  });
 
-  },    
-});
-
-export const { setOrderData, addDishOrder, openModal, closeModal, setSelectedDish } = dishOrderPageSlice.actions;
+export const {updateComment, setOrderData, addDishOrder, setSelectedDish, openModal, closeModal } = dishOrderPageSlice.actions;
 
 export default dishOrderPageSlice.reducer;

@@ -8,6 +8,7 @@ interface RestaurantsPageState {
   popularRestaurants: Restaurant[];
   openNowRestaurants: Restaurant[];
   selectedRestaurant: Restaurant | null,
+  
 
 }
 

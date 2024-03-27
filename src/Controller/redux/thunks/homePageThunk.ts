@@ -5,6 +5,7 @@ import { chefAPI } from "@/Model/APIs/ChefAPI";
 import { setData } from "../../utils/getSetFunc";
 import { Dish, Restaurant, Chef, dataTypes } from "@/Model/Interfaces";
 
+
 interface HomePageData {
   popularRestaurants: Restaurant[];
   signatureDishes: Dish[];

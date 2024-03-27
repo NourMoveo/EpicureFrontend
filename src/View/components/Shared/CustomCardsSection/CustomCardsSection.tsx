@@ -167,8 +167,11 @@ const CustomCardsSection: React.FC<{
           </div>
 
           <div className='all-restaurants link-route'>
+
+          <Link to="/restaurants" className='all-restaurants link-route'>
             <span className='all-restaurants-text'>All Restaurants</span>
             <img src={ARArrow} alt='All Restaurants' className='arrows-icon' />
+            </Link>
           </div>
         </div>
       </Fade >

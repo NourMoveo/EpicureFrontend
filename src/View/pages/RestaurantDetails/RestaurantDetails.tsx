@@ -3,13 +3,15 @@ import { useSelector } from "react-redux";
 import { Restaurant, Dish } from "@/Model/Interfaces";
 import { ClockIcon } from "@/View/Photos";
 import "./RestaurantDetails.scss";
-import { CustomCardsSection } from "@/View/components";
+import { CustomCardsSection, DishOrderPopup } from "@/View/components";
 import { RootState } from "@/Controller/redux/store/store";
 const RestaurantDetails: React.FC = () => {
 
   const restaurant = { ...useSelector((state: RootState) => state.homePage.selectedRestaurant) };
 
-
+  const { isModalOpen } = useSelector(
+    (state: RootState) => state.homePage
+  );
   const getStatus = (): string => {
     const now = new Date();
     if (restaurant && restaurant.open && restaurant.close && now >= restaurant.open && now <= restaurant.close) {
@@ -75,6 +77,8 @@ const RestaurantDetails: React.FC = () => {
               />
             )}
           </div>
+
+      {isModalOpen && <DishOrderPopup />}
         </>
       ) : (
         <p>Restaurant not found</p>
